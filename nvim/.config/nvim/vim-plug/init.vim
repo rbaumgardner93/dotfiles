@@ -1,4 +1,4 @@
-call plug#begin('~/dotfiles/nvim/.config/nvim/autoload/plugged')
+call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
