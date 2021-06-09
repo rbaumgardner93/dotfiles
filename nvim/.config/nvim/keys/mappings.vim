@@ -1,4 +1,4 @@
-nnoremap <leader>pv :Vex<CR>
+nnoremap <leader>pl :Vex<CR>
 nnoremap <leader><CR> :source $MYVIMRC<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprev<CR>
