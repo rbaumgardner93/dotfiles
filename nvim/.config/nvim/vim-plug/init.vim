@@ -1,8 +1,8 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'ap/vim-css-color'
-Plug 'ayu-theme/ayu-vim'
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'connorholyday/vim-snazzy'
 Plug 'hrsh7th/nvim-compe'
+Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'neovim/nvim-lspconfig'
@@ -14,6 +14,4 @@ Plug 'preservim/nerdtree'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()

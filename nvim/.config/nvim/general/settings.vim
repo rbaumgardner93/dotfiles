@@ -25,6 +25,8 @@ set mouse=a " Enable mouse
 set laststatus=0 " Always show status line
 set nowrap " Don't wrap long lines
 set colorcolumn=80 " Show bar at 80 characters
+set laststatus=2 " Recommended from lightline
+set noshowmode " Recommended from lightline
 
 if (has("termguicolors"))
 	set termguicolors " enable true colors support
