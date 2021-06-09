@@ -15,8 +15,7 @@ set incsearch " Highlight as you search for a word
 set list
 set listchars=nbsp:_,tab:\|\->,space:•,trail:•,extends:>,precedes:< " Update neovim defaults for whitespace characters
 set background=dark " tell vim what that background color should be
-set nobackup " Recommended by coc
-set nowritebackup " Recommended by coc
+set completeopt=menuone,noselect " Recommended by nvim-compe
 set cmdheight=2 " More space for displaying messages
 set updatetime=300 " Faster completion
 set timeoutlen=500 " Default timeoutlen is 1000ms
