@@ -15,4 +15,5 @@ Plug 'tjdevries/colorbuddy.nvim'
 Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
 call plug#end()
