@@ -10,7 +10,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'tjdevries/colorbuddy.nvim'
+Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 call plug#end()
