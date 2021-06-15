@@ -7,6 +7,7 @@ source $HOME/.config/nvim/plug-config/dirvish.vim
 source $HOME/.config/nvim/plug-config/eunech.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/lsp.vim
+source $HOME/.config/nvim/plug-config/nvim-autopairs.vim
 source $HOME/.config/nvim/plug-config/nvim-compe.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 source $HOME/.config/nvim/plug-config/treesitter.vim
