@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'ap/vim-css-color'
-Plug 'connorholyday/vim-snazzy'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
