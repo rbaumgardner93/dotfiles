@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-fpath+=$HOME/.zsh/pure
+fpath+=$HOME/.zsh/custom/themes/pure
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -141,6 +141,7 @@ alias cat="bat"
 alias vim="nvim"
 alias t="tmux"
 alias e="exit"
+alias mv="mv -iv"
 alias tmuxrc="vim ~/.tmux.conf"
 alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"

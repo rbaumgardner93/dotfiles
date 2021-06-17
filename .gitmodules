@@ -7,6 +7,6 @@
 [submodule "zsh/.zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = zsh/.zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "zsh/.zsh/pure"]
-	path = zsh/.zsh/pure
+[submodule "zsh/.zsh/custom/themes/pure"]
+	path = zsh/.zsh/custom/themes/pure
 	url = https://github.com/sindresorhus/pure
