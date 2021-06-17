@@ -17,7 +17,7 @@ nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_sag
 " show signature help
 nnoremap <silent> gs :Lspsaga signature_help<CR>
 " rename
-nnoremap <silent>gr :Lspsaga rename<CR>
+nnoremap <silent>rn :Lspsaga rename<CR>
 " diagnostics
 nnoremap <silent> <leader>ld :Lspsaga show_line_diagnostics<CR>
 nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
