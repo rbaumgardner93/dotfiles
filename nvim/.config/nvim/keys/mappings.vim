@@ -5,6 +5,8 @@ nnoremap <C-k> :cprev<CR>
 nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 
+nnoremap <CR> o<Esc>
+
 " TAB in normal mode will move to next/prev text buffer
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprev<CR>

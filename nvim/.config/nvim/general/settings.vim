@@ -27,6 +27,9 @@ set nowrap " Don't wrap long lines
 set colorcolumn=80 " Show bar at 80 characters
 set laststatus=2 " Recommended from lightline
 set noshowmode " Recommended from lightline
+set signcolumn=yes " Keep column widht consistent when using plugins with gutter icons
+set colorcolumn=80 " Make it obvious where 80 characters is
+highlight ColorColumn guibg=#333333
 
 if (has("termguicolors"))
 	set termguicolors " enable true colors support
