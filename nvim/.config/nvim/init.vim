@@ -5,6 +5,7 @@ source $HOME/.config/nvim/general/colorscheme.vim
 source $HOME/.config/nvim/plug-config/better-whitespace.vim
 source $HOME/.config/nvim/plug-config/dashboard.vim
 source $HOME/.config/nvim/plug-config/dirvish.vim
+source $HOME/.config/nvim/plug-config/editor-config.vim
 source $HOME/.config/nvim/plug-config/eunech.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/lsp.vim

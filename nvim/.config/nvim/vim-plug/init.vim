@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'ap/vim-css-color'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'glepnir/dashboard-nvim'
 Plug 'hrsh7th/nvim-compe'
