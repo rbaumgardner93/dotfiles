@@ -27,7 +27,12 @@ set laststatus=2 " Recommended from lightline
 set noshowmode " Recommended from lightline
 set signcolumn=yes " Keep column widht consistent when using plugins with gutter icons
 set colorcolumn=80 " Make it obvious where 80 characters is
-highlight ColorColumn guibg=#333333
+
+" undotree
+if has("persistent_undo")
+	set undodir="$HOME/.undodir"
+	set undofile
+endif
 
 if (has("termguicolors"))
 	set termguicolors " enable true colors support
