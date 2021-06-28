@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'ap/vim-css-color'
+Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'glepnir/dashboard-nvim'
@@ -15,8 +16,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " We recommend updating the parsers on update
+Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
 Plug 'tjdevries/colorbuddy.nvim'
-Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
