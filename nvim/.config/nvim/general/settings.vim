@@ -14,8 +14,6 @@ set nohlsearch " Remove highlighting after search
 set incsearch " Highlight as you search for a word
 set ignorecase " Ignore case for searching
 set smartcase " ignore case when the pattern contains lowercase letters only
-" set list
-" set listchars=nbsp:_,tab:\|\->,space:•,trail:•,extends:>,precedes:< " Update neovim defaults for whitespace characters
 set background=dark " tell vim what that background color should be
 set completeopt=menuone,noselect " Recommended by nvim-compe
 set cmdheight=2 " More space for displaying messages
