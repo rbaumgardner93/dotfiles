@@ -28,15 +28,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+-- npm install -g eslint_d
 local eslint = {
-    lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
+    lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
     lintIgnoreExitCode = true,
     lintStdin = true,
     lintFormats = {"%f:%l:%c: %m"},
-    formatCommand = "./node_modules/.bin/eslint --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+    formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
     formatStdin = true
 }
-
 -- brew install efm-langserver
 require "lspconfig".efm.setup {
     init_options = {documentFormatting = true, codeAction = true},
@@ -54,6 +54,16 @@ require "lspconfig".efm.setup {
 -- map buffer local keybindings when the language server attaches
 local servers = { "tsserver" }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+  	if ( lsp == "tsserver" ) then
+		nvim_lsp[lsp].setup {
+			on_attach = function(client)
+				client.resolved_capabilities.document_formatting = false;
+			end
+		}
+	else
+  		nvim_lsp[lsp].setup { on_attach = on_attach }
+	end
 end
 EOF
+
+nnoremap <silent><leader>F <cmd>lua vim.lsp.buf.formatting_sync(nil, 5000)<CR>
