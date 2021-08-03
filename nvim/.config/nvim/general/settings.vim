@@ -1,5 +1,6 @@
 let mapleader = " "
 
+set wildignore+=**/node_modules/* " ignore node_modules
 set number " show line numbers
 set ruler " Show the cursor position all the time
 set scrolloff=8 " Offset scrolling up or down by 8 lines
@@ -27,6 +28,9 @@ set laststatus=2 " Recommended from lightline
 set noshowmode " Recommended from lightline
 set signcolumn=yes " Keep column widht consistent when using plugins with gutter icons
 set colorcolumn=80 " Make it obvious where 80 characters is
+" from https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
+set lazyredraw " Don't redraw whle executing macros (good performance config)
+set autoread " Set to auto read when a file is changed from the outside
 
 " undotree
 if has("persistent_undo")

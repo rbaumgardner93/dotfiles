@@ -9,4 +9,5 @@ nnoremap <leader>fg <cmd> lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd> lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fgs <cmd> lua require'telescope.builtin'.git_status{}<cr>
 nnoremap <leader>fgb <cmd> lua require'telescope.builtin'.git_branches{}<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
