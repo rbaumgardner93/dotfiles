@@ -13,6 +13,8 @@ source $HOME/.config/nvim/plug-config/lsp.vim
 source $HOME/.config/nvim/plug-config/lsp-saga.vim
 source $HOME/.config/nvim/plug-config/nvim-autopairs.vim
 source $HOME/.config/nvim/plug-config/nvim-compe.vim
+source $HOME/.config/nvim/plug-config/prettier.vim
 source $HOME/.config/nvim/plug-config/undotree.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 source $HOME/.config/nvim/plug-config/treesitter.vim
+
