@@ -79,6 +79,7 @@ plugins=(
     git
     node
     npm
+	vi-mode
     yarn
     z
     zsh-autosuggestions
