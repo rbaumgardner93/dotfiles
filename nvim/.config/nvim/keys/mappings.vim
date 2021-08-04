@@ -56,3 +56,7 @@ vnoremap <leader>y "+y
 vnoremap < <gv
 vnoremap > >gv
 
+" Escape terminal mode
+tnoremap <Esc> <C-\><C-n>
+tnoremap ZZ <C-\><C-n>
+nnoremap <leader>ot :terminal<CR>
