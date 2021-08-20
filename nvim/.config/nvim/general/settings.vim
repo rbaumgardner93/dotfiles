@@ -5,9 +5,6 @@ set number " show line numbers
 set ruler " Show the cursor position all the time
 set scrolloff=8 " Offset scrolling up or down by 8 lines
 set relativenumber " Set numbers based off of cursor position
-set tabstop=4 " Insert 4 spaces for a tab
-set shiftwidth=4 " Change number of space characters inserted for indentation
-set noexpandtab " Don't turn tabs to spaces
 set autoindent " Good autoindent
 set smartindent " Makes indenting smart
 set smarttab " Makes tabbing smarter will realize you have 2 vs 4
