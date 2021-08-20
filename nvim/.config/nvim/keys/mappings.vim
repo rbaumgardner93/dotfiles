@@ -60,3 +60,10 @@ vnoremap > >gv
 tnoremap <Esc> <C-\><C-n>
 tnoremap ZZ <C-\><C-n>
 nnoremap <leader>ot :terminal<CR>
+
+" https://stackoverflow.com/questions/7236315/how-to-list-the-file-paths-of-all-buffers-open-in-vim/7236867#7236867
+function! OpenBuffersInVSCode()
+  silent execute "!code " . join(map(filter(range(0,bufnr('$')), 'buflisted(v:val)'), 'fnamemodify(bufname(v:val), ":p")'))
+endfunction
+nnoremap <silent> <leader>code :call OpenBuffersInVSCode()<CR>
+
