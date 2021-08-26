@@ -1,5 +1,17 @@
 lua << EOF
-require('telescope').setup{}
+require("telescope").setup {
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      mappings = {
+        i = {
+          ["<leader>D"] = "delete_buffer",
+        }
+      }
+    }
+  }
+}
 EOF
 
 " Find files using Telescope command-line sugar.
