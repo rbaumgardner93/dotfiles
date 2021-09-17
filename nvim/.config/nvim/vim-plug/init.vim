@@ -8,7 +8,7 @@ endif
 call plug#begin('$HOME/.local/share/nvim/site/autoload/plugged')
 Plug 'ap/vim-css-color'
 Plug 'bbenzikry/snazzybuddy.nvim'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'elijahmanor/export-to-vscode.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'glepnir/dashboard-nvim'
 Plug 'hrsh7th/nvim-compe'
@@ -31,5 +31,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+Plug 'sgur/vim-editorconfig'
 Plug 'windwp/nvim-autopairs'
 call plug#end()
