@@ -10,6 +10,7 @@ source $HOME/.config/nvim/plug-config/eunech.vim
 source $HOME/.config/nvim/plug-config/fugitive.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/lsp.vim
+source $HOME/.config/nvim/plug-config/lsp-install.vim
 source $HOME/.config/nvim/plug-config/lsp-saga.vim
 source $HOME/.config/nvim/plug-config/nvim-autopairs.vim
 source $HOME/.config/nvim/plug-config/nvim-compe.vim
