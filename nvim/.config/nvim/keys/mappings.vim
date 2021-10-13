@@ -50,7 +50,7 @@ inoremap <C-k> <esc>:m .-2<CR>==
 
 vnoremap <leader>p "_dP
 vnoremap <leader>y "+y
-
+vnoremap y y']
 
 " Better tabbing
 vnoremap < <gv
