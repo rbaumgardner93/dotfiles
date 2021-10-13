@@ -20,19 +20,26 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mbbill/undotree'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ntpeters/vim-better-whitespace'
+
+" telescope requirements
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
 Plug 'tjdevries/colorbuddy.nvim'
+" tpope plugins
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+
 Plug 'sgur/vim-editorconfig'
 Plug 'windwp/nvim-autopairs'
 call plug#end()
