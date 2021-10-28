@@ -32,7 +32,7 @@ brew 'lua'
 brew 'luajit'
 brew 'luajit-openresty'
 brew 'luarocks'
-brew 'neovim'
+brew 'neovim', args: ['HEAD']
 brew 'ripgrep'
 brew 'stow'
 brew 'tmux'
@@ -49,6 +49,7 @@ brew 'z'
 #################################################
 
 cask 'alfred'
+cask 'figma'
 cask 'firefox'
 cask 'firefox-developer-edition'
 cask 'kap'
@@ -60,6 +61,7 @@ cask 'runjs'
 # Fonts
 #
 #################################################
+
 cask 'font-jetbrains-mono'
 cask 'font-hack-nerd-font'
 cask 'font-fira-code-nerd-font'
