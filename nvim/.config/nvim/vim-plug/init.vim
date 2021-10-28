@@ -33,6 +33,10 @@ Plug 'nvim-treesitter/playground'
 
 Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
 Plug 'tjdevries/colorbuddy.nvim'
+
+" ThePrimeagen plugins
+Plug 'ThePrimeagen/harpoon'
+
 " tpope plugins
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
