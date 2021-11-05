@@ -60,5 +60,4 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 
 Plug 'sgur/vim-editorconfig'
-Plug 'windwp/nvim-autopairs'
 call plug#end()
