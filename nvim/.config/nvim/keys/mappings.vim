@@ -5,6 +5,9 @@ nnoremap <C-p> :cprev<CR>
 nnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 nnoremap <CR> o<Esc>
+
+nnoremap <leader>pv :Explore<CR>
+
 " Fast saving
 nnoremap <leader>w :w!<CR>
 

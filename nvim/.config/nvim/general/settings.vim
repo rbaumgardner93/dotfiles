@@ -1,5 +1,7 @@
 let mapleader = " "
 
+set path+=** " search down into subfolders (provides tab-completion) for file related tasks
+set wildmenu " display all matching files when we tab complete
 set wildignore+=**/node_modules/* " ignore node_modules
 set number " show line numbers
 set ruler " Show the cursor position all the time
@@ -29,6 +31,8 @@ set colorcolumn=80 " Make it obvious where 80 characters is
 set lazyredraw " Don't redraw whle executing macros (good performance config)
 set autoread " Set to auto read when a file is changed from the outside
 
+let g:netrw_liststyle = 3
+
 " undotree
 if has("persistent_undo")
 	set undodir="$HOME/.undodir"
@@ -43,3 +47,5 @@ augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END
+
+command! MakeTags !ctags -R .
