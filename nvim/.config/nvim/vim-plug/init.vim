@@ -11,14 +11,29 @@ Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'elijahmanor/export-to-vscode.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'glepnir/dashboard-nvim'
-Plug 'hrsh7th/nvim-compe'
+
+" completion plugins
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'mattn/emmet-vim'
+
+" LSP plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind-nvim'
+Plug 'creativenull/diagnosticls-configs-nvim'
+
+" snippet plugins
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+
 Plug 'itchyny/lightline.vim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'justinmk/vim-dirvish'
-Plug 'kabouzeid/nvim-lspinstall'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mbbill/undotree'
-Plug 'neovim/nvim-lspconfig'
 Plug 'ntpeters/vim-better-whitespace'
 
 " telescope requirements
