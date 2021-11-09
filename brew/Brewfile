@@ -12,8 +12,11 @@
 #
 #################################################
 
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
+tap "hashicorp/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
 
 #################################################
 #
@@ -21,26 +24,33 @@ tap 'homebrew/cask-fonts'
 #
 #################################################
 
-brew 'bat'
-brew 'coreutils'
-brew 'efm-langserver'
-brew 'exa'
-brew 'gh'
-brew 'git'
-brew 'git-delta'
-brew 'lua'
-brew 'luajit'
-brew 'luajit-openresty'
-brew 'luarocks'
-brew 'neovim', args: ['HEAD']
-brew 'ripgrep'
-brew 'stow'
-brew 'tmux'
-brew 'trash'
-brew 'tree'
-brew 'tree-sitter'
-brew 'vim'
-brew 'z'
+brew "bat"
+brew "coreutils"
+brew "ctags"
+brew "diff-so-fancy"
+brew "exa"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "git-delta"
+brew "guile"
+brew "unbound"
+brew "gnutls"
+brew "gnupg"
+brew "luajit", args: ["HEAD"]
+brew "mkcert"
+brew "neovim", args: ["HEAD"]
+brew "nghttp2"
+brew "nss"
+brew "perl"
+brew "python@3.9"
+brew "ripgrep"
+brew "ruby"
+brew "stow"
+brew "tmux"
+brew "tree"
+brew "vim"
+brew "z"
 
 #################################################
 #
@@ -48,13 +58,13 @@ brew 'z'
 #
 #################################################
 
-cask 'alfred'
-cask 'figma'
-cask 'firefox'
-cask 'firefox-developer-edition'
-cask 'kap'
-cask 'kitty'
-cask 'runjs'
+cask "alfred"
+cask "figma"
+cask "firefox"
+cask "firefox-developer-edition"
+cask "kap"
+cask "kitty"
+cask "runjs"
 
 #################################################
 #
@@ -62,6 +72,7 @@ cask 'runjs'
 #
 #################################################
 
-cask 'font-jetbrains-mono'
-cask 'font-hack-nerd-font'
-cask 'font-fira-code-nerd-font'
+cask "font-jetbrains-mono"
+cask "font-hack-nerd-font"
+cask "font-fira-code-nerd-font"
+
