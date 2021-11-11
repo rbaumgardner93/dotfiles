@@ -7,9 +7,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,              -- false will disable the whole extension
   },
-  indent = {
-    enable = true
-  },
   query_linter = {
     enable = true,
     use_virtual_text = true,
