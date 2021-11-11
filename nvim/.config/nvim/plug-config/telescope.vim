@@ -36,4 +36,4 @@ nnoremap <leader>fgs :lua require('telescope.builtin').git_status()<CR>
 nnoremap <leader>fgb :lua require('telescope.builtin').git_branches()<CR>
 nnoremap <leader>fst :lua require('telescope.builtin').git_stash()<CR>
 nnoremap <leader>fh :lua require('telescope.builtin').help_tags()<CR>
-
+nnoremap <leader>tr :Telescope resume<CR>
