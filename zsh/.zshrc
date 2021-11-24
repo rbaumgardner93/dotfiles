@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 fpath+=$HOME/.zsh/custom/themes/pure
 
 # Path to your oh-my-zsh installation.
@@ -130,3 +132,4 @@ if [ -f $HOME/.zsh/private/.zshrc ]; then
 else
     print "404: ~/.zsh/private/.zshrc not found."
 fi
+
