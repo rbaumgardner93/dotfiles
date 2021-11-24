@@ -44,6 +44,11 @@ nvim_lsp.tsserver.setup {
     capabilities = capabilities
 }
 
+nvim_lsp.svelte.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 local dlsconfig = require 'diagnosticls-configs'
 local eslint = require 'diagnosticls-configs.linters.eslint'
 local prettier = require 'diagnosticls-configs.formatters.prettier'
