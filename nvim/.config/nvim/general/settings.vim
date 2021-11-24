@@ -2,11 +2,15 @@ let mapleader = " "
 
 set path+=** " search down into subfolders (provides tab-completion) for file related tasks
 set wildmenu " display all matching files when we tab complete
+set wildignorecase " tab file completion is case insensitive
 set wildignore+=**/node_modules/* " ignore node_modules
 set number " show line numbers
 set ruler " Show the cursor position all the time
 set scrolloff=8 " Offset scrolling up or down by 8 lines
 set relativenumber " Set numbers based off of cursor position
+set noexpandtab " Use tab character instead of spaces
+set shiftwidth=0 " Always use tab character
+set tabstop=4 " Use 4 spaces as tab character
 set autoindent " Good autoindent
 set smartindent " Makes indenting smart
 set smarttab " Makes tabbing smarter will realize you have 2 vs 4
@@ -20,9 +24,7 @@ set cmdheight=2 " More space for displaying messages
 set updatetime=300 " Faster completion
 set timeoutlen=500 " Default timeoutlen is 1000ms
 set mouse=a " Enable mouse
-set laststatus=0 " Always show status line
 set nowrap " Don't wrap long lines
-set colorcolumn=80 " Show bar at 80 characters
 set laststatus=2 " Recommended from lightline
 set noshowmode " Recommended from lightline
 set signcolumn=yes " Keep column widht consistent when using plugins with gutter icons
