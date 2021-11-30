@@ -11,6 +11,7 @@ Plug 'bbenzikry/snazzybuddy.nvim'
 Plug 'elijahmanor/export-to-vscode.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'glepnir/dashboard-nvim'
+Plug 'morhetz/gruvbox'
 
 " completion plugins
 Plug 'hrsh7th/nvim-cmp'
@@ -47,7 +48,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " We recommend updat
 Plug 'nvim-treesitter/playground'
 
 Plug 'roginfarrer/vim-dirvish-dovish', {'branch': 'main'}
+
+" tj plugins
 Plug 'tjdevries/colorbuddy.nvim'
+Plug 'tjdevries/gruvbuddy.nvim'
 
 " ThePrimeagen plugins
 Plug 'ThePrimeagen/harpoon'
