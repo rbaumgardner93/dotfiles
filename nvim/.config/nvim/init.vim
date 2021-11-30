@@ -13,7 +13,9 @@ source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/prettier.vim
 source $HOME/.config/nvim/plug-config/undotree.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
-source $HOME/.config/nvim/plug-config/treesitter.vim
 
 lua require('rbaumgardner.lsp')
 lua require('rbaumgardner.nvim-cmp')
+lua require('rbaumgardner.treesitter')
+
+
