@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo -e "\nVerifying npm is installed...\n"
+which npm > /dev/null || echo "node is not installed on this machine please install node and try again"
+
+selected=$(find -f $HOME/dotfiles/npm/work $HOME/dotfiles/npm/personal | fzf)
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+while IFS= read -r line; do
+	echo -e "Installing $line\n"
+	npm install -g "$line"
+done < "$selected"
