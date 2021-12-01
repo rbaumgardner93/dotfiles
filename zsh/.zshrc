@@ -75,14 +75,12 @@ ZSH_DISABLE_COMPFIX=true
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    zsh-nvm
     brew
     colored-man-pages
     fast-syntax-highlighting
     git
     node
     npm
-    vi-mode
     z
     zsh-autosuggestions
 )
@@ -137,4 +135,6 @@ if [ -f $HOME/.zsh/private/.zshrc ]; then
 else
     print "404: ~/.zsh/private/.zshrc not found."
 fi
+
+eval "$(fnm env)"
 

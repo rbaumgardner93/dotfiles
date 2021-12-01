@@ -1,9 +1,6 @@
 [submodule "zsh/.zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/.zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "zsh/.zsh/custom/plugins/zsh-nvm"]
-	path = zsh/.zsh/custom/plugins/zsh-nvm
-	url = https://github.com/lukechilds/zsh-nvm
 [submodule "zsh/.zsh/custom/themes/pure"]
 	path = zsh/.zsh/custom/themes/pure
 	url = https://github.com/sindresorhus/pure

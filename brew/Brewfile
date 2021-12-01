@@ -35,6 +35,7 @@ brew "git"
 brew "git-delta"
 brew "guile"
 brew "unbound"
+brew "fnm"
 brew "gnutls"
 brew "gnupg"
 brew "luajit", args: ["HEAD"]
