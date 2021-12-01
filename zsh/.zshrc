@@ -78,14 +78,13 @@ plugins=(
     zsh-nvm
     brew
     colored-man-pages
+    fast-syntax-highlighting
     git
     node
     npm
     vi-mode
-    yarn
     z
     zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 # User configuration
@@ -121,6 +120,7 @@ function timezsh() {
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias yw="yarn workspace"
 alias ls="exa"
 alias cat="bat"
 alias vim="nvim"
