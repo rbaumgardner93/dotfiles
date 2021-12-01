@@ -107,10 +107,6 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 #
-function timezsh() {
-  shell=${1-$SHELL}
-  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
-}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
