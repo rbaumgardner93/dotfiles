@@ -126,11 +126,12 @@ alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 
+eval "$(fnm env)"
+
 if [ -f $HOME/.zsh/private/.zshrc ]; then
     source ~/.zsh/private/.zshrc
 else
     print "404: ~/.zsh/private/.zshrc not found."
 fi
 
-eval "$(fnm env)"
 
