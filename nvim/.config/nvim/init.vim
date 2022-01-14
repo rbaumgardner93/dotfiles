@@ -1,4 +1,3 @@
-source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/vim-plug/init.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/general/colorscheme.vim
@@ -14,6 +13,7 @@ source $HOME/.config/nvim/plug-config/prettier.vim
 source $HOME/.config/nvim/plug-config/undotree.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 
+lua require('rbaumgardner.options')
 lua require('rbaumgardner.lsp')
 lua require('rbaumgardner.nvim-cmp')
 lua require('rbaumgardner.treesitter')
