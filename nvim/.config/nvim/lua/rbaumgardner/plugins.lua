@@ -42,11 +42,12 @@ return packer.startup(function(use)
   use 'morhetz/gruvbox'
 
   --completion plugins
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/nvim-cmp' -- The completion plugin
+  use 'hrsh7th/cmp-buffer' -- Buffer completions
+  use 'hrsh7th/cmp-path' -- Path completions
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP compltions
+  use 'hrsh7th/cmp-cmdline' -- Cmdlin completions
+  use 'saadparwaiz1/cmp_luasnip' -- Snippet completions
 
   --  LSP plugins
   use 'neovim/nvim-lspconfig'
