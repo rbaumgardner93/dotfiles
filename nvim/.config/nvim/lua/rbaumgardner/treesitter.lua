@@ -1,17 +1,22 @@
-local ts = require "nvim-treesitter.configs"
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  return
+end
 
-ts.setup {
-  ensure_installed = "maintained" , -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  playground = {
-    enable = true
-  },
+treesitter.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_installed = { "" },
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true, -- false will disable the whole extension
+    disable = { "" }
+  },
+  indent = {
+    enable = false
   },
   query_linter = {
     enable = true,
     use_virtual_text = true,
-    lint_events = {"BufWrite", "CursorHold"}
+    lint_events = { "BufWrite", "CursorHold" }
   },
   context_commenting = {
     enable = true
