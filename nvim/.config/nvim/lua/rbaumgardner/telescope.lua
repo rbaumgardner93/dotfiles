@@ -1,12 +1,20 @@
-lua << EOF
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
 
-local actions = require("telescope.actions")
+local actions = require "telescope.actions"
 
-require("telescope").setup({
+telescope.setup {
   pickers = {
     buffers = {
       show_all_buffers = true,
       sort_lastused = true,
+      defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        path_display = { "smart" },
+      },
       mappings = {
         i = {
           ["<C-x>"] = "delete_buffer",
@@ -21,8 +29,6 @@ require("telescope").setup({
       }
     }
   }
-})
+}
 
-require("telescope").load_extension("fzy_native")
-EOF
-
+telescope.load_extension("fzy_native")
