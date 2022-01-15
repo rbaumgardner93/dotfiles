@@ -47,10 +47,12 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-path' -- Path completions
   use 'hrsh7th/cmp-nvim-lsp' -- LSP compltions
   use 'hrsh7th/cmp-cmdline' -- Cmdlin completions
+  use 'hrsh7th/cmp-nvim-lua'
   use 'saadparwaiz1/cmp_luasnip' -- Snippet completions
 
   --  LSP plugins
-  use 'neovim/nvim-lspconfig'
+  use 'neovim/nvim-lspconfig' -- enable LSP
+  use 'williamboman/nvim-lsp-installer' -- simple to use language server istaller
   use 'onsails/lspkind-nvim'
   use 'creativenull/diagnosticls-configs-nvim'
 
