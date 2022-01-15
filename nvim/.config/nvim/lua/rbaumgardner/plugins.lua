@@ -36,9 +36,20 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use 'bbenzikry/snazzybuddy.nvim'
-  use 'glepnir/lspsaga.nvim'
   use 'glepnir/dashboard-nvim'
+  use 'itchyny/lightline.vim'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'mbbill/undotree'
+  use 'ntpeters/vim-better-whitespace'
+  use 'sgur/vim-editorconfig'
+
+  -- file Navigation
+  use 'justinmk/vim-dirvish'
+  use { 'roginfarrer/vim-dirvish-dovish', branch ='main' }
+
+  -- colorschemes
+  use 'bbenzikry/snazzybuddy.nvim'
   use 'morhetz/gruvbox'
 
   --completion plugins
@@ -50,33 +61,25 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lua'
   use 'saadparwaiz1/cmp_luasnip' -- Snippet completions
 
+  -- snippet plugins
+  use 'L3MON4D3/LuaSnip'
+  use 'rafamadriz/friendly-snippets'
+
   --  LSP plugins
   use 'neovim/nvim-lspconfig' -- enable LSP
   use 'williamboman/nvim-lsp-installer' -- simple to use language server istaller
   use 'onsails/lspkind-nvim'
   use 'creativenull/diagnosticls-configs-nvim'
-
-  -- snippet plugins
-  use 'L3MON4D3/LuaSnip'
-  use 'rafamadriz/friendly-snippets'
-
-  use 'itchyny/lightline.vim'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
-  use 'justinmk/vim-dirvish'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'mbbill/undotree'
-  use 'ntpeters/vim-better-whitespace'
+  use 'glepnir/lspsaga.nvim'
 
   -- telescope requirements
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
   use 'nvim-telescope/telescope-fzy-native.nvim'
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- We recommend updating the parsers on update
-  use { "nvim-telescope/telescope-file-browser.nvim" }
   use 'nvim-treesitter/playground'
-
-  use { 'roginfarrer/vim-dirvish-dovish', branch ='main' }
 
   -- tj plugins
   use 'tjdevries/colorbuddy.nvim'
@@ -91,8 +94,6 @@ return packer.startup(function(use)
   use 'tpope/vim-eunuch'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-sleuth'
-
-  use 'sgur/vim-editorconfig'
 
    -- Automatically set up your configuration after cloning packer.nvim
    -- Put this at the end after all plugins
