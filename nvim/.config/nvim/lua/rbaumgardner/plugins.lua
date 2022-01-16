@@ -43,6 +43,7 @@ return packer.startup(function(use)
   use 'mbbill/undotree'
   use 'ntpeters/vim-better-whitespace'
   use 'sgur/vim-editorconfig'
+  use 'windwp/nvim-autopairs' -- autopairs integrates with both cmp and treesitter
 
   -- file Navigation
   use 'justinmk/vim-dirvish'
