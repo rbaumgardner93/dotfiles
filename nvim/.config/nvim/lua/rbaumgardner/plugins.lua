@@ -68,6 +68,7 @@ return packer.startup(function(use)
   --  LSP plugins
   use 'neovim/nvim-lspconfig' -- enable LSP
   use 'williamboman/nvim-lsp-installer' -- simple to use language server istaller
+  use 'jose-elias-alvarez/null-ls.nvim' -- for formatters and linters
   use 'onsails/lspkind-nvim'
   use 'creativenull/diagnosticls-configs-nvim'
   use 'glepnir/lspsaga.nvim'

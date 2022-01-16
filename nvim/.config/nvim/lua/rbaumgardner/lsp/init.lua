@@ -5,4 +5,4 @@ end
 
 require("rbaumgardner.lsp.lsp-installer")
 require("rbaumgardner.lsp.handlers").setup()
-
+require("rbaumgardner.lsp.null-ls")
