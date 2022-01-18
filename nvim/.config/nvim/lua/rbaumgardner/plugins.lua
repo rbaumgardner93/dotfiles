@@ -41,10 +41,10 @@ return packer.startup(function(use)
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'kyazdani42/nvim-web-devicons'
   use 'mbbill/undotree'
-  use 'ntpeters/vim-better-whitespace'
   use 'sgur/vim-editorconfig'
   use 'windwp/nvim-autopairs' -- autopairs integrates with both cmp and treesitter
   use 'numToStr/Comment.nvim' -- easily comment stuff
+  use 'mcauley-penney/tidy.nvim' -- clean up whitespace
 
   -- file Navigation
   use 'justinmk/vim-dirvish'

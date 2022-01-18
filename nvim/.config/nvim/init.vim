@@ -1,4 +1,3 @@
-source $HOME/.config/nvim/plug-config/better-whitespace.vim
 source $HOME/.config/nvim/plug-config/dashboard.vim
 source $HOME/.config/nvim/plug-config/editor-config.vim
 source $HOME/.config/nvim/plug-config/lightline.vim
@@ -15,4 +14,3 @@ lua require('rbaumgardner.telescope')
 lua require('rbaumgardner.treesitter')
 lua require('rbaumgardner.autopairs')
 lua require('rbaumgardner.comment')
-
