@@ -1,5 +1,3 @@
-source $HOME/.config/nvim/plug-config/dashboard.vim
-
 lua require('rbaumgardner.options')
 lua require('rbaumgardner.plugins')
 lua require('rbaumgardner.autocmd')

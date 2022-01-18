@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
   augroup highlight_yank
       autocmd!
       au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
@@ -13,3 +13,7 @@ vim.cmd [[
   augroup end
 ]]
 
+-- Disable folding on alpha buffer
+vim.cmd [[
+    autocmd FileType alpha setlocal nofoldenable
+]]
