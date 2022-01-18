@@ -1,0 +1,9 @@
+diagnostic-languageserver@latest
+svelte-language-server@latest
+trash-cli@latest
+typescript@latest
+typescript-language-server@latest
+vim-language-server@latest
+vscode-langservers-extracted@latest
+yarn@latest
+
