@@ -1,6 +1,4 @@
 source $HOME/.config/nvim/plug-config/dashboard.vim
-source $HOME/.config/nvim/plug-config/editor-config.vim
-source $HOME/.config/nvim/plug-config/prettier.vim
 
 lua require('rbaumgardner.options')
 lua require('rbaumgardner.plugins')

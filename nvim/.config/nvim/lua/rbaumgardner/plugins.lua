@@ -40,7 +40,6 @@ return packer.startup(function(use)
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'kyazdani42/nvim-web-devicons'
   use 'mbbill/undotree'
-  use 'sgur/vim-editorconfig'
   use 'windwp/nvim-autopairs' -- autopairs integrates with both cmp and treesitter
   use 'numToStr/Comment.nvim' -- easily comment stuff
   use 'mcauley-penney/tidy.nvim' -- clean up whitespace
@@ -106,4 +105,3 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
-
