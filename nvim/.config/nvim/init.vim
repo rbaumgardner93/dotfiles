@@ -1,6 +1,5 @@
 source $HOME/.config/nvim/plug-config/dashboard.vim
 source $HOME/.config/nvim/plug-config/editor-config.vim
-source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/prettier.vim
 
 lua require('rbaumgardner.options')
@@ -14,3 +13,4 @@ lua require('rbaumgardner.telescope')
 lua require('rbaumgardner.treesitter')
 lua require('rbaumgardner.autopairs')
 lua require('rbaumgardner.comment')
+lua require('rbaumgardner.lualine')

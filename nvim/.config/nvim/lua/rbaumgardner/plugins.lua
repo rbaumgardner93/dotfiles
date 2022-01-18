@@ -37,7 +37,6 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use 'glepnir/dashboard-nvim'
-  use 'itchyny/lightline.vim'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'kyazdani42/nvim-web-devicons'
   use 'mbbill/undotree'
@@ -45,6 +44,10 @@ return packer.startup(function(use)
   use 'windwp/nvim-autopairs' -- autopairs integrates with both cmp and treesitter
   use 'numToStr/Comment.nvim' -- easily comment stuff
   use 'mcauley-penney/tidy.nvim' -- clean up whitespace
+  use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
 
   -- file Navigation
   use 'justinmk/vim-dirvish'
