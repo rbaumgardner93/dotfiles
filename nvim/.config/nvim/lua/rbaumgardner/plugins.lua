@@ -44,6 +44,7 @@ return packer.startup(function(use)
   use 'ntpeters/vim-better-whitespace'
   use 'sgur/vim-editorconfig'
   use 'windwp/nvim-autopairs' -- autopairs integrates with both cmp and treesitter
+  use 'numToStr/Comment.nvim' -- easily comment stuff
 
   -- file Navigation
   use 'justinmk/vim-dirvish'
@@ -91,7 +92,6 @@ return packer.startup(function(use)
   use 'ThePrimeagen/harpoon'
 
   -- tpope plugins
-  use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-fugitive'

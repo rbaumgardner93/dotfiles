@@ -14,4 +14,5 @@ lua require('rbaumgardner.nvim-cmp')
 lua require('rbaumgardner.telescope')
 lua require('rbaumgardner.treesitter')
 lua require('rbaumgardner.autopairs')
+lua require('rbaumgardner.comment')
 

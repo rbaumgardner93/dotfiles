@@ -22,7 +22,8 @@ treesitter.setup {
     lint_events = { "BufWrite", "CursorHold" }
   },
   context_commenting = {
-    enable = true
+    enable = true,
+    enable_autocmd = true
   },
   playground = {
     enable = true,
