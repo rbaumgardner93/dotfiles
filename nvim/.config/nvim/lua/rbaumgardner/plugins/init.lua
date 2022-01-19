@@ -119,6 +119,14 @@ return packer.startup(function(use)
   }
   use 'nvim-treesitter/playground'
 
+  -- git
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function ()
+      require('rbaumgardner.plugins.gitsigns')
+    end
+  }
+
   -- tj plugins
   use 'tjdevries/colorbuddy.nvim'
   use 'tjdevries/gruvbuddy.nvim'

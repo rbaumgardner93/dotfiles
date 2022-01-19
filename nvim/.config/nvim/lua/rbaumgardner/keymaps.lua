@@ -100,6 +100,11 @@ keymap("n", "<leader>gf", ":diffget //2<CR>", opts)
 keymap("n", "<leader>gd", ":Git diff<CR>", opts)
 keymap("n", "<leader>gb", ":Git blame<CR>", opts)
 
+-- Gitsigns
+keymap("n", "<leader>ph", ":Gitsigns preview_hunk<CR>", opts)
+keymap("n", "<leader>jh", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "<leader>kh", ":Gitsigns prev_hunk<CR>", opts)
+
 -- Harpoon
 keymap("n", "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
 keymap("n", "<C-e>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
