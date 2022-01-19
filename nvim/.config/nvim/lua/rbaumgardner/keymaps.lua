@@ -76,20 +76,6 @@ keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>
 keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume{}<cr>", opts)
 keymap("n", "<leader>ps", "<cmd>lua require('telescope.builtin').grep_string( { search = vim.fn.input('Grep for > ') } )<cr>", opts)
 
--- Better Whitespace
-keymap("n", "<leader>dw", ":StripWhitespace<CR>", opts)
-
--- Dashboard
-keymap("n", "<leader>ss", ":<C-u>SessionSave<CR>", opts)
-keymap("n", "<leader>sl", ":<C-u>SessionLoad<CR>", opts)
-keymap("n", "<leader>fh", ":DashboardFindHistory<CR>", opts)
-keymap("n", "<leader>tc", ":DashboardChangeColorScheme<CR>", opts)
-keymap("n", "<leader>fm", ":DashboardJumpMark<CR>", opts)
-keymap("n", "<leader>cn", ":DashboardNewFile<CR>", opts)
-
--- Dashboard
-keymap("n", "<leader>up", ":e %.. <CR>", opts)
-
 -- Eunech
 keymap("n", "<leader>R", ":Rename<CR>", opts)
 
@@ -116,11 +102,7 @@ keymap("n", "<leader>k", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", opts)
 keymap("n", "<leader>l", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
 
 -- Undotree
-keymap("n", "<leader>ut", ":UndoTreeToggle<CR>", opts)
-
--- " Jumplist mutations
--- nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
--- nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
 
 -- Visual --
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)

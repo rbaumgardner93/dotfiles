@@ -96,18 +96,18 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig' -- enable LSP
   use 'williamboman/nvim-lsp-installer' -- simple to use language server istaller
   use 'jose-elias-alvarez/null-ls.nvim' -- for formatters and linters
-  use 'onsails/lspkind-nvim'
   use 'creativenull/diagnosticls-configs-nvim'
-  use 'glepnir/lspsaga.nvim'
 
   -- telescope requirements
   use {
     'nvim-telescope/telescope.nvim',
-    config = function() require('rbaumgardner.plugins.telescope') end,
+    config = function()
+      require('rbaumgardner.plugins.telescope')
+    end,
     requires = { 'nvim-lua/plenary.nvim' }
   }
   use 'nvim-telescope/telescope-fzy-native.nvim'
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use 'nvim-telescope/telescope-file-browser.nvim'
 
   -- treesitter
   use {
