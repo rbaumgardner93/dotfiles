@@ -142,6 +142,5 @@ keymap("i", "<C-k>", "<esc>:m .-2<CR>==", opts)
 
 -- Terminal --
 -- Escape terminal mode
-keymap("t", "<ESC>", "<C-\\><C-n>", opts)
-keymap("t", "ZZ", "<C-\\><C-n>", opts)
-
+keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
+keymap("t", "ZZ", "<C-\\><C-n>", term_opts)

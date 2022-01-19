@@ -39,17 +39,30 @@ return packer.startup(function(use)
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'kyazdani42/nvim-web-devicons'
   use 'mbbill/undotree'
-  use 'windwp/nvim-autopairs' -- autopairs integrates with both cmp and treesitter
-  use 'numToStr/Comment.nvim' -- easily comment stuff
+  use {
+    'windwp/nvim-autopairs', -- autopairs integrates with both cmp and treesitter
+    config = function ()
+      require('rbaumgardner.plugins.autopairs')
+    end
+  }
+  use {
+    'numToStr/Comment.nvim', -- easily comment stuff
+    config = function ()
+      require('rbaumgardner.plugins.comment')
+    end
+  }
   use 'mcauley-penney/tidy.nvim' -- clean up whitespace
   use {
     'nvim-lualine/lualine.nvim',
+    config = function ()
+      require('rbaumgardner.plugins.lualine')
+    end,
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {
     'goolord/alpha-nvim',
     config = function()
-      require('rbaumgardner.alpha')
+      require('rbaumgardner.plugins.alpha')
     end
   }
 
@@ -62,7 +75,12 @@ return packer.startup(function(use)
   use 'morhetz/gruvbox'
 
   --completion plugins
-  use 'hrsh7th/nvim-cmp' -- The completion plugin
+  use {
+    'hrsh7th/nvim-cmp', -- The completion plugin
+    config = function()
+      require('rbaumgardner.plugins.nvim-cmp')
+    end
+  }
   use 'hrsh7th/cmp-buffer' -- Buffer completions
   use 'hrsh7th/cmp-path' -- Path completions
   use 'hrsh7th/cmp-nvim-lsp' -- LSP compltions
@@ -83,12 +101,22 @@ return packer.startup(function(use)
   use 'glepnir/lspsaga.nvim'
 
   -- telescope requirements
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+  use {
+    'nvim-telescope/telescope.nvim',
+    config = function() require('rbaumgardner.plugins.telescope') end,
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- We recommend updating the parsers on update
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function ()
+      require('rbaumgardner.plugins.treesitter')
+    end,
+    run = ':TSUpdate' -- We recommend updating the parsers on update
+  }
   use 'nvim-treesitter/playground'
 
   -- tj plugins
