@@ -40,7 +40,7 @@ dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("-", "  File Explorer"),
+  dashboard.button("<Leader>pv", "  File Explorer"),
   dashboard.button("<Leader>ff", "  Find File"),
   dashboard.button("<Leader>fg", "  Find Word"),
   dashboard.button("<Leader>ps", "  Settings", ":e $MYVIMRC<CR>"),

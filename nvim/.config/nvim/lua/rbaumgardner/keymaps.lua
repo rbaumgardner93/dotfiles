@@ -30,8 +30,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- nnoremap <leader><CR> :source $MYVIMRC<CR>
 
-keymap("n", "<leader>pl", ":Vex<CR>", opts)
-keymap("n", "<leader>pv", ":Explore<CR>", opts)
+keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", opts)
 
 keymap("n", "<C-n>", ":cnext<CR>", opts)
 keymap("n", "<C-p>", ":cprev<CR>", opts)

@@ -67,8 +67,13 @@ return packer.startup(function(use)
   }
 
   -- file Navigation
-  use 'justinmk/vim-dirvish'
-  use { 'roginfarrer/vim-dirvish-dovish', branch ='main' }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function ()
+      require('rbaumgardner.plugins.nvim-tree')
+    end
+  }
 
   -- colorschemes
   use 'bbenzikry/snazzybuddy.nvim'
