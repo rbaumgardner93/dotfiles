@@ -9,7 +9,7 @@ lualine.setup {
     theme = 'gruvbox_dark',
     component_separators = '',
     section_separators = '',
-    disabled_filetypes = {},
+    disabled_filetypes = { "alpha" },
     always_divide_middle = true,
   },
   sections = {
