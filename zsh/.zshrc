@@ -125,6 +125,7 @@ alias tmuxrc="vim ~/.tmux.conf"
 alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
+alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
 
 eval "$(fnm env)"
 
@@ -133,5 +134,3 @@ if [ -f $HOME/.zsh/private/.zshrc ]; then
 else
     print "404: ~/.zsh/private/.zshrc not found."
 fi
-
-
