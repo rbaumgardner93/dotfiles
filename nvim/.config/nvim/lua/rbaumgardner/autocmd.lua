@@ -1,19 +1,28 @@
 vim.cmd([[
-  augroup highlight_yank
-      autocmd!
-      au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-  augroup END
-]])
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
+  augroup _general
     autocmd!
-    autocmd BufWritePost */plugins/init.lua source <afile> | PackerSync
+    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
+    autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup="IncSearch", timeout=500})
+    autocmd BufWinEnter * :set formatoptions-=cro
   augroup end
-]])
 
--- Disable folding on alpha buffer
-vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable
+  augroup _git
+    autocmd!
+    autocmd FileType gitcommit setlocal spell
+  augroup end
+
+  augroup _markdown
+    autocmd!
+    autocmd FileType markdown setlocal spell
+  augroup end
+
+  augroup _alpha
+    autocmd!
+    autocmd FileType alpha setlocal nofoldenable " Disable folding on alpha buffer
+  augroup end
+
+  augroup _packer
+    autocmd!
+    autocmd BufWritePost */plugins/init.lua source <afile> | PackerSync " reloads neovim whenever you save init.lua
+  augroup end
 ]])
