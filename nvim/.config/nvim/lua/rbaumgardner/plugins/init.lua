@@ -72,6 +72,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use("godlygeek/tabular")
+	use("lewis6991/impatient.nvim")
 
 	-- file Navigation
 	use({
