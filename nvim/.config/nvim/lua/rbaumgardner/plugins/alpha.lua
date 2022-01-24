@@ -18,7 +18,7 @@ local function footer()
 		.. "  "
 		.. total_plugins
 		.. " plugins"
-		.. "  v"
+		.. "  v"
 		.. vim.version().major
 		.. "."
 		.. vim.version().minor
