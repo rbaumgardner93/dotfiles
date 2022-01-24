@@ -15,6 +15,8 @@ null_ls.setup({
 		-- npm install -g eslint_d
 		formatting.eslint_d,
 		diagnostics.eslint_d,
+		-- npm install -g write-good
+		diagnostics.write_good,
 	},
 	debug = false,
 	on_attach = function(client)
