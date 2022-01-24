@@ -71,6 +71,7 @@ return packer.startup(function(use)
 			require("rbaumgardner.plugins.which-key")
 		end,
 	})
+	use("godlygeek/tabular")
 
 	-- file Navigation
 	use({
