@@ -9,6 +9,7 @@ vim.cmd([[
   augroup _git
     autocmd!
     autocmd FileType gitcommit setlocal spell
+    autocmd FileType fugitive setlocal nofoldenable " Disable folding on fugitive buffer
   augroup end
 
   augroup _markdown
