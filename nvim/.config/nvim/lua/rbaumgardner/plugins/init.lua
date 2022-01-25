@@ -73,6 +73,12 @@ return packer.startup(function(use)
 	})
 	use("godlygeek/tabular")
 	use("lewis6991/impatient.nvim")
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("rbaumgardner.plugins.indent-blankline")
+		end,
+	})
 
 	-- file Navigation
 	use({
