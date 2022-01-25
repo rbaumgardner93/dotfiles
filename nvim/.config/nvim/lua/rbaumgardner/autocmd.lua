@@ -24,6 +24,6 @@ vim.cmd([[
 
   augroup _packer
     autocmd!
-    autocmd BufWritePost */plugins/init.lua source <afile> | PackerSync " reloads neovim whenever you save init.lua
+    autocmd BufWritePost */plugins/init.lua source <afile> | PackerSync
   augroup end
 ]])
