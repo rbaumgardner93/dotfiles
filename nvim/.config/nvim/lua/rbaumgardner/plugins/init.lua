@@ -92,6 +92,7 @@ return packer.startup(function(use)
 	-- colorschemes
 	use("bbenzikry/snazzybuddy.nvim")
 	use("morhetz/gruvbox")
+	use("folke/lsp-colors.nvim")
 
 	--completion plugins
 	use({
