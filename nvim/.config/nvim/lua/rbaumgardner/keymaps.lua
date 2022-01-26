@@ -35,8 +35,8 @@ keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<C-n>", ":cnext<CR>", opts)
 keymap("n", "<C-p>", ":cprev<CR>", opts)
 
-keymap("n", "<leader>y", "+y", opts)
-keymap("n", "<leader>Y", "gg+yG", opts)
+keymap("n", "<leader>y", '"+y', opts)
+keymap("n", "<leader>Y", '"gg+yG', opts)
 
 keymap("n", "<CR>", "o<Esc>", opts)
 
@@ -75,6 +75,7 @@ keymap(
 	opts
 )
 keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+keymap("n", "<leader>fgs", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume{}<cr>", opts)
@@ -118,7 +119,7 @@ keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 keymap("v", "<leader>p", "_dP", opts)
-keymap("v", "<leader>y", "+y", opts)
+keymap("v", "<leader>y", '"+y', opts)
 keymap("v", "y", "y']", opts)
 
 -- Better tabbing

@@ -54,6 +54,7 @@ local options = {
 	foldlevel = 1,
 }
 -- stylua: ignore end
+vim.opt.iskeyword:append("-")
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
