@@ -97,7 +97,6 @@ return packer.startup(function(use)
 	})
 
 	-- colorschemes
-	use("bbenzikry/snazzybuddy.nvim")
 	use("morhetz/gruvbox")
 	use("folke/lsp-colors.nvim")
 
@@ -110,7 +109,7 @@ return packer.startup(function(use)
 	})
 	use("hrsh7th/cmp-buffer") -- Buffer completions
 	use("hrsh7th/cmp-path") -- Path completions
-	use("hrsh7th/cmp-nvim-lsp") -- LSP compltions
+	use("hrsh7th/cmp-nvim-lsp") -- LSP completions
 	use("hrsh7th/cmp-cmdline") -- Cmdlin completions
 	use("hrsh7th/cmp-nvim-lua")
 	use("saadparwaiz1/cmp_luasnip") -- Snippet completions
@@ -161,16 +160,11 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- tj plugins
-	use("tjdevries/colorbuddy.nvim")
-	use("tjdevries/gruvbuddy.nvim")
-
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
 
 	-- tpope plugins
 	use("tpope/vim-surround")
-	use("tpope/vim-eunuch")
 	use("tpope/vim-fugitive")
 
 	-- Automatically set up your configuration after cloning packer.nvim
