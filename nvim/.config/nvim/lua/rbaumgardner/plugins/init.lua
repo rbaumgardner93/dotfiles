@@ -79,6 +79,13 @@ return packer.startup(function(use)
 			require("rbaumgardner.plugins.indent-blankline")
 		end,
 	})
+	use({
+		"ellisonleao/glow.nvim",
+		config = function()
+			vim.g.glow_border = "rounded"
+			vim.g.glow_use_pager = true
+		end,
+	})
 
 	-- file Navigation
 	use({

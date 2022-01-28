@@ -114,6 +114,9 @@ keymap("n", "<leader>l", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
 -- Undotree
 keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
 
+-- Glow
+keymap("n", "<leader>md", ":Glow<CR>", opts)
+
 -- Visual --
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
