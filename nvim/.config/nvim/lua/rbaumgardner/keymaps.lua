@@ -32,23 +32,13 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", opts)
 
-keymap("n", "<C-n>", ":cnext<CR>", opts)
-keymap("n", "<C-p>", ":cprev<CR>", opts)
-
 keymap("n", "<leader>y", '"+y', opts)
 keymap("n", "<leader>Y", '"gg+yG', opts)
 
 keymap("n", "<CR>", "o<Esc>", opts)
 
-keymap("n", "<leader>nrn", "set nornu", opts)
-keymap("n", "<leader>rnu", "set relativenumber", opts)
-
 -- Fast saving
 keymap("n", "<leader>w", ":w!<CR>", opts)
-
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprev<CR>", opts)
 
 -- from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
 -- Highlight to the end of the line
