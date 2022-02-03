@@ -1,7 +1,7 @@
 vim.cmd([[
   augroup _general
     autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
+    autocmd FileType qf,help,man,lspinfo,fugitive nnoremap <silent> <buffer> q :close<CR>
     autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup="IncSearch", timeout=500})
     autocmd BufWinEnter * :set formatoptions-=cro
   augroup end
@@ -20,6 +20,11 @@ vim.cmd([[
   augroup _alpha
     autocmd!
     autocmd FileType alpha setlocal nofoldenable " Disable folding on alpha buffer
+  augroup end
+
+  augroup _treesitter
+    autocmd!
+    autocmd FileType tsplayground setlocal nofoldenable
   augroup end
 
   augroup _packer
