@@ -57,6 +57,7 @@ keymap("n", "<leader>ot", ":terminal<CR>", opts)
 
 -- Plugins
 -- Telescope
+keymap("n", "<leader>en", "<cmd>lua require('rbaumgardner.telescope').edit_neovim()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", opts)
 keymap(
 	"n",
@@ -64,17 +65,19 @@ keymap(
 	"<cmd>lua require('telescope').extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h') } )<cr>",
 	opts
 )
-keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
+keymap("n", "<leader>fg", "<cmd>lua require('rbaumgardner.telescope').live_grep()<cr>", opts)
+keymap("n", "<leader>fs", "<cmd>lua require('rbaumgardner.telescope').grep_string()<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", opts)
 keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume{}<cr>", opts)
 keymap(
 	"n",
-	"<leader>ps",
-	"<cmd>lua require('telescope.builtin').grep_string( { search = vim.fn.input('Grep for > ') } )<cr>",
+	"<leader>gw",
+	"<cmd>lua require('telescope.builtin').grep_string( { path_display = { 'shorten' }, search = vim.fn.input('Grep for > ') } )<cr>",
 	opts
 )
+keymap("n", "<leader>cb", "<cmd>lua require('rbaumgardner.telescope').curbuf()<cr>", opts)
+keymap("n", "<leader>fp", ":Telescope packer<cr>", opts)
 
 -- Eunech
 keymap("n", "<leader>R", ":Rename<CR>", opts)
