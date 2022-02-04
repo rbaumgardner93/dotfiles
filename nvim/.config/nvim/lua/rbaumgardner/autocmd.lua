@@ -22,6 +22,11 @@ vim.cmd([[
     autocmd FileType alpha setlocal nofoldenable " Disable folding on alpha buffer
   augroup end
 
+  augroup _harpoon
+    autocmd!
+	autocmd FileType harpoon nnoremap <buffer> <C-c> <cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
+  augroup end
+
   augroup _treesitter
     autocmd!
     autocmd FileType tsplayground setlocal nofoldenable
