@@ -99,6 +99,7 @@ return packer.startup(function(use)
 	-- colorschemes
 	use("morhetz/gruvbox")
 	use("folke/lsp-colors.nvim")
+	use("sainnhe/sonokai")
 
 	--completion plugins
 	use({

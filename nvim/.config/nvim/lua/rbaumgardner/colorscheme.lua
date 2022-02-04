@@ -1,4 +1,9 @@
-local colorscheme = "gruvbox"
+local colorscheme = "sonokai"
+
+vim.g["sonokai_style"] = "default"
+vim.g["sonokai_enable_italic"] = 1
+vim.g["sonokai_disable_italic_comment"] = 0
+vim.g["sonokai_transparent_background"] = 1
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
@@ -6,10 +11,6 @@ if not status_ok then
 	vim.notify("colorscheme " .. colorscheme .. " not found!")
 	return
 end
-
-vim.g["gruvbox_contrast_dark"] = "hard"
-vim.g["gruvbox_invert_selection"] = 0
-vim.g["gruvbox_transparent_bg"] = 1
 
 vim.cmd([[
 	highlight ColorColumn guibg=#333333
