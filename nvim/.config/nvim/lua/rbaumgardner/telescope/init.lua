@@ -4,7 +4,7 @@ local sorter = require("telescope.sorters")
 local M = {}
 
 -- from TJ https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/telescope/init.lua
--- {{{
+-- [[
 function M.edit_neovim()
 	local opts_with_preview, opts_without_preview
 
@@ -35,7 +35,7 @@ end
 
 function M.grep_string()
 	local opts = {
-		short_path = true,
+		short_path = false,
 		word_match = "-w",
 		only_sort_text = true,
 		layout_strategy = "vertical",
@@ -62,6 +62,6 @@ function M.curbuf()
 	require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
 
--- }}}
+-- ]]
 
 return M

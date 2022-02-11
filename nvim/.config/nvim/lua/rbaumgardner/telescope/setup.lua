@@ -19,7 +19,10 @@ telescope.setup({
 	defaults = {
 		prompt_prefix = " ",
 		selection_caret = " ",
-		path_display = { "smart" },
+		path_display = function(_, path)
+			local tail = require("telescope.utils").path_tail(path)
+			return string.format("%s (%s)", tail, path)
+		end,
 		file_ignore_patterns = { "%.spec.js" },
 		winblend = 0,
 		layout_strategy = "horizontal",

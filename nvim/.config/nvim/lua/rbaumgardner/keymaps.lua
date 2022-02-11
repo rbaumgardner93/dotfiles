@@ -61,13 +61,13 @@ keymap("n", "<leader>en", "<cmd>lua require('rbaumgardner.telescope').edit_neovi
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", opts)
 keymap(
 	"n",
-	"<leader>fc",
-	"<cmd>lua require('telescope').extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h') } )<cr>",
+	"<leader>fb",
+	"<cmd>lua require('telescope').extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h'), hidden = true } )<cr>",
 	opts
 )
 keymap("n", "<leader>fg", "<cmd>lua require('rbaumgardner.telescope').live_grep()<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>lua require('rbaumgardner.telescope').grep_string()<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
+keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", opts)
 keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume{}<cr>", opts)
 keymap(
