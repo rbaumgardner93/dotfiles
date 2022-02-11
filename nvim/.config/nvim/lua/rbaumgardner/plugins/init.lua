@@ -89,10 +89,17 @@ return packer.startup(function(use)
 
 	-- file Navigation
 	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
+		"tamago324/lir.nvim",
 		config = function()
-			require("rbaumgardner.plugins.nvim-tree")
+			require("rbaumgardner.plugins.lir")
+		end,
+	})
+	use({
+		"tamago324/lir-git-status.nvim",
+		config = function()
+			require("lir.git_status").setup({
+				show_ignored = false,
+			})
 		end,
 	})
 

@@ -1,6 +1,12 @@
 -- TODO Does not seem to be feature to leave comments alone
 -- https://github.com/JohnnyMorganz/StyLua/issues/252
 -- stylua: ignore start
+
+-- disabled netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- vim.g.netrw_liststyle = 3
+
 local options = {
 	wildmenu = true,                         -- display all matching files when we tab complete
 	wildignorecase = true,                   -- tab file completion is case insensitive
@@ -59,5 +65,3 @@ vim.opt.iskeyword:append("-")
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
--- let g:netrw_liststyle = 3

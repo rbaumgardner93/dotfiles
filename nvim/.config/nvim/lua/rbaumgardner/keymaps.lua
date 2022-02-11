@@ -30,8 +30,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- nnoremap <leader><CR> :source $MYVIMRC<CR>
 
-keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", opts)
-
 keymap("n", "<leader>y", '"+y', opts)
 keymap("n", "<leader>Y", '"gg+yG', opts)
 
@@ -56,6 +54,10 @@ keymap("n", "<leader>k", ":m .-2<CR>==", opts)
 keymap("n", "<leader>ot", ":terminal<CR>", opts)
 
 -- Plugins
+-- lir
+keymap("n", "<leader>pv", ":edit .<CR>", opts)
+keymap("n", "-", "<cmd>edit %:h<CR>", opts)
+
 -- Telescope
 keymap("n", "<leader>en", "<cmd>lua require('rbaumgardner.telescope').edit_neovim()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", opts)
