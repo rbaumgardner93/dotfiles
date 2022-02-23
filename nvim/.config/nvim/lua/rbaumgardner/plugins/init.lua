@@ -65,12 +65,6 @@ return packer.startup(function(use)
 			require("rbaumgardner.plugins.alpha")
 		end,
 	})
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("rbaumgardner.plugins.which-key")
-		end,
-	})
 	use("godlygeek/tabular")
 	use("lewis6991/impatient.nvim")
 	use({
