@@ -23,7 +23,7 @@ telescope.setup({
 			local tail = require("telescope.utils").path_tail(path)
 			return string.format("%s (%s)", tail, path)
 		end,
-		file_ignore_patterns = { "%.spec.js" },
+		file_ignore_patterns = { "%.spec.js", "yarn.lock" },
 		winblend = 0,
 		layout_strategy = "horizontal",
 		layout_config = {
