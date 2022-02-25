@@ -13,7 +13,6 @@ null_ls.setup({
 		-- cargo install stylua
 		formatting.stylua,
 		-- npm install -g eslint_d
-		formatting.eslint_d,
 		diagnostics.eslint_d,
 		-- npm install -g write-good
 		diagnostics.write_good,
@@ -22,11 +21,11 @@ null_ls.setup({
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
 			vim.cmd([[
-          augroup LspFormatting
-            autocmd! * <buffer>
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-          augroup end
-        ]])
+			  augroup LspFormatting
+				autocmd! * <buffer>
+				autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+			  augroup end
+        	]])
 		end
 	end,
 })
