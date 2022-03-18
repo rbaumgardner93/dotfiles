@@ -1,141 +1,97 @@
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-local keymap = vim.api.nvim_set_keymap
+local nmap = require("rbaumgardner.utils.keymap").nmap
+local vmap = require("rbaumgardner.utils.keymap").vmap
+local imap = require("rbaumgardner.utils.keymap").imap
+local tmap = require("rbaumgardner.utils.keymap").tmap
 
 vim.g.mapleader = " "
 
--- Modes
---  normal_mode = "n"
---  insert_mode = "i"
---  visual_mode = "v"
---  visual_block_mode = "x"
---  term_mode = "t"
---  command_mode = "c"
-
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+nmap({ "<C-h>", "<C-w>h" })
+nmap({ "<C-j>", "<C-w>j" })
+nmap({ "<C-k>", "<C-w>k" })
+nmap({ "<C-l>", "<C-w>l" })
 
-keymap("n", "<leader>\\", ":vsp<CR>", opts)
-keymap("n", "<leader>-", ":sp<CR>", opts)
+nmap({ "<leader>\\", ":vsp<CR>" })
+nmap({ "<leader>-", ":sp<CR>" })
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+nmap({ "<C-Up>", ":resize +2<CR>" })
+nmap({ "<C-Down>", ":resize -2<CR>" })
+nmap({ "<C-Left>", ":vertical resize -2<CR>" })
+nmap({ "<C-Right>", ":vertical resize +2<CR>" })
 
--- nnoremap <leader><CR> :source $MYVIMRC<CR>
+nmap({ "<leader>y", '"+y' })
+nmap({ "<leader>Y", '"gg+yG' })
 
-keymap("n", "<leader>y", '"+y', opts)
-keymap("n", "<leader>Y", '"gg+yG', opts)
-
-keymap("n", "<CR>", "o<Esc>", opts)
+nmap({ "<CR>", "o<Esc>" })
 
 -- Fast saving
-keymap("n", "<leader>w", ":w!<CR>", opts)
+nmap({ "<leader>w", ":w!<CR>" })
 
 -- from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
 -- Highlight to the end of the line
-keymap("n", "Y", "y$", opts)
+nmap({ "Y", "y$" })
 
 -- Keep it centered
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
-keymap("n", "J", "mzJ`z", opts)
+nmap({ "n", "nzzzv" })
+nmap({ "N", "Nzzzv" })
+nmap({ "J", "mzJ`z" })
 
 -- Moving text
-keymap("n", "<leader>j", ":m .+1<CR>==", opts)
-keymap("n", "<leader>k", ":m .-2<CR>==", opts)
+nmap({ "<leader>j", ":m .+1<CR>==" })
+nmap({ "<leader>k", ":m .-2<CR>==" })
 
-keymap("n", "<leader>ot", ":terminal<CR>", opts)
+nmap({ "<leader>ot", ":terminal<CR>" })
 
 -- Plugins
--- lir
-keymap("n", "<leader>pv", ":edit .<CR>", opts)
-keymap("n", "-", "<cmd>edit %:h<CR>", opts)
-
--- Telescope
-keymap("n", "<leader>en", "<cmd>lua require('rbaumgardner.telescope').edit_neovim()<cr>", opts)
-keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", opts)
-keymap(
-	"n",
-	"<leader>fb",
-	"<cmd>lua require('telescope').extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h'), hidden = true } )<cr>",
-	opts
-)
-keymap("n", "<leader>fg", "<cmd>lua require('rbaumgardner.telescope').live_grep()<cr>", opts)
-keymap("n", "<leader>fs", "<cmd>lua require('rbaumgardner.telescope').grep_string()<cr>", opts)
-keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume{}<cr>", opts)
-keymap(
-	"n",
-	"<leader>gw",
-	"<cmd>lua require('telescope.builtin').grep_string( { path_display = { 'shorten' }, search = vim.fn.input('Grep for > ') } )<cr>",
-	opts
-)
-keymap("n", "<leader>cb", "<cmd>lua require('rbaumgardner.telescope').curbuf()<cr>", opts)
-keymap("n", "<leader>fp", ":Telescope packer<cr>", opts)
-
--- Eunech
-keymap("n", "<leader>R", ":Rename<CR>", opts)
-
 -- Fugitive
-keymap("n", "<leader>gs", ":G<CR>", opts)
-keymap("n", "<leader>gj", ":diffget //3<CR>", opts)
-keymap("n", "<leader>gf", ":diffget //2<CR>", opts)
-keymap("n", "<leader>gd", ":Git diff<CR>", opts)
-keymap("n", "<leader>gb", ":Git blame<CR>", opts)
-
--- Gitsigns
-keymap("n", "<leader>ph", ":Gitsigns preview_hunk<CR>", opts)
-keymap("n", "<leader>jh", ":Gitsigns next_hunk<CR>", opts)
-keymap("n", "<leader>kh", ":Gitsigns prev_hunk<CR>", opts)
+nmap({ "<leader>gs", ":G<CR>" })
+nmap({ "<leader>gj", ":diffget //3<CR>" })
+nmap({ "<leader>gf", ":diffget //2<CR>" })
+nmap({ "<leader>gd", ":Git diff<CR>" })
+nmap({ "<leader>gb", ":Git blame<CR>" })
 
 -- Harpoon
-keymap("n", "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
-keymap("n", "<C-e>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
-keymap("n", "<leader>qm", "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
+nmap({ "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<CR>" })
+nmap({ "<C-e>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>" })
+nmap({ "<leader>qm", "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>" })
 
-keymap("n", "<leader>h", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", opts)
-keymap("n", "<leader>j", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", opts)
-keymap("n", "<leader>k", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", opts)
-keymap("n", "<leader>l", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
+nmap({ "<leader>h", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>" })
+nmap({ "<leader>j", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>" })
+nmap({ "<leader>k", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>" })
+nmap({ "<leader>l", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>" })
 
 -- Undotree
-keymap("n", "<leader>ut", ":UndotreeToggle<CR>", opts)
+nmap({ "<leader>ut", ":UndotreeToggle<CR>" })
 
 -- Glow
-keymap("n", "<leader>md", ":Glow<CR>", opts)
+nmap({ "<leader>md", ":Glow<CR>" })
 
 -- Visual --
-keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+vmap({ "J", ":m '>+1<CR>gv=gv" })
+vmap({ "K", ":m '<-2<CR>gv=gv" })
 
-keymap("v", "<leader>p", "_dP", opts)
-keymap("v", "<leader>y", '"+y', opts)
-keymap("v", "y", "y']", opts)
+vmap({ "<leader>p", "_dP" })
+vmap({ "<leader>y", '"+y' })
+vmap({ "y", "y']" })
 
 -- Better tabbing
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+vmap({ "<", "<gv" })
+vmap({ ">", ">gv" })
 
--- Visual --
+-- Insert --
 -- Undo break points
-keymap("i", ",", ",<c-g>u", opts)
-keymap("i", ".", ".<c-g>u", opts)
-keymap("i", "!", "!<c-g>u", opts)
-keymap("i", "?", "?<c-g>u", opts)
+imap({ ",", ",<c-g>u" })
+imap({ ".", ".<c-g>u" })
+imap({ "!", "!<c-g>u" })
+imap({ "?", "?<c-g>u" })
 
 -- Move highlighted text up/down one line
-keymap("i", "<C-j>", "<esc>:m .+1<CR>==", opts)
-keymap("i", "<C-k>", "<esc>:m .-2<CR>==", opts)
+imap({ "<C-j>", "<esc>:m .+1<CR>==" })
+imap({ "<C-k>", "<esc>:m .-2<CR>==" })
 
 -- Terminal --
 -- Escape terminal mode
-keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
-keymap("t", "ZZ", "<C-\\><C-n>", term_opts)
+tmap({ "<ESC>", "<C-\\><C-n>" })
+tmap({ "ZZ", "<C-\\><C-n>" })
