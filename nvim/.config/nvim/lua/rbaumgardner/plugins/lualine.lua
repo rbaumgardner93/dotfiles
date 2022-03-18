@@ -11,7 +11,7 @@ lualine.setup({
 		section_separators = "",
 		disabled_filetypes = { "alpha" },
 		always_divide_middle = true,
-		globalstatus = 3,
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
