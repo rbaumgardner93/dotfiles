@@ -29,6 +29,9 @@ nmap({ "<CR>", "o<Esc>" })
 -- Fast saving
 nmap({ "<leader>w", ":w!<CR>" })
 
+-- Fast sourcing
+nmap({ "<leader><CR>", ":luafile %<CR>" })
+
 -- from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
 -- Highlight to the end of the line
 nmap({ "Y", "y$" })
