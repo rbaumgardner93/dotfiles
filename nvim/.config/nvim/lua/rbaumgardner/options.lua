@@ -1,3 +1,6 @@
+local home = vim.env.HOME
+local config = home .. "/.config/nvim"
+
 -- TODO Does not seem to be feature to leave comments alone
 -- https://github.com/JohnnyMorganz/StyLua/issues/252
 -- stylua: ignore start
@@ -42,9 +45,9 @@ local options = {
 	termguicolors = true,                    -- set term gui colors (most terminals support this)
 	path = ".,**",                           -- search down into subfolders (provides tab-completion) for file related tasks
 
-	 -- undotree
+	-- undotree
 	undofile = true,                         -- enable persistent undo
-	 -- undodir = '~/.vim/undodir',          -- location of undofiles
+	undodir = config .. '/.undodir',         -- location of undofiles
 
 	                                         -- https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 	autoread = true,                         -- Set to auto read when a file is changed from the outside

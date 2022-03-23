@@ -38,7 +38,11 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("kyazdani42/nvim-web-devicons")
-	use("mbbill/undotree")
+	use({
+		"mbbill/undotree",
+		opt = true,
+		cmd = { "UndotreeToggle" },
+	})
 	use({
 		"windwp/nvim-autopairs", -- autopairs integrates with both cmp and treesitter
 		config = function()
