@@ -71,6 +71,8 @@ nmap({ "<leader>ut", ":UndotreeToggle<CR>" })
 -- Glow
 nmap({ "<leader>md", ":Glow<CR>" })
 
+nmap({ "gx", ":!open <C-r><C-a><CR>" })
+
 -- Visual --
 vmap({ "J", ":m '>+1<CR>gv=gv" })
 vmap({ "K", ":m '<-2<CR>gv=gv" })
