@@ -44,6 +44,7 @@ local options = {
 	swapfile = false,                        -- Creates a swapfile
 	termguicolors = true,                    -- set term gui colors (most terminals support this)
 	path = ".,**",                           -- search down into subfolders (provides tab-completion) for file related tasks
+	splitright = true,                       -- open vertical splits to the right of the current window
 
 	-- undotree
 	undofile = true,                         -- enable persistent undo
