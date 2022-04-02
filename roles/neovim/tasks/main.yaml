@@ -15,41 +15,20 @@
       - tree-sitter
     state: latest
 
-- name: Config folder
-  ansible.builtin.file:
-    mode: "0755"
-    path: "{{ ansible_user_dir }}/.config/nvim"
-    state: directory
+- name: Get stats of the neovim directory
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.config/nvim"
+  register: neovim_sym
 
-- name: Copy init.lua
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.config/nvim/init.lua"
-    src: "init.lua"
-
-- name: Create symlink to init.lua
-  ansible.builtin.file:
-    dest: "{{ ansible_user_dir }}/.config/nvim/init.lua"
-    src: "init.lua"
-    state: link
-
-- name: Copy lua directory
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.config/nvim/lua"
-    src: "lua/"
-
-- name: Create symlink to lua directory
-  ansible.builtin.file:
-    dest: "{{ ansible_user_dir }}/.config/nvim/lua"
-    src: "lua/"
-    state: link
-
-- name: Copy queries directory
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.config/nvim/queries"
-    src: "queries/"
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "Neovim path exists and is a symlink"
+  when: neovim_sym.stat.islnk is defined and neovim_sym.stat.islnk
 
 - name: Create symlink to queries directory
   ansible.builtin.file:
-    dest: "{{ ansible_user_dir }}/.config/nvim/queries"
-    src: "queries/"
+    src: "{{ ansible_user_dir}}/dotfiles/roles/neovim/files"
+    path: "{{ ansible_user_dir }}/.config/nvim"
     state: link
+    force: true
+  when: neovim_sym.stat.islnk is not defined

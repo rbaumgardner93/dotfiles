@@ -5,30 +5,20 @@
       - kitty
     state: latest
 
-- name: Config folder
-  ansible.builtin.file:
-    mode: "0755"
-    path: "{{ ansible_user_dir }}/.config/kitty"
-    state: directory
+- name: Get stats of the kitty directory
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.config/kitty"
+  register: kitty_sym
 
-- name: Configuration
-  ansible.builtin.copy:
-    src: "kitty.conf"
-    dest: "{{ ansible_user_dir }}/.config/kitty/kitty.conf"
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "Kitty directory exists and is a symlink"
+  when: kitty_sym.stat.islnk is defined and kitty_sym.stat.islnk
 
-- name: Create symlink to kitty.conf
+- name: Create symlink to kitty directory
   ansible.builtin.file:
-    src: "kitty.conf"
-    dest: "{{ ansible_user_dir }}/.config/kitty/kitty.conf"
+    path: "{{ ansible_user_dir}}/dotfiles/roles/kitty/files"
+    dest: "{{ ansible_user_dir }}/.config/kitty"
     state: link
-
-- name: Themes
-  ansible.builtin.copy:
-    src: "current-theme.conf"
-    dest: "{{ ansible_user_dir }}/.config/kitty/current-theme.conf"
-
-- name: Create symlink to kitty.conf
-  ansible.builtin.file:
-    src: "current-theme.conf"
-    dest: "{{ ansible_user_dir }}/.config/kitty/current-theme.conf"
-    state: link
+    force: true
+  when: kitty_sym.stat.islnk is not defined

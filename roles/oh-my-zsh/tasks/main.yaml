@@ -14,27 +14,41 @@
     update: yes
   when: not install.stat.exists
 
-- name: Copy .zshrc
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.zshrc"
-    src: .zshrc
+- name: Get stats of the .zshrc file
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.zshrc"
+  register: zshrc_sym
+
+- name: Get stats of the zshrc function file
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.oh-my-zsh/custom/function.zsh"
+  register: function_sym
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: ".zshrc path exists and is a symlink"
+  when: zshrc_sym.stat.islnk is defined and zshrc_sym.stat.islnk
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "function.zsh path exists and is a symlink"
+  when: function_sym.stat.islnk is defined and function_sym.stat.islnk
 
 - name: Create symlink to .zshrc
   ansible.builtin.file:
-    dest: "{{ ansible_user_dir }}/.zshrc"
-    src: .zshrc
+    src: "{{ ansible_user_dir}}/dotfiles/roles/oh-my-zsh/files/.zshrc"
+    path: "{{ ansible_user_dir }}/.zshrc"
     state: link
-
-- name: Copy .zshrc functions
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom"
-    src: functions.zsh
+    force: true
+  when: zshrc_sym.stat.islnk is not defined
 
 - name: Create symlink to .zshrc functions
   ansible.builtin.file:
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom"
-    src: functions.zsh
+    src: "{{ ansible_user_dir}}/dotfiles/roles/oh-my-zsh/files/function.zsh"
+    path: "{{ ansible_user_dir }}/.oh-my-zsh/custom/function.zsh"
     state: link
+    force: true
+  when: function_sym.stat.islnk is not defined
 
 - name: Clone pure prompt
   ansible.builtin.git:

@@ -1,8 +1,23 @@
 ---
-- name: Copy .gitconfig
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.gitconfig"
-    src: ".gitconfig"
+- name: Get stats of the .gitconfig file
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.gitconfig"
+  register: gitconfig_sym
+
+- name: Get stats of the .gitignore file
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.gitignore_global"
+  register: gitignore_sym
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: ".gitconfig path exists and is a symlink"
+  when: gitconfig_sym.stat.islnk is defined and gitconfig_sym.stat.islnk
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: ".gitignore path exists and is a symlink"
+  when: gitignore_sym.stat.islnk is defined and gitignore_sym.stat.islnk
 
 - name: Create symlink to .gitconfig
   ansible.builtin.file:
@@ -10,11 +25,7 @@
     path: "{{ ansible_user_dir }}/.gitconfig"
     state: link
     force: true
-
-- name: Copy .gitignore_global
-  ansible.builtin.copy:
-    dest: "{{ ansible_user_dir }}/.gitignore_global"
-    src: ".gitignore_global"
+  when: gitconfig_sym.stat.islnk is not defined
 
 - name: Create symlink to .gitignore_global
   ansible.builtin.file:
@@ -22,6 +33,7 @@
     src: "{{ ansible_user_dir}}/dotfiles/roles/git/files/.gitignore_global"
     state: link
     force: true
+  when: gitignore_sym.stat.islnk is not defined
 
 - name: Set user name and password
   ansible.builtin.template:
