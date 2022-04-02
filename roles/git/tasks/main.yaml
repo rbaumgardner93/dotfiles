@@ -6,9 +6,10 @@
 
 - name: Create symlink to .gitconfig
   ansible.builtin.file:
-    src: ".gitconfig"
-    dest: "{{ ansible_user_dir }}/.gitconfig"
+    src: "{{ ansible_user_dir}}/dotfiles/roles/git/files/.gitconfig"
+    path: "{{ ansible_user_dir }}/.gitconfig"
     state: link
+    force: true
 
 - name: Copy .gitignore_global
   ansible.builtin.copy:
@@ -17,19 +18,12 @@
 
 - name: Create symlink to .gitignore_global
   ansible.builtin.file:
-    dest: "{{ ansible_user_dir }}/.gitignore_global"
-    src: ".gitignore_global"
+    path: "{{ ansible_user_dir }}/.gitignore_global"
+    src: "{{ ansible_user_dir}}/dotfiles/roles/git/files/.gitignore_global"
     state: link
+    force: true
 
-- name: Set user.email
-  community.general.git_config:
-    name: user.email
-    scope: global
-    value: "{{ git_user_email }}"
-  no_log: true
-
-- name: Set user.name
-  community.general.git_config:
-    name: user.name
-    scope: global
-    value: "{{ git_user_name }}"
+- name: Set user name and password
+  ansible.builtin.template:
+    dest: "{{ ansible_user_dir }}/.gitconfig.local"
+    src: "gitconfig.local.j2"
