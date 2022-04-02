@@ -1,0 +1,55 @@
+---
+- name: Install
+  community.general.homebrew:
+    name:
+      - luajit
+      - neovim
+    state: head
+
+- name: Dependencies
+  community.general.homebrew:
+    name:
+      - fd
+      - fzf
+      - ripgrep
+      - tree-sitter
+    state: latest
+
+- name: Config folder
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.config/nvim"
+    state: directory
+
+- name: Copy init.lua
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/nvim/init.lua"
+    src: "init.lua"
+
+- name: Create symlink to init.lua
+  ansible.builtin.file:
+    dest: "{{ ansible_user_dir }}/.config/nvim/init.lua"
+    src: "init.lua"
+    state: link
+
+- name: Copy lua directory
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/nvim/lua"
+    src: "lua/"
+
+- name: Create symlink to lua directory
+  ansible.builtin.file:
+    dest: "{{ ansible_user_dir }}/.config/nvim/lua"
+    src: "lua/"
+    state: link
+
+- name: Copy queries directory
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/nvim/queries"
+    src: "queries/"
+
+- name: Create symlink to queries directory
+  ansible.builtin.file:
+    dest: "{{ ansible_user_dir }}/.config/nvim/queries"
+    src: "queries/"
+    state: link

@@ -1,0 +1,82 @@
+---
+- name: Existing Install
+  stat:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh"
+  register: install
+
+- name: Clone oh-my-zsh
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo: https://github.com/ohmyzsh/ohmyzsh
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh"
+    single_branch: yes
+    update: yes
+  when: not install.stat.exists
+
+- name: Copy .zshrc
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.zshrc"
+    src: .zshrc
+
+- name: Create symlink to .zshrc
+  ansible.builtin.file:
+    dest: "{{ ansible_user_dir }}/.zshrc"
+    src: .zshrc
+    state: link
+
+- name: Copy .zshrc functions
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom"
+    src: functions.zsh
+
+- name: Create symlink to .zshrc functions
+  ansible.builtin.file:
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom"
+    src: functions.zsh
+    state: link
+
+- name: Clone pure prompt
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo: https://github.com/sindresorhus/pure
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/pure"
+    single_branch: yes
+    update: yes
+
+- name: Clone fast-syntax-highlighting
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo: https://github.com/zdharma/fast-syntax-highlighting
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/fast-syntax-highlighting"
+    single_branch: yes
+    update: yes
+
+- name: Clone zsh-autosuggestions
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    single_branch: yes
+    update: yes
+
+- name: Clone zsh-completions
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo:  https://github.com/zsh-users/zsh-completions
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-completions"
+    single_branch: yes
+    update: yes
+
+- name: Clone zsh-z
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo: https://github.com/agkozak/zsh-z
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-z"
+    single_branch: yes
+    update: yes

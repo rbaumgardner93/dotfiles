@@ -1,0 +1,30 @@
+---
+  - name: Install "eslint_d" globally
+    community.general.npm:
+      name: eslint_d
+      global: yes
+      state: latest
+
+  - name: Install "trash-cli" globally
+    community.general.npm:
+      name: trash-cli
+      global: yes
+      state: latest
+
+  - name: Install "typescript" globally
+    community.general.npm:
+      name: typecript
+      global: yes
+      state: latest
+
+  - name: Install "write-good" globally
+    community.general.npm:
+      name: write-good
+      global: yes
+      state: latest
+
+  - name: Install "yarn" globally
+    community.general.npm:
+      name: yarn
+      global: yes
+      state: latest

@@ -1,0 +1,8 @@
+require("impatient").enable_profile()
+require("rbaumgardner.options")
+require("rbaumgardner.keymaps")
+require("rbaumgardner.colorscheme")
+require("rbaumgardner.autocmd")
+require("rbaumgardner.utils.globals")
+require("rbaumgardner.plugins")
+require("rbaumgardner.lsp")

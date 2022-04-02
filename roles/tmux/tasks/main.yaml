@@ -1,0 +1,17 @@
+---
+- name: Install
+  community.general.homebrew:
+    name:
+      - tmux
+    state: latest
+
+- name: Copy .tmux.conf
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    src: ".tmux.conf"
+
+- name: Create symlink to .tmux.conf
+  ansible.builtin.file:
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    src: ".tmux.conf"
+    state: link

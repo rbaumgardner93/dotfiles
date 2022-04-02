@@ -1,0 +1,6 @@
+---
+- name:
+  community.general.homebrew_cask:
+    name:
+      - runjs
+    state: latest

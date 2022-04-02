@@ -1,0 +1,20 @@
+default_roles:
+  - bat
+  - brave
+  - diff-so-fancy
+  - exa
+  - figma
+  - fnm
+  - gh
+  - git
+  - git-delta
+  - jq
+  - kap
+  - kitty
+  - neovim
+  - npm
+  - oh-my-zsh
+  - runjs
+  - stow
+  - tmux
+  - tree
