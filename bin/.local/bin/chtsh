@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # credit to ThePrimeagen https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/bin/tmux-cht.sh
 
-set -u
+set -e
 
 languages=$(echo "typescript javascript" | tr " " "\n")
 core_utils=$(echo "find xargs sed awk" | tr " " "\n")
