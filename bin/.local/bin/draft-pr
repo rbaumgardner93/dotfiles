@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+branch_name=$(git branch --show-current)
+
+echo -e "Pushing to origin...\n"
+git push origin $branch_name
+
+echo -e "Fetch and update to latest develop...\n"
+git fetch upstream
+git push upstream develop:$branch_name
+
+echo -e "Creating PR...\n"
+gh pr create --base $branch_name --label "Needs Developer Review" --draft
