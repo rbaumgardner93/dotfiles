@@ -4,6 +4,7 @@ local imap = require("rbaumgardner.utils.keymap").imap
 local tmap = require("rbaumgardner.utils.keymap").tmap
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation

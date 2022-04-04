@@ -113,6 +113,7 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+	use("Olical/conjure")
 
 	-- colorschemes
 	use("morhetz/gruvbox")
