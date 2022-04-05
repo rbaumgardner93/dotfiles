@@ -3,4 +3,4 @@
   community.general.homebrew:
     name:
       - git-delta
-    state: present
+    state: latest
