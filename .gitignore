@@ -1,4 +1,4 @@
 zsh/.zsh/private
 kitty.conf.bak
 glow
-nvim/.config/nvim/.undodir
+.undodir
