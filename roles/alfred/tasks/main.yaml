@@ -1,0 +1,8 @@
+---
+- name: Install
+  community.general.homebrew_cask:
+    name:
+      - alfred
+    state: latest
+    greedy: yes
+    accept_external_apps: yes

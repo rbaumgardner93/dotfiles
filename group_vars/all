@@ -1,4 +1,5 @@
 default_roles:
+  - alfred
   - bat
   - brave
   - diff-so-fancy
