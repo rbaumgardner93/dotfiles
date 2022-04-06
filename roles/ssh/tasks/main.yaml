@@ -1,0 +1,10 @@
+---
+- name: Evaluating the authentication agent & adding the key
+  shell: |
+    eval "$(ssh-agent)"
+    ssh-add ~/.ssh/id_ed25519
+
+- name: Copy config
+  ansible.builtin.template:
+    dest: "{{ ansible_user_dir }}/.ssh/config"
+    src: "config.j2"

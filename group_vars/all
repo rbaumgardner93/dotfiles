@@ -15,6 +15,7 @@ default_roles:
   - npm
   - oh-my-zsh
   - runjs
+  - ssh
   - stow
   - tmux
   - tree

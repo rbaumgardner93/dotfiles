@@ -35,18 +35,6 @@ if ! [[ -d "$SSH_DIR" ]]; then
 	ssh-keygen -t ed25519 -f "$SSH_DIR/id_ed25519" -N "" -C "$EMAIL"
 fi
 
-if ! [[ -f "$SSH_DIR/config" ]]; then
-	eval "$(ssh-agent -s)"
-
-	touch "$SSH_DIR/config"
-
-	echo "Host *\r
-		\tAddKeysToAgent yes
-		\tIdentityFile $SSH_DIR/id_ed25519" > "$SSH_DIR/config"
-
-	ssh-add "$SSH_DIR/id_ed25519"
-fi
-
 # Pull down dotfiles
 echo "\nTask 4: Installing dotfiles...\n"
 if ! [[ -d "$DOTFILES_DIR" ]]; then
