@@ -127,6 +127,7 @@ alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="source ~/.zshrc"
 alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
+alias lg="lazygit"
 
 eval "$(fnm env)"
 

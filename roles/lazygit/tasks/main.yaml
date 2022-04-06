@@ -1,0 +1,6 @@
+---
+- name: Install
+  community.general.homebrew_tap:
+    name: jesseduffield/lazygit/lazygit
+    url: 'https://github.com/jesseduffield/lazygit'
+    state: present
