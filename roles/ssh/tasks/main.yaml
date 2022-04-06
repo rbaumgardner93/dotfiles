@@ -1,10 +1,17 @@
 ---
+- name: Get stats of the config file
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.ssh/config"
+  register: config_sym
+
 - name: Evaluating the authentication agent & adding the key
   shell: |
     eval "$(ssh-agent)"
     ssh-add ~/.ssh/id_ed25519
+  when: config_sym.stat.islnk is not defined
 
 - name: Copy config
   ansible.builtin.template:
     dest: "{{ ansible_user_dir }}/.ssh/config"
     src: "config.j2"
+  when: config_sym.stat.islnk is not defined
