@@ -4,3 +4,5 @@
     name:
       - brave-browser
     state: latest
+    greedy: yes
+    accept_external_apps: yes

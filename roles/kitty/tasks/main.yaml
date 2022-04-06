@@ -4,6 +4,8 @@
     name:
       - kitty
     state: latest
+    greedy: yes
+    accept_external_apps: yes
 
 - name: Get stats of the kitty directory
   ansible.builtin.stat:

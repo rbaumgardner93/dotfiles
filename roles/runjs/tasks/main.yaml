@@ -4,3 +4,5 @@
     name:
       - runjs
     state: latest
+    greedy: yes
+    accept_external_apps: yes
