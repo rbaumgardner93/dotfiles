@@ -25,7 +25,7 @@
     msg: "Neovim path exists and is a symlink"
   when: neovim_sym.stat.islnk is defined and neovim_sym.stat.islnk
 
-- name: Create symlink to queries directory
+- name: Create symlink to neovim directory
   ansible.builtin.file:
     src: "{{ ansible_user_dir}}/dotfiles/roles/neovim/files"
     path: "{{ ansible_user_dir }}/.config/nvim"
