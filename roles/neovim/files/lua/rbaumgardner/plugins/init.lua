@@ -97,6 +97,12 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+	use({
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("rbaumgardner.plugins.toggleterm")
+		end,
+	})
 
 	-- file Navigation
 	use({
