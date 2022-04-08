@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 
-fpath+=$HOME/.zsh/custom/themes/pure
+fpath+=$HOME/.oh-my-zsh/custom/themes/pure
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -64,7 +64,7 @@ ZSH_THEME=""
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="$HOME/.zsh/custom"
+# ZSH_CUSTOM="$HOME/.zsh/custom"
 
 # Skip the verification of insecure directories
 ZSH_DISABLE_COMPFIX=true
