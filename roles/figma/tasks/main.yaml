@@ -1,0 +1,19 @@
+---
+- name: Get stat of Figma
+  ansible.builtin.stat:
+    path: /Applications/Figma.app
+  register: figma_app
+
+- name: Skip Install
+  ansible.builtin.debug:
+    msg: "Figma has already been installed"
+  when: figma_app.stat.islnk is defined
+
+- name: Install
+  community.general.homebrew_cask:
+    name:
+      - figma
+    state: latest
+    greedy: yes
+    accept_external_apps: yes
+  when: figma_app.stat.islnk is not defined

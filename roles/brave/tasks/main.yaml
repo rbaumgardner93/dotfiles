@@ -1,0 +1,19 @@
+---
+- name: Get stat of Brave
+  ansible.builtin.stat:
+    path: /Applications/Brave Browser.app
+  register: brave_app
+
+- name: Skip Install
+  ansible.builtin.debug:
+    msg: "Brave has already been installed"
+  when: brave_app.stat.islnk is defined
+
+- name: Install
+  community.general.homebrew_cask:
+    name:
+      - brave-browser
+    state: latest
+    greedy: yes
+    accept_external_apps: yes
+  when: brave_app.stat.islnk is not defined

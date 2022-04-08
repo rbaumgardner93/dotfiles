@@ -1,0 +1,37 @@
+---
+- name: Get stat of Kitty
+  ansible.builtin.stat:
+    path: /Applications/kitty.app
+  register: kitty_app
+
+- name: Skip Install
+  ansible.builtin.debug:
+    msg: "Kitty has already been installed"
+  when: kitty_app.stat.islnk is defined
+
+- name:
+  community.general.homebrew_cask:
+    name:
+      - kitty
+    state: latest
+    greedy: yes
+    accept_external_apps: yes
+  when: kitty_app.stat.islnk is not defined
+
+- name: Get stats of the kitty directory
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.config/kitty"
+  register: kitty_sym
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "Kitty directory exists and is a symlink"
+  when: kitty_sym.stat.islnk is defined and kitty_sym.stat.islnk
+
+- name: Create symlink to kitty directory
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir}}/dotfiles/roles/kitty/files"
+    dest: "{{ ansible_user_dir }}/.config/kitty"
+    state: link
+    force: true
+  when: kitty_sym.stat.islnk is not defined

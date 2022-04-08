@@ -1,0 +1,24 @@
+default_roles:
+  - alfred
+  - bat
+  - brave
+  - diff-so-fancy
+  - exa
+  - figma
+  - fnm
+  - fonts
+  - gh
+  - git
+  - git-delta
+  - jq
+  - kap
+  - kitty
+  - lazygit
+  - neovim
+  - npm
+  - oh-my-zsh
+  - runjs
+  - ssh
+  - stow
+  - tmux
+  - tree

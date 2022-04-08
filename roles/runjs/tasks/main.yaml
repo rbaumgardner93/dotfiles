@@ -1,0 +1,19 @@
+---
+- name: Get stat of runjs
+  ansible.builtin.stat:
+    path: /Applications/RunJS.app
+  register: runjs_app
+
+- name: Skip Install
+  ansible.builtin.debug:
+    msg: "RunJS has already been installed"
+  when: runjs_app.stat.islnk is defined
+
+- name:
+  community.general.homebrew_cask:
+    name:
+      - runjs
+    state: latest
+    greedy: yes
+    accept_external_apps: yes
+  when: runjs_app.stat.islnk is not defined
