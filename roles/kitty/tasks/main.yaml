@@ -1,4 +1,14 @@
 ---
+- name: Get stat of Kitty
+  ansible.builtin.stat:
+    path: /Applications/kitty.app
+  register: kitty_app
+
+- name: Skip Install
+  ansible.builtin.debug:
+    msg: "Kitty has already been installed"
+  when: kitty_app.stat.islnk is defined
+
 - name:
   community.general.homebrew_cask:
     name:
@@ -6,6 +16,7 @@
     state: latest
     greedy: yes
     accept_external_apps: yes
+  when: kitty_app.stat.islnk is not defined
 
 - name: Get stats of the kitty directory
   ansible.builtin.stat:
