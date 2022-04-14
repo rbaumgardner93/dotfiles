@@ -1,0 +1,34 @@
+---
+- name: Clone
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    dest: "{{ ansible_user_dir }}/.tmux"
+    repo: https://github.com/gpakosz/.tmux.git
+    single_branch: yes
+    update: yes
+    version: master
+  register: clone
+
+- name: Link .tmux.conf
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/.tmux/.tmux.conf"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    state: link
+
+- name: Get stats of the .zshrc file
+  ansible.builtin.stat:
+    path:  "{{ ansible_user_dir }}/.tmux.conf.local"
+  register: tmux_sym
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: ".tmux.conf.local path exists and is a symlink"
+  when: tmux_sym.stat.islnk is defined and tmux_sym.stat.islnk
+
+- name: Link .tmux.conf.local
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir}}/dotfiles/roles/oh-my-tmux/files/.tmux.conf.local"
+    path: "{{ ansible_user_dir }}/.tmux.conf.local"
+    state: link
+  when: tmux_sym.stat.islnk is not defined
