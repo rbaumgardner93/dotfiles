@@ -77,7 +77,7 @@ ZSH_DISABLE_COMPFIX=true
 plugins=(
     brew
     colored-man-pages
-    fast-syntax-highlighting
+	F-Sy-H
     git
     node
     npm
