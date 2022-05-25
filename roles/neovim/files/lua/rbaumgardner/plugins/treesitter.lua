@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 treesitter.setup({
-	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	ignore_installed = { "" },
 	autopairs = {
 		enable = true,
