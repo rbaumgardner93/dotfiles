@@ -146,7 +146,29 @@ return packer.startup(function(use)
 
 	--  LSP plugins
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server istaller
+	use({
+		"lspcontainers/lspcontainers.nvim", -- run language servers in Docker conatiners
+		requires = {
+			"neovim/nvim-lspconfig",
+		},
+		config = function()
+			require("lspcontainers").setup({
+				ensure_installed = {
+					"bashls",
+					"dockerls",
+					"gopls",
+					"html",
+					"jsonls",
+					"rust_analyzer",
+					"sumneko_lua",
+					"tsserver",
+					"yamlls",
+				},
+			})
+
+			require("rbaumgardner.lsp.handlers").init()
+		end,
+	})
 	use({
 		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 		requires = { "nvim-lua/plenary.nvim" },

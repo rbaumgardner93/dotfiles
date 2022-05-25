@@ -46,17 +46,14 @@ end
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-			false
-		)
+	if client.server_capabilities.document_highlight then
+		vim.api.nvim_exec([[
+		  augroup lsp_document_highlight
+			autocmd! * <buffer>
+			autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+		  augroup END
+		]], false)
 	end
 end
 
@@ -90,26 +87,74 @@ local function lsp_keymaps(bufnr)
 	buf_set_keymap("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded"})<CR>', opts)
 end
 
-M.on_attach = function(client, bufnr)
+local function on_attach(client, bufnr)
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	if client.name == "eslint" then
-		client.resolved_capabilities.document_formatting = true
+		client.server_capabilities.document_formatting = true
 	end
 
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local function make_config()
+	local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+	if not status_ok then
+		return
+	end
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	return
+	local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+	capabilities.textDocument.completion.completionItem.resolveSupport = {
+		properties = {
+			'documentation',
+			'detail',
+			'additionalTextEdits'
+		}
+	}
+
+	return {
+		-- enable snippet support
+		capabilities = capabilities,
+		-- map buffer local keybindings when the language server attaches
+		on_attach = on_attach
+	}
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.init = function()
+	local lspconfig_servers = {
+		"cssls",
+		"eslint",
+	}
+
+	local lspcontainer_servers = {
+		"bashls",
+		"dockerls",
+		"gopls",
+		"html",
+		"jsonls",
+		"rust_analyzer",
+		"sumneko_lua",
+		"tsserver",
+		"yamlls"
+	}
+
+	for _, server in pairs(lspconfig_servers) do
+		local config = make_config()
+
+		require'lspconfig'[server].setup(config)
+	end
+
+	for _, server in pairs(lspcontainer_servers) do
+		local config = make_config()
+
+		require("rbaumgardner.lsp.lspcontainers").setup(config, server)
+
+		require'lspconfig'[server].setup(config)
+	end
+end
 
 return M
