@@ -1,9 +1,11 @@
-local colorscheme = "sonokai"
+local colorscheme = "tokyonight"
 
-vim.g["sonokai_style"] = "default"
-vim.g["sonokai_enable_italic"] = 1
-vim.g["sonokai_disable_italic_comment"] = 0
-vim.g["sonokai_transparent_background"] = 1
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+vim.g.tokyonight_transparent = true
+vim.g.tokyonight_transparent_sidebar = true
+vim.g.tokyonight_dark_float = false
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 

@@ -125,6 +125,7 @@ return packer.startup(function(use)
 	use("morhetz/gruvbox")
 	use("folke/lsp-colors.nvim")
 	use("sainnhe/sonokai")
+	use("folke/tokyonight.nvim")
 
 	--completion plugins
 	use({
