@@ -180,7 +180,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = function()
-			require("rbaumgardner.telescope.setup")
+			require("rbaumgardner.plugins.telescope.setup")
 		end,
 		requires = {
 			{ "nvim-lua/plenary.nvim" },

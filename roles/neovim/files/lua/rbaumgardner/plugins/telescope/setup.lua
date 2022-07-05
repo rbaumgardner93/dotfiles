@@ -79,14 +79,14 @@ if vim.fn.executable("gh") == 1 then
 end
 
 -- Keymaps
-nmap({ "<leader>en", "<cmd>lua require('rbaumgardner.telescope').edit_neovim()<cr>" })
+nmap({ "<leader>en", "<cmd>lua require('rbaumgardner.plugins.telescope').edit_neovim()<cr>" })
 nmap({ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>" })
 nmap({
 	"<leader>fb",
 	"<cmd>lua require('telescope').extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h'), hidden = true } )<cr>",
 })
-nmap({ "<leader>fg", "<cmd>lua require('rbaumgardner.telescope').live_grep()<cr>" })
-nmap({ "<leader>fs", "<cmd>lua require('rbaumgardner.telescope').grep_string()<cr>" })
+nmap({ "<leader>fg", "<cmd>lua require('rbaumgardner.plugins.telescope').live_grep()<cr>" })
+nmap({ "<leader>fs", "<cmd>lua require('rbaumgardner.plugins.telescope').grep_string()<cr>" })
 nmap({ "<leader>fc", "<cmd>lua require('telescope.builtin').buffers()<cr>" })
 nmap({
 	"<leader>fh",
@@ -97,5 +97,5 @@ nmap({
 	"<leader>gw",
 	"<cmd>lua require('telescope.builtin').grep_string( { path_display = { 'shorten' }, search = vim.fn.input('Grep for > ') } )<cr>",
 })
-nmap({ "<leader>cb", "<cmd>lua require('rbaumgardner.telescope').curbuf()<cr>" })
+nmap({ "<leader>cb", "<cmd>lua require('rbaumgardner.plugins.telescope').curbuf()<cr>" })
 nmap({ "<leader>fp", ":Telescope packer<cr>" })
