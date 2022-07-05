@@ -221,7 +221,7 @@ return packer.startup(function(use)
 	use({
 		"mfussenegger/nvim-dap",
 		config = function()
-			require("rbaumgardner.dap")
+			require("rbaumgardner.plugins.dap")
 		end,
 	})
 	use("Pocco81/DAPInstall.nvim")

@@ -3,7 +3,7 @@ if not dap_status_ok then
 	return
 end
 local nmap = require("rbaumgardner.utils.keymap").nmap
-require("rbaumgardner.dap.node")
+require("rbaumgardner.plugins.dap.node")
 dap.set_log_level("DEBUG")
 
 vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
