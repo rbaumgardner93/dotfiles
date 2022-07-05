@@ -55,7 +55,12 @@ return packer.startup(function(use)
 			require("rbaumgardner.plugins.comment")
 		end,
 	})
-	use("mcauley-penney/tidy.nvim") -- clean up whitespace
+	use({
+		"mcauley-penney/tidy.nvim",
+		config = function()
+			require("tidy").setup() -- clean up whitespace
+		end,
+	})
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = function()
