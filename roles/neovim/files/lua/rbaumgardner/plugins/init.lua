@@ -151,29 +151,17 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	--  LSP plugins
-	use("neovim/nvim-lspconfig") -- enable LSP
+	use({
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("rbaumgardner.lsp").setup() -- enable LSP
+		end,
+	})
 	use({
 		"lspcontainers/lspcontainers.nvim", -- run language servers in Docker conatiners
 		requires = {
 			"neovim/nvim-lspconfig",
 		},
-		config = function()
-			require("lspcontainers").setup({
-				ensure_installed = {
-					"bashls",
-					"dockerls",
-					"gopls",
-					"html",
-					"jsonls",
-					"rust_analyzer",
-					"sumneko_lua",
-					"tsserver",
-					"yamlls",
-				},
-			})
-
-			require("rbaumgardner.lsp.handlers").init()
-		end,
 	})
 	use({
 		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters

@@ -56,9 +56,12 @@ M.setup = function(config, server)
 		config.cmd = lspcontainers.command(server)
 		config.root_dir = util.root_pattern(".git", vim.fn.getcwd())
 
-		vim.api.nvim_exec([[
+		vim.api.nvim_exec(
+			[[
 			autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"TypeHint", "ChainingHint", "ParameterHint" } }
-		]], false)
+		]],
+			false
+		)
 	end
 
 	if server == "tsserver" then
@@ -78,7 +81,6 @@ M.setup = function(config, server)
 		config.cmd = lspcontainers.command(server)
 		config.root_dir = util.root_pattern(".git", vim.fn.getcwd())
 	end
-
 end
 
 return M
