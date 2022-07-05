@@ -5,7 +5,7 @@ if not status_ok then
 	return
 end
 
-local function on_attach(client, bufnr)
+M.on_attach = function(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -29,38 +29,38 @@ local function on_attach(client, bufnr)
 
 	-- configure formatting
 	require("rbaumgardner.lsp.null-ls.formatters").setup(client, bufnr)
-end
 
-local function make_config()
-	local _, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-	if not status_ok then
-		return
-	end
-
-	local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-	capabilities.textDocument.completion.completionItem.resolveSupport = {
-		properties = {
-			"documentation",
-			"detail",
-			"additionalTextEdits",
-		},
-	}
-
-	return {
-		-- enable snippet support
-		capabilities = capabilities,
-		-- map buffer local keybindings when the language server attaches
-		on_attach = on_attach,
-	}
 	-- configure ts utils
 	require("rbaumgardner.lsp.ts-utils")
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
+	},
+}
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
+
+local opts = {
+	-- enable snippet support
+	capabilities = M.capabilities,
+	-- map buffer local keybindings when the language server attaches
+	on_attach = M.on_attach,
+}
+
 require("rbaumgardner.lsp.handlers").setup()
 
 function M.setup()
-	require("rbaumgardner.lsp.null-ls").setup(make_config())
+	require("rbaumgardner.lsp.null-ls").setup(opts)
 
 	local lspconfig_servers = {
 		"cssls",
@@ -80,17 +80,13 @@ function M.setup()
 	}
 
 	for _, server in pairs(lspconfig_servers) do
-		local config = make_config()
-
-		require("lspconfig")[server].setup(config)
+		require("lspconfig")[server].setup(opts)
 	end
 
 	for _, server in pairs(lspcontainer_servers) do
-		local config = make_config()
+		require("rbaumgardner.lsp.lspcontainers").setup(opts, server)
 
-		require("rbaumgardner.lsp.lspcontainers").setup(config, server)
-
-		require("lspconfig")[server].setup(config)
+		require("lspconfig")[server].setup(opts)
 	end
 end
 

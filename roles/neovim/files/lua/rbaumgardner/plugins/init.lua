@@ -108,6 +108,16 @@ return packer.startup(function(use)
 			require("rbaumgardner.plugins.toggleterm")
 		end,
 	})
+	use({
+		"kevinhwang91/nvim-ufo",
+		opt = true,
+		event = { "BufReadPre" },
+		wants = { "promise-async" },
+		requires = "kevinhwang91/promise-async",
+		config = function()
+			require("ufo").setup()
+		end,
+	})
 
 	-- file Navigation
 	use({

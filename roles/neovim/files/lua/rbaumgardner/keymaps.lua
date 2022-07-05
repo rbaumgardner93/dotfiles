@@ -71,8 +71,11 @@ nmap({ "<leader>ut", ":UndotreeToggle<CR>" })
 
 -- Glow
 nmap({ "<leader>md", ":Glow<CR>" })
-
 nmap({ "gx", ":!open <C-r><C-a><CR>" })
+
+-- ufo
+nmap({ "zR", "<cmd>lua require('ufo').openAllFolds()<CR>" })
+nmap({ "zM", "<cmd>lua require('ufo').closeAllFolds()<CR>" })
 
 -- Visual --
 vmap({ "J", ":m '>+1<CR>gv=gv" })
