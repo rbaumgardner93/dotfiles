@@ -168,6 +168,7 @@ return packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 	use("creativenull/diagnosticls-configs-nvim")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	-- telescope requirements
 	use({

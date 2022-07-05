@@ -28,6 +28,7 @@ local sources = {
 	with_diagnostics_code(diagnostics.shellcheck), -- brew install shellcheck
 
 	-- code actions
+	code_actions.eslint_d,
 	code_actions.gitsigns,
 	code_actions.gitrebase,
 

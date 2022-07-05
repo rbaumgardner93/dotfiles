@@ -53,6 +53,8 @@ local function make_config()
 		-- map buffer local keybindings when the language server attaches
 		on_attach = on_attach,
 	}
+	-- configure ts utils
+	require("rbaumgardner.lsp.ts-utils")
 end
 
 require("rbaumgardner.lsp.handlers").setup()
