@@ -37,11 +37,12 @@ lir.setup({
 	end,
 })
 
+local icons = require("rbaumgardner.icons")
 local has_devicons, devicons = pcall(require, "nvim-web-devicons")
 if has_devicons then
 	devicons.set_icon({
 		lir_folder_icon = {
-			icon = "",
+			icon = icons.ui.Folder,
 			color = "#7ebae4",
 			name = "LirFolderNode",
 		},

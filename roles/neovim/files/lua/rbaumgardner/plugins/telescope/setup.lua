@@ -6,6 +6,7 @@ end
 local nmap = require("rbaumgardner.utils.keymap").nmap
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local icons = require("rbaumgardner.icons")
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
 	local entry = action_state.get_selected_entry()
@@ -18,8 +19,8 @@ end
 
 telescope.setup({
 	defaults = {
-		prompt_prefix = " ",
-		selection_caret = " ",
+		prompt_prefix = icons.ui.Telescope,
+		selection_caret = icons.ui.ArrowRight,
 		path_display = function(_, path)
 			local tail = require("telescope.utils").path_tail(path)
 			return string.format("%s (%s)", tail, path)

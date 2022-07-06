@@ -6,14 +6,15 @@ M.setup = function(servers, options)
 		return
 	end
 	local lspconfig = require("lspconfig")
+	local icons = require("rbaumgardner.icons")
 
 	lsp_installer.setup({
 		ensure_installed = vim.tbl_keys(servers),
 		ui = {
 			icons = {
-				server_installed = "✓",
-				server_pending = "➜",
-				server_uninstalled = "✗",
+				server_installed = icons.lsp.server_installed,
+				server_pending = icons.lsp.server_pending,
+				server_uninstalled = icons.lsp.server_uninstalled,
 			},
 		},
 	})
