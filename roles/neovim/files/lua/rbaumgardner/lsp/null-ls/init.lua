@@ -19,18 +19,19 @@ end
 
 local sources = {
 	-- formatting
-	formatting.stylua, -- carge install stylua
+	formatting.eslint_d, -- npm install -g eslint_d
 	formatting.fixjson, -- npm install -g fixjson
+	formatting.stylua, -- carge install stylua
 
 	-- diagnostics
 	diagnostics.eslint_d, -- npm install -g eslint_d
-	diagnostics.write_good, -- npm install -g write-good
 	with_diagnostics_code(diagnostics.shellcheck), -- brew install shellcheck
+	diagnostics.write_good, -- npm install -g write-good
 
 	-- code actions
 	code_actions.eslint_d,
-	code_actions.gitsigns,
 	code_actions.gitrebase,
+	code_actions.gitsigns,
 
 	-- hover
 	hover.dictionary,

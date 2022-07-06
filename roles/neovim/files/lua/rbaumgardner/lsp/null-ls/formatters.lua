@@ -19,7 +19,12 @@ end
 
 M.format = function()
 	if M.autoformat then
-		vim.lsp.buf.formatting_sync(nil, 2000)
+		vim.lsp.buf.format({
+			async = true,
+			filter = function(client)
+				return client.name ~= "tsserver"
+			end,
+		})
 	end
 end
 
@@ -60,7 +65,7 @@ M.setup = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				M.format()
+				vim.schedule(M.format)
 			end,
 		})
 	end
