@@ -21,6 +21,10 @@ M.setup = function(servers, options)
 	for ls, _ in pairs(servers) do
 		local opts = vim.tbl_deep_extend("force", options, servers[ls] or {})
 
+		if ls == "sumneko_lua" then
+			opts = require("lua-dev").setup({ lspconfig = opts })
+		end
+
 		lspconfig[ls].setup(opts)
 	end
 end
