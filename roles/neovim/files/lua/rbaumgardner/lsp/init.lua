@@ -63,34 +63,13 @@ local opts = {
 require("rbaumgardner.lsp.handlers").setup()
 
 function M.setup()
+	local lsp_servers = require("rbaumgardner.lsp.servers")
+
+	-- null-ls
 	require("rbaumgardner.lsp.null-ls").setup(opts)
 
-	local lspconfig_servers = {
-		"cssls",
-		"eslint",
-	}
-
-	local lspcontainer_servers = {
-		"bashls",
-		"dockerls",
-		"gopls",
-		"html",
-		"jsonls",
-		"rust_analyzer",
-		"sumneko_lua",
-		"tsserver",
-		"yamlls",
-	}
-
-	for _, server in pairs(lspconfig_servers) do
-		require("lspconfig")[server].setup(opts)
-	end
-
-	for _, server in pairs(lspcontainer_servers) do
-		require("rbaumgardner.lsp.lspcontainers").setup(opts, server)
-
-		require("lspconfig")[server].setup(opts)
-	end
+	-- lsp-installer
+	require("rbaumgardner.lsp.installer").setup(lsp_servers, opts)
 end
 
 return M

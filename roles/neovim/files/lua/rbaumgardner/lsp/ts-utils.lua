@@ -12,7 +12,7 @@ M.setup = function(client)
 		eslint_enable_disable_comments = true,
 	})
 
-	ts_utils.setup_client(client);
+	ts_utils.setup_client(client)
 end
 
 return M

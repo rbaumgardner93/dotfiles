@@ -168,7 +168,7 @@ return packer.startup(function(use)
 		end,
 	})
 	use({
-		"lspcontainers/lspcontainers.nvim", -- run language servers in Docker conatiners
+		"williamboman/nvim-lsp-installer",
 		requires = {
 			"neovim/nvim-lspconfig",
 		},
