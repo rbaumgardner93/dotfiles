@@ -20,9 +20,8 @@ end
 M.format = function()
 	if M.autoformat then
 		vim.lsp.buf.format({
-			async = true,
 			filter = function(client)
-				return client.name ~= "tsserver"
+				return client.name ~= "tsserver" and client.name ~= "sumneko_lua"
 			end,
 		})
 	end
@@ -65,7 +64,7 @@ M.setup = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				vim.schedule(M.format)
+				M.format()
 			end,
 		})
 	end
