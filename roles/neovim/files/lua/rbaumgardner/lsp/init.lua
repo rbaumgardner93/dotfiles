@@ -10,16 +10,17 @@ M.on_attach = function(client, bufnr)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
 
-	if client.name == "tsserver" then
-		client.server_capabilities.document_formatting = false
-	end
-
-	if client.name == "eslint" then
-		client.server_capabilities.document_formatting = true
-	end
-
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	-- Use LSP as the handler for formatexpr.
+	-- See `:help formatexpr` for more information.
+	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+
+	-- tagfunc
+	if client.server_capabilities.definitionProvider then
+		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+	end
 
 	-- configure lsp keymaps
 	require("rbaumgardner.lsp.keymaps").setup(bufnr)
@@ -31,7 +32,9 @@ M.on_attach = function(client, bufnr)
 	require("rbaumgardner.lsp.null-ls.formatters").setup(client, bufnr)
 
 	-- configure ts utils
-	require("rbaumgardner.lsp.ts-utils")
+	if client.name == "tsserver" then
+		require("rbaumgardner.lsp.ts-utils").setup(client)
+	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

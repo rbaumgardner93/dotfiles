@@ -15,8 +15,7 @@ M.setup = function()
 	end
 
 	local lsp_config = {
-		-- disable virtual text
-		virtual_text = false,
+		virtual_text = { severity = vim.diagnostic.severity.ERROR },
 		-- show signs
 		signs = {
 			active = signs,
