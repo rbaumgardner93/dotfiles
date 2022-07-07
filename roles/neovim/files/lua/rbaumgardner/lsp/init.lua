@@ -35,6 +35,9 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		require("rbaumgardner.lsp.ts-utils").setup(client)
 	end
+
+	-- nvim-navic
+	require("rbaumgardner.plugins.navic").setup(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

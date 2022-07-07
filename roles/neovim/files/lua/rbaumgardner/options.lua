@@ -66,6 +66,7 @@ local options = {
 	foldlevel = 99,                               -- Using ufo provider need a large value, feel free to decrease the value
 	foldlevelstart = -1,
 	foldenable = true,
+	winbar = "%= %{%v:lua.require'nvim-navic'.get_location()%}"
 }
 -- stylua: ignore end
 vim.opt.iskeyword:append("-")

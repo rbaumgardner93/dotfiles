@@ -1,6 +1,7 @@
 return {
 	ui = {
 		ArrowRight = " ",
+		ChevronRight = "  ",
 		Telescope = " ",
 		Folder = " ",
 	},

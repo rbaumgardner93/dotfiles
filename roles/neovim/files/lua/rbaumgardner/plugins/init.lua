@@ -180,6 +180,10 @@ return packer.startup(function(use)
 	use("creativenull/diagnosticls-configs-nvim")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("folke/lua-dev.nvim")
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
 
 	-- telescope requirements
 	use({
