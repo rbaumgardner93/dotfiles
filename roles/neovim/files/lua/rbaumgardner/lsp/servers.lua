@@ -7,7 +7,7 @@ local servers = {
 	eslint = {},
 	dockerls = {},
 	html = {},
-	jsonls = json_settings,
+	jsonls = json_settings.settings,
 	sumneko_lua = {
 		settings = lua_settings,
 	},
