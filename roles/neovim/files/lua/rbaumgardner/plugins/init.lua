@@ -56,9 +56,9 @@ return packer.startup(function(use)
 		end,
 	})
 	use({
-		"mcauley-penney/tidy.nvim",
+		"echasnovski/mini.nvim",
 		config = function()
-			require("tidy").setup() -- clean up whitespace
+			require("rbaumgardner.plugins.mini").setup()
 		end,
 	})
 	use({
