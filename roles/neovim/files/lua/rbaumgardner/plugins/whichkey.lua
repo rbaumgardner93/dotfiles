@@ -41,29 +41,11 @@ local normal_keymaps = function()
 		["<C-d>"] = { "<C-d>zz", "Keep it centered when moving down a file" },
 		["<C-p>"] = { "<cmd>lua require('legendary').find()<CR>", "Toggle legendary" },
 		["<C-u>"] = { "<C-u>zz", "Keep it centered when moving up a file" },
-		["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "Debug continue" },
-		["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "Debug step over" },
-		["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "Debug step into" },
-		["<F12>"] = { "<cmd>lua require'dap'.step_out()<CR>", "Debug step out" },
 		["<leader>"] = {
 			["<CR>"] = { "<cmd>luafile %<CR>", "Fast sourcing" },
 			a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon: add file" },
 			c = {
 				b = { "<cmd>lua require('rbaumgardner.plugins.telescope').curbuf()<cr>", "Find in current buffer" },
-			},
-			d = {
-				name = "+debug",
-				b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle breakpoint" },
-				B = {
-					"<cmd>lua require'dap'.toggle_breakpoint(vim.fn.input('Breakpoint condition: ')<CR>",
-					"Toggle breakpoint with condition",
-				},
-				l = { "<cmd>lua require'dap'.run_last()<CR>", "Debug last" },
-				m = {
-					"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')<CR>",
-					"Set breakpoint message",
-				},
-				r = { "<cmd>lua require'dap'.repl.open()<CR>", "Debug repl" },
 			},
 			f = {
 				name = "+navigating",

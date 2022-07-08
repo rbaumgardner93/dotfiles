@@ -3,7 +3,8 @@ if not dap_status_ok then
 	return
 end
 
-require("rbaumgardner.plugins.dap.node")
+require("rbaumgardner.plugins.dap.keymaps").setup()
+require("rbaumgardner.plugins.dap.node").setup()
 
 dap.set_log_level("DEBUG")
 
