@@ -4,7 +4,6 @@ if not status_ok then
 	return
 end
 
-local nmap = require("rbaumgardner.utils.keymap").nmap
 local actions = require("lir.actions")
 local clipboard_actions = require("lir.clipboard.actions")
 
@@ -48,6 +47,3 @@ if has_devicons then
 		},
 	})
 end
-
-nmap({ "<leader>pv", ":edit .<CR>" })
-nmap({ "-", "<cmd>edit %:h<CR>" })

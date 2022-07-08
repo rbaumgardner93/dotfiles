@@ -3,8 +3,6 @@ if not status_ok then
 	return
 end
 
-local nmap = require("rbaumgardner.utils.keymap").nmap
-
 gitsigns.setup({
 	signs = {
 		add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
@@ -53,7 +51,3 @@ gitsigns.setup({
 		enable = false,
 	},
 })
-
-nmap({ "<leader>ph", ":Gitsigns preview_hunk<CR>" })
-nmap({ "<leader>jh", ":Gitsigns next_hunk<CR>" })
-nmap({ "<leader>kh", ":Gitsigns prev_hunk<CR>" })

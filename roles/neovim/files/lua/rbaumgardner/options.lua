@@ -5,6 +5,9 @@ local config = home .. "/.config/nvim"
 -- https://github.com/JohnnyMorganz/StyLua/issues/252
 -- stylua: ignore start
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- disabled netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

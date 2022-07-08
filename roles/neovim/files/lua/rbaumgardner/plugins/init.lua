@@ -118,6 +118,12 @@ return packer.startup(function(use)
 			require("ufo").setup()
 		end,
 	})
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("rbaumgardner.plugins.whichkey").setup()
+		end,
+	})
 
 	-- file Navigation
 	use({
