@@ -1,4 +1,5 @@
 local which_key = require("which-key")
+local legendary = require("legendary")
 
 local M = {}
 
@@ -43,6 +44,7 @@ local function lsp_keymaps(bufnr)
 	}
 
 	which_key.register(keymaps, opts)
+	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 function M.setup(bufnr)

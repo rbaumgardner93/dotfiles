@@ -124,6 +124,13 @@ return packer.startup(function(use)
 			require("rbaumgardner.plugins.whichkey").setup()
 		end,
 	})
+	use({
+		"mrjones2014/legendary.nvim",
+		config = function()
+			require("legendary").setup({ auto_register_which_key = false })
+		end,
+		requires = { "stevearc/dressing.nvim" },
+	})
 
 	-- file Navigation
 	use({

@@ -1,5 +1,10 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
+local wk_status_ok, which_key = pcall(require, "which-key")
+if not wk_status_ok then
+	return
+end
+
+local legendary_status_ok, legendary = pcall(require, "legendary")
+if not legendary_status_ok then
 	return
 end
 
@@ -32,9 +37,10 @@ local normal_keymaps = function()
 		["Y"] = { "y$", "Yank to end of line" },
 		-- ]]
 		["<C-c>"] = { "<ESC>" }, -- ThePrimeagen told me to
-		["<C-d>"] = { "<C-d>zz", "Keep it centered when moving down a file" },
-		["<C-u>"] = { "<C-u>zz", "Keep it centered when moving up a file" },
 		["<C-e>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon: toggle quick menu" },
+		["<C-d>"] = { "<C-d>zz", "Keep it centered when moving down a file" },
+		["<C-p>"] = { "<cmd>lua require('legendary').find()<CR>", "Toggle legendary" },
+		["<C-u>"] = { "<C-u>zz", "Keep it centered when moving up a file" },
 		["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "Debug continue" },
 		["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "Debug step over" },
 		["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "Debug step into" },
@@ -124,6 +130,7 @@ local normal_keymaps = function()
 	}
 
 	which_key.register(keymaps, opts)
+	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 local visual_keymaps = function()
@@ -149,6 +156,7 @@ local visual_keymaps = function()
 	}
 
 	which_key.register(keymaps, opts)
+	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 local terminal_keymaps = function()
@@ -169,6 +177,7 @@ local terminal_keymaps = function()
 	}
 
 	which_key.register(keymaps, opts)
+	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 M.setup = function()
