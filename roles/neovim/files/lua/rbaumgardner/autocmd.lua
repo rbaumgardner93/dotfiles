@@ -17,6 +17,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = general_group,
 })
 
+vim.api.nvim_create_autocmd("BufWrite", {
+	command = "silent! lua MiniTrailspace.trim()",
+	group = general_group,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "qf", "help", "man", "lspinfo", "fugitive" },
 	callback = function()
