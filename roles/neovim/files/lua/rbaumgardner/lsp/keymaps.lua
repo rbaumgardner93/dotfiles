@@ -3,6 +3,14 @@ local legendary = require("legendary")
 
 local M = {}
 
+local peekFoldedLinesUnderCursor = function()
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+
+	if not winid then
+		vim.lsp.hover()
+	end
+end
+
 local function lsp_keymaps(bufnr)
 	local opts = {
 		mode = "n",
@@ -28,7 +36,7 @@ local function lsp_keymaps(bufnr)
 			l = { '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', "View line diagnostic" },
 			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
 		},
-		K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover definition" },
+		K = { peekFoldedLinesUnderCursor, "Hover definition" },
 		["<leader>"] = {
 			c = {
 				a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
