@@ -1,0 +1,6 @@
+---
+- name: Install
+  community.general.homebrew:
+    name:
+      - pandoc
+    state: latest
