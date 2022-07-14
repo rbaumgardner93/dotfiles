@@ -88,7 +88,7 @@ local normal_keymaps = function()
 			K = { "<cmd>m .-2<CR>==", "Move line up" },
 			l = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", "Harpoon: navigate to fourth file" },
 			m = {
-				d = { "<cmd>Glow<CR>", "Preview markdown" },
+				d = { "<cmd>MarkdownPreview<CR>", "Preview markdown" },
 			},
 			p = {
 				name = "+project view",
