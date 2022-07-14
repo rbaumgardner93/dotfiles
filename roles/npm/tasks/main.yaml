@@ -28,3 +28,27 @@
       name: yarn
       global: yes
       state: latest
+
+  - name: Install "@compodoc/live-server" globally
+    community.general.npm:
+      name: "@compodoc/live-server"
+      global: yes
+      state: latest
+
+  - name: Install "vscode-langservers-extracted" globally
+    community.general.npm:
+      name: vscode-langservers-extracted
+      global: yes
+      state: latest
+
+  - name: Install "fixjson" globally
+    community.general.npm:
+      name: fixjson
+      global: yes
+      state: latest
+
+  - name: Install "commitizen" globally
+    community.general.npm:
+      name: commitizen
+      global: yes
+      state: latest
