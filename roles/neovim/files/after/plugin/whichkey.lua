@@ -8,9 +8,7 @@ if not legendary_status_ok then
 	return
 end
 
-local M = {}
-
-local normal_keymaps = function()
+local setup_normal_keymaps = function()
 	local opts = {
 		mode = "n", -- NORMAL mode
 		prefix = "",
@@ -21,7 +19,7 @@ local normal_keymaps = function()
 	}
 
 	local keymaps = {
-		["-"] = { "<cmd>edit %:h<CR>", "Current directory file view" },
+		["-"] = { ":edit %:h<CR>", "Current directory file view" },
 		g = {
 			x = { ":!open <C-r><C-a><CR>", "Open url under cursor" },
 		},
@@ -42,10 +40,10 @@ local normal_keymaps = function()
 		["<C-p>"] = { "<cmd>lua require('legendary').find()<CR>", "Toggle legendary" },
 		["<C-u>"] = { "<C-u>zz", "Keep it centered when moving up a file" },
 		["<leader>"] = {
-			["<CR>"] = { "<cmd>luafile %<CR>", "Fast sourcing" },
+			["<CR>"] = { ":luafile %<CR>", "Fast sourcing" },
 			a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon: add file" },
 			c = {
-				b = { "<cmd>lua require('rbaumgardner.plugins.telescope').curbuf()<cr>", "Find in current buffer" },
+				b = { "<cmd>lua require('rbaumgardner.telescope').curbuf()<cr>", "Find in current buffer" },
 			},
 			f = {
 				name = "+navigating",
@@ -55,13 +53,13 @@ local normal_keymaps = function()
 				},
 				c = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find open buffers" },
 				f = { "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", "Find Files" },
-				g = { "<cmd>lua require('rbaumgardner.plugins.telescope').live_grep()<cr>", "Grep Word" },
+				g = { "<cmd>lua require('rbaumgardner.telescope').live_grep()<cr>", "Grep Word" },
 				h = { "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", "Find Help" },
-				n = { "<cmd>lua require('rbaumgardner.plugins.telescope').edit_neovim()<cr>", "Find neovim" },
+				n = { "<cmd>lua require('rbaumgardner.telescope').edit_neovim()<cr>", "Find neovim" },
 				p = { "<cmd>Telescope packer<cr>", "Find Plugins" },
 				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
 				s = {
-					"<cmd>lua require('rbaumgardner.plugins.telescope').grep_string()<cr>",
+					"<cmd>lua require('rbaumgardner.telescope').grep_string()<cr>",
 					"Find string under cursor",
 				},
 				w = {
@@ -84,30 +82,28 @@ local normal_keymaps = function()
 			h = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon: navigate to first file" },
 			j = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "Harpoon: navigate to second file" },
 			k = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "Harpoon: navigate to third file" },
-			J = { "<cmd>m .+1<CR>==", "Move line down" },
-			K = { "<cmd>m .-2<CR>==", "Move line up" },
+			J = { ":m .+1<CR>==", "Move line down" },
+			K = { ":m .-2<CR>==", "Move line up" },
 			l = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", "Harpoon: navigate to fourth file" },
 			m = {
 				d = { "<cmd>MarkdownPreview<CR>", "Preview markdown" },
 			},
 			p = {
 				name = "+project view",
-				v = { "<cmd>edit .<CR>", "Project view" },
+				v = { ":edit .<CR>", "Project view" },
 			},
 			q = {
 				m = { "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Harpoon: toggle quick menu" },
 			},
 			t = {
 				name = "+terminal",
-				o = { "<cmd>terminal<CR>", "Open terminal" },
+				o = { ":terminal<CR>", "Open terminal" },
 			},
 			u = {
 				name = "+undotree",
 				t = { "<cmd>UndotreeToggle<CR>", "Toggle undotree" },
 			},
 			w = { ":w!<CR>", "Save file" },
-			y = { '"+y', "Yank to system clipboard" },
-			Y = { '"gg+yG', "Yank entire file" },
 		},
 	}
 
@@ -115,7 +111,7 @@ local normal_keymaps = function()
 	legendary.bind_whichkey(keymaps, opts, false)
 end
 
-local visual_keymaps = function()
+local setup_visual_keymaps = function()
 	local opts = {
 		mode = "v", -- VISUAL mode
 		prefix = "",
@@ -126,8 +122,8 @@ local visual_keymaps = function()
 	}
 
 	local keymaps = {
-		J = { "<cmd>m '>+1<CR>gv=gv", "Move selected line down" },
-		K = { "<cmd>m '<-2<CR>gv=gv", "Move selected line up" },
+		J = { ":m '>+1<CR>gv=gv", "Move selected line down" },
+		K = { ":m '<-2<CR>gv=gv", "Move selected line up" },
 		y = { "y']", "Yank to register" },
 		[">"] = { ">gv", "Indent" },
 		["<"] = { "<gv", "Dedent" },
@@ -141,7 +137,7 @@ local visual_keymaps = function()
 	legendary.bind_whichkey(keymaps, opts, false)
 end
 
-local terminal_keymaps = function()
+local setup_terminal_keymaps = function()
 	local opts = {
 		mode = "t", --  TERMINAL mode
 		prefix = "",
@@ -162,12 +158,8 @@ local terminal_keymaps = function()
 	legendary.bind_whichkey(keymaps, opts, false)
 end
 
-M.setup = function()
-	which_key.setup()
+which_key.setup()
 
-	normal_keymaps()
-	visual_keymaps()
-	terminal_keymaps()
-end
-
-return M
+setup_normal_keymaps()
+setup_visual_keymaps()
+setup_terminal_keymaps()

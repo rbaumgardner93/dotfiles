@@ -43,45 +43,17 @@ return packer.startup(function(use)
 		opt = true,
 		cmd = { "UndotreeToggle" },
 	})
-	use({
-		"windwp/nvim-autopairs", -- autopairs integrates with both cmp and treesitter
-		config = function()
-			require("rbaumgardner.plugins.autopairs")
-		end,
-	})
-	use({
-		"numToStr/Comment.nvim", -- easily comment stuff
-		config = function()
-			require("rbaumgardner.plugins.comment")
-		end,
-	})
-	use({
-		"echasnovski/mini.nvim",
-		config = function()
-			require("rbaumgardner.plugins.mini").setup()
-		end,
-	})
+	use({ "windwp/nvim-autopairs" }) -- autopairs integrates with both cmp and treesitter
+	use({ "numToStr/Comment.nvim" }) -- easily comment stuff
+	use({ "echasnovski/mini.nvim" })
 	use({
 		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("rbaumgardner.plugins.lualine")
-		end,
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
-	use({
-		"goolord/alpha-nvim",
-		config = function()
-			require("rbaumgardner.plugins.alpha")
-		end,
-	})
+	use({ "goolord/alpha-nvim" })
 	use("godlygeek/tabular")
 	use("lewis6991/impatient.nvim")
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("rbaumgardner.plugins.indent-blankline")
-		end,
-	})
+	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "davidgranstrom/nvim-markdown-preview" })
 	use({
 		"j-hui/fidget.nvim",
@@ -96,12 +68,7 @@ return packer.startup(function(use)
 			})
 		end,
 	})
-	use({
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("rbaumgardner.plugins.toggleterm")
-		end,
-	})
+	use({ "akinsho/toggleterm.nvim" })
 	use({
 		"kevinhwang91/nvim-ufo",
 		opt = true,
@@ -112,12 +79,7 @@ return packer.startup(function(use)
 			require("ufo").setup()
 		end,
 	})
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("rbaumgardner.plugins.whichkey").setup()
-		end,
-	})
+	use({ "folke/which-key.nvim" })
 	use({
 		"mrjones2014/legendary.nvim",
 		config = function()
@@ -127,12 +89,7 @@ return packer.startup(function(use)
 	})
 
 	-- file Navigation
-	use({
-		"tamago324/lir.nvim",
-		config = function()
-			require("rbaumgardner.plugins.lir")
-		end,
-	})
+	use({ "tamago324/lir.nvim" })
 	use({
 		"tamago324/lir-git-status.nvim",
 		config = function()
@@ -150,12 +107,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 
 	--completion plugins
-	use({
-		"hrsh7th/nvim-cmp", -- The completion plugin
-		config = function()
-			require("rbaumgardner.plugins.nvim-cmp")
-		end,
-	})
+	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- Buffer completions
 	use("hrsh7th/cmp-path") -- Path completions
 	use("hrsh7th/cmp-nvim-lsp") -- LSP completions
@@ -196,7 +148,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = function()
-			require("rbaumgardner.plugins.telescope.setup")
+			require("rbaumgardner.telescope.setup")
 		end,
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
@@ -210,20 +162,12 @@ return packer.startup(function(use)
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("rbaumgardner.plugins.treesitter")
-		end,
 		run = ":TSUpdate", -- We recommend updating the parsers on update
 	})
 	use("nvim-treesitter/playground")
 
 	-- git
-	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("rbaumgardner.plugins.gitsigns")
-		end,
-	})
+	use({ "lewis6991/gitsigns.nvim" })
 
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
@@ -237,7 +181,7 @@ return packer.startup(function(use)
 	use({
 		"mfussenegger/nvim-dap",
 		config = function()
-			require("rbaumgardner.plugins.dap")
+			require("rbaumgardner.dap")
 		end,
 	})
 	use("Pocco81/DAPInstall.nvim")

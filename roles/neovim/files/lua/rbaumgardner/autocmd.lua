@@ -3,7 +3,7 @@ local nmap = require("rbaumgardner.utils.keymap").nmap
 vim.cmd([[
   augroup _packer
     autocmd!
-    autocmd BufWritePost */plugins/init.lua source <afile> | PackerSync
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
   augroup end
 ]])
 

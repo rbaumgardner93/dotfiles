@@ -4,7 +4,22 @@ if not status_ok then
 end
 
 treesitter.setup({
-	ensure_installed = { "css", "go", "html", "javascript", "jsdoc", "json", "lua", "markdown", "scss", "rust", "tsx", "typescript", "vim", "yaml" },
+	ensure_installed = {
+		"css",
+		"go",
+		"html",
+		"javascript",
+		"jsdoc",
+		"json",
+		"lua",
+		"markdown",
+		"scss",
+		"rust",
+		"tsx",
+		"typescript",
+		"vim",
+		"yaml",
+	},
 	ignore_installed = { "" },
 	autopairs = {
 		enable = true,
