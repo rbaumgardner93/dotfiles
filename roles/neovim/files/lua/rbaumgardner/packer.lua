@@ -147,9 +147,6 @@ return packer.startup(function(use)
 	-- telescope requirements
 	use({
 		"nvim-telescope/telescope.nvim",
-		config = function()
-			require("rbaumgardner.telescope.setup")
-		end,
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-github.nvim" },
@@ -181,7 +178,7 @@ return packer.startup(function(use)
 	use({
 		"mfussenegger/nvim-dap",
 		config = function()
-			require("rbaumgardner.dap")
+			require("rbaumgardner.dap").setup()
 		end,
 	})
 	use("Pocco81/DAPInstall.nvim")
