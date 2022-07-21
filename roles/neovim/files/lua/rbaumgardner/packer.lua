@@ -71,13 +71,7 @@ return packer.startup(function(use)
 	use({ "akinsho/toggleterm.nvim" })
 	use({
 		"kevinhwang91/nvim-ufo",
-		opt = true,
-		event = { "BufReadPre" },
-		wants = { "promise-async" },
 		requires = "kevinhwang91/promise-async",
-		config = function()
-			require("ufo").setup()
-		end,
 	})
 	use({ "folke/which-key.nvim" })
 	use({

@@ -73,6 +73,8 @@ function M.setup()
 
 	-- lsp-installer
 	require("rbaumgardner.lsp.installer").setup(lsp_servers, opts)
+
+	require("ufo").setup()
 end
 
 return M
