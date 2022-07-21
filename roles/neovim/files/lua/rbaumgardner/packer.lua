@@ -105,6 +105,7 @@ return packer.startup(function(use)
 	use("folke/lsp-colors.nvim")
 	use("sainnhe/sonokai")
 	use("folke/tokyonight.nvim")
+	use("norcalli/nvim-colorizer.lua")
 
 	--completion plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
