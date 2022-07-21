@@ -83,15 +83,7 @@ return packer.startup(function(use)
 	})
 
 	-- file Navigation
-	use({ "tamago324/lir.nvim" })
-	use({
-		"tamago324/lir-git-status.nvim",
-		config = function()
-			require("lir.git_status").setup({
-				show_ignored = false,
-			})
-		end,
-	})
+	use({ "tpope/vim-vinegar" })
 	use("Olical/conjure")
 
 	-- colorschemes

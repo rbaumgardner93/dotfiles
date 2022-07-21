@@ -19,7 +19,6 @@ local setup_normal_keymaps = function()
 	}
 
 	local keymaps = {
-		["-"] = { ":edit %:h<CR>", "Current directory file view" },
 		g = {
 			x = { ":!open <C-r><C-a><CR>", "Open url under cursor" },
 		},
@@ -90,7 +89,7 @@ local setup_normal_keymaps = function()
 			},
 			p = {
 				name = "+project view",
-				v = { ":edit .<CR>", "Project view" },
+				v = { ":Explore<CR>", "Open project view" },
 			},
 			q = {
 				m = { "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Harpoon: toggle quick menu" },

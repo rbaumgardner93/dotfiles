@@ -8,11 +8,6 @@ local config = home .. "/.config/nvim"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- disabled netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- vim.g.netrw_liststyle = 3
-
 local options = {
 	wildmenu = true,                                 -- display all matching files when we tab complete
 	wildignorecase = true,                           -- tab file completion is case insensitive
