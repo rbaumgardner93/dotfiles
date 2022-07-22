@@ -37,48 +37,32 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-	use("kyazdani42/nvim-web-devicons")
 	use({
 		"mbbill/undotree",
 		opt = true,
 		cmd = { "UndotreeToggle" },
 	})
-	use({ "windwp/nvim-autopairs" }) -- autopairs integrates with both cmp and treesitter
-	use({ "numToStr/Comment.nvim" }) -- easily comment stuff
-	use({ "echasnovski/mini.nvim" })
+	use("windwp/nvim-autopairs") -- autopairs integrates with both cmp and treesitter
+	use("numToStr/Comment.nvim") -- easily comment stuff
+	use("echasnovski/mini.nvim")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
-	use({ "goolord/alpha-nvim" })
+	use("goolord/alpha-nvim")
 	use("godlygeek/tabular")
 	use("lewis6991/impatient.nvim")
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "davidgranstrom/nvim-markdown-preview" })
-	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup({
-				text = {
-					spinner = "dots_snake", -- animation shown when tasks are ongoing
-					done = "✔", -- character shown when all tasks are complete
-					commenced = "Started", -- message shown when task starts
-					completed = "Completed", -- message shown when task completes
-				},
-			})
-		end,
-	})
-	use({ "akinsho/toggleterm.nvim" })
+	use("lukas-reineke/indent-blankline.nvim")
+	use("davidgranstrom/nvim-markdown-preview")
+	use("j-hui/fidget.nvim")
+	use("akinsho/toggleterm.nvim")
 	use({
 		"kevinhwang91/nvim-ufo",
 		requires = "kevinhwang91/promise-async",
 	})
-	use({ "folke/which-key.nvim" })
+	use("folke/which-key.nvim")
 	use({
 		"mrjones2014/legendary.nvim",
-		config = function()
-			require("legendary").setup({ auto_register_which_key = false })
-		end,
 		requires = { "stevearc/dressing.nvim" },
 	})
 	use("b0o/schemastore.nvim") -- simple access to json-language-server schema
@@ -94,7 +78,7 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua")
 
 	--completion plugins
-	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- Buffer completions
 	use("hrsh7th/cmp-path") -- Path completions
 	use("hrsh7th/cmp-nvim-lsp") -- LSP completions
@@ -107,12 +91,7 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	--  LSP plugins
-	use({
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("rbaumgardner.lsp").setup() -- enable LSP
-		end,
-	})
+	use("neovim/nvim-lspconfig")
 	use({
 		"williamboman/nvim-lsp-installer",
 		requires = {
@@ -151,7 +130,7 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground")
 
 	-- git
-	use({ "lewis6991/gitsigns.nvim" })
+	use("lewis6991/gitsigns.nvim")
 
 	-- ThePrimeagen plugins
 	use("ThePrimeagen/harpoon")
@@ -163,12 +142,7 @@ return packer.startup(function(use)
 	use("tpope/vim-vinegar")
 
 	-- debugger plugins
-	use({
-		"mfussenegger/nvim-dap",
-		config = function()
-			require("rbaumgardner.dap").setup()
-		end,
-	})
+	use("mfussenegger/nvim-dap")
 	use("Pocco81/DAPInstall.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
