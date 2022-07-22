@@ -4,7 +4,8 @@ if not status_ok then
 end
 
 vim.cmd([[
-    highlight IndentBlanklineContextChar guifg=#fe8019 gui=nocombine
+    highlight IndentBlanklineContextChar guifg=#9d7cd8 gui=nocombine
+    highlight IndentBlanklineIndent guifg=#414868 gui=nocombine
 ]])
 
 indent_blankline.setup({
@@ -31,6 +32,9 @@ indent_blankline.setup({
 	show_current_context = true,
 	show_current_context_start = true,
 	show_current_context_start_on_current_line = true,
+	char_highlight_list = {
+		"IndentBlanklineIndent",
+	},
 	context_char = "▏",
 	context_char_list = {},
 	context_highlight_list = {},
