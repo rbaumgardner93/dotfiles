@@ -1,15 +1,26 @@
 local M = {}
 
-M.setup = function(servers, options)
+M.setup = function(options)
 	local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 	if not status_ok then
 		return
 	end
-	local lspconfig = require("lspconfig")
 	local icons = require("rbaumgardner.icons")
+	local servers = {
+		"bashls",
+		"cssls",
+		"eslint",
+		"dockerls",
+		"html",
+		"jsonls",
+		"sumneko_lua",
+		"tsserver",
+		"yamlls",
+	}
 
 	lsp_installer.setup({
-		ensure_installed = vim.tbl_keys(servers),
+		ensure_installed = servers,
+		automatic_installation = true,
 		ui = {
 			icons = {
 				server_installed = icons.lsp.server_installed,
@@ -19,14 +30,8 @@ M.setup = function(servers, options)
 		},
 	})
 
-	for ls, _ in pairs(servers) do
-		local opts = vim.tbl_deep_extend("force", options, servers[ls] or {})
-
-		if ls == "sumneko_lua" then
-			opts = require("lua-dev").setup({ lspconfig = opts })
-		end
-
-		lspconfig[ls].setup(opts)
+	for _, server in ipairs(servers) do
+		require("rbaumgardner.lsp.servers." .. server).setup(options)
 	end
 end
 

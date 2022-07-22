@@ -1,4 +1,4 @@
-local opts = {
+local settings = {
 	Lua = {
 		diagnostics = {
 			globals = { "vim" },
@@ -16,4 +16,18 @@ local opts = {
 	},
 }
 
-return opts
+local M = {
+	setup = function(opts)
+		local luadev = require("lua-dev").setup({
+			lspconfig = {
+				on_attach = opts.on_attach,
+				settings = settings,
+				capabilities = opts.capabilities,
+			}
+		})
+
+		require("lspconfig").sumneko_lua.setup(luadev)
+	end
+}
+
+return M

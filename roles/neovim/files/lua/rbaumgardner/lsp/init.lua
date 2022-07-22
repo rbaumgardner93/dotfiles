@@ -31,11 +31,6 @@ M.on_attach = function(client, bufnr)
 	-- configure formatting
 	require("rbaumgardner.lsp.null-ls.formatters").setup(client, bufnr)
 
-	-- configure ts utils
-	if client.name == "tsserver" then
-		require("rbaumgardner.lsp.ts-utils").setup(client)
-	end
-
 	-- nvim-navic
 	require("rbaumgardner.lsp.navic").setup(client, bufnr)
 end
@@ -66,13 +61,11 @@ local opts = {
 require("rbaumgardner.lsp.handlers").setup()
 
 function M.setup()
-	local lsp_servers = require("rbaumgardner.lsp.servers")
-
 	-- null-ls
 	require("rbaumgardner.lsp.null-ls").setup(opts)
 
 	-- lsp-installer
-	require("rbaumgardner.lsp.installer").setup(lsp_servers, opts)
+	require("rbaumgardner.lsp.installer").setup(opts)
 
 	require("ufo").setup()
 end

@@ -81,9 +81,9 @@ return packer.startup(function(use)
 		end,
 		requires = { "stevearc/dressing.nvim" },
 	})
+	use("b0o/schemastore.nvim") -- simple access to json-language-server schema
 
 	-- file Navigation
-	use({ "tpope/vim-vinegar" })
 	use("Olical/conjure")
 
 	-- colorschemes
@@ -124,12 +124,12 @@ return packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 	use("creativenull/diagnosticls-configs-nvim")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("folke/lua-dev.nvim")
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
 	})
+	use("jose-elias-alvarez/typescript.nvim")
 
 	-- telescope requirements
 	use({
@@ -160,6 +160,7 @@ return packer.startup(function(use)
 	use("tpope/vim-surround")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-unimpaired")
+	use("tpope/vim-vinegar")
 
 	-- debugger plugins
 	use({

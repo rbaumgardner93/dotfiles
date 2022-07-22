@@ -19,12 +19,10 @@ end
 
 local sources = {
 	-- formatting
-	formatting.eslint_d, -- npm install -g eslint_d
 	formatting.fixjson, -- npm install -g fixjson
 	formatting.stylua, -- carge install stylua
 
 	-- diagnostics
-	diagnostics.eslint_d, -- npm install -g eslint_d
 	with_diagnostics_code(diagnostics.shellcheck), -- brew install shellcheck
 	diagnostics.write_good, -- npm install -g write-good
 
