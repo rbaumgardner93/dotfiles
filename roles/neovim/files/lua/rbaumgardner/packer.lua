@@ -109,6 +109,7 @@ return packer.startup(function(use)
 		requires = "neovim/nvim-lspconfig",
 	})
 	use("jose-elias-alvarez/typescript.nvim")
+	use("glepnir/lspsaga.nvim")
 
 	-- telescope requirements
 	use({
