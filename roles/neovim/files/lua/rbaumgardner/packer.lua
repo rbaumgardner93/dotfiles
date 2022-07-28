@@ -66,9 +66,11 @@ return packer.startup(function(use)
 		requires = { "stevearc/dressing.nvim" },
 	})
 	use("b0o/schemastore.nvim") -- simple access to json-language-server schema
-
-	-- file Navigation
-	use("Olical/conjure")
+	use({
+      "Olical/conjure",
+      ft = { "scheme" },
+      opt = true
+    }) -- scheme evaluator
 
 	-- colorschemes
 	use("morhetz/gruvbox")
