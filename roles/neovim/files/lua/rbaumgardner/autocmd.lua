@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "fugitive", "alpha", "tsplayground" },
+	pattern = { "fugitive", "alpha", "tsplayground", "netrw" },
 	command = "setlocal nofoldenable",
 	group = fold_group,
 })
