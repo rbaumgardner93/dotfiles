@@ -12,9 +12,9 @@ if [[ -z $selected ]]; then
 	exit 0;
 fi
 
-read -p "Enter Query: " query
+read -rp "Enter Query: " query
 
-if echo "$languages" | grep -qs $selected; then
+if echo "$languages" | grep -qs "$selected"; then
 	tmux split-window -p 25 -h bash -c "curl cht.sh/$selected/$(echo "$query" | tr " " "+") | less"
 else
 	tmux split-window -p 25 -h bash -c "curl cht.sh/$selected~$query | less"

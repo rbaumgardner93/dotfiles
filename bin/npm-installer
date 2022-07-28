@@ -5,7 +5,7 @@ set -e
 echo -e "\nVerifying npm is installed...\n"
 which npm > /dev/null || echo "node is not installed on this machine please install node and try again"
 
-selected=$(find -f $HOME/dotfiles/npm/.config/npm/work $HOME/dotfiles/npm/.config/npm/personal | fzf)
+selected=$(find -f "$HOME/dotfiles/npm/.config/npm/work" "$HOME/dotfiles/npm/.config/npm/personal" | fzf)
 
 if [[ -z $selected ]]; then
 	exit 0
