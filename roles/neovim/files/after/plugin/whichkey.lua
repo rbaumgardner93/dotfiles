@@ -83,6 +83,7 @@ local setup_normal_keymaps = function()
 				h = { "<cmd>diffget //2<CR>", "Fugitive: Diff get left hand side" },
 				l = { "<cmd>diffget //3<CR>", "Fugitive: Diff get right hand side" },
 				p = { gitsigns.preview_hunk, "Gitsigns: Preview hunk" },
+				P = { "<cmd>Git push<CR>", "Fugitive: Git push" },
 				r = { "<cmd>Gitsigns reset_hunk<CR>", "Gitsigns: reset hunk" },
 				R = { gitsigns.reset_buffer, "Gitsigns: reset buffer" },
 				s = { "<cmd>G<CR>", "Fugitive: Git status" },

@@ -63,7 +63,8 @@ local options = {
 	foldlevelstart = -1,
 	foldenable = true,
 
-	winbar = "%= %{%v:lua.require'nvim-navic'.get_location()%}"
+	winbar = "%= %{%v:lua.require'nvim-navic'.get_location()%}",
+	cursorline = true
 }
 -- stylua: ignore end
 vim.opt.iskeyword:append("-")
