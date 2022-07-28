@@ -50,4 +50,78 @@ gitsigns.setup({
 	yadm = {
 		enable = false,
 	},
+	on_attach = function(bufnr)
+		local gs = require("gitsigns")
+		local whichkey = require("which-key")
+		local legendary = require("legendary")
+
+		local next_hunk = function()
+			if vim.wo.diff then
+				return "]c"
+			end
+			vim.schedule(function()
+				gs.next_hunk()
+			end)
+			return "<Ignore>"
+		end
+
+		local prev_hunk = function()
+			if vim.wo.diff then
+				return "[c"
+			end
+			vim.schedule(function()
+				gs.prev_hunk()
+			end)
+			return "<Ignore>"
+		end
+
+		local options = {
+			mode = "n",
+			prefix = "",
+			buffer = bufnr,
+			silent = true,
+			noremap = true,
+			nowait = false,
+		}
+
+		local keymaps = {
+			-- Navigation
+			[ "]c" ] = { next_hunk, "Gitsigns: next hunk"},
+			[ "[c" ] = { prev_hunk, "Gitsigns: prev hunk"},
+
+			-- Actions
+			["<leader>"] = {
+				h = {
+					name = "+hunks",
+					b = {
+						function()
+							gs.blame_line({ full = true })
+						end,
+						"Gitsigns: blame line full"
+					},
+					d = { gs.diffthis, "Gitsigns: diff this" },
+					D = {
+						function()
+							gs.diffthis("~")
+						end,
+						"Gitsigns: diff this with arg"
+					},
+					p = { gs.preview_hunk, "Gitsigns: preview hunk" },
+					s = { "<cmd>Gitsigns stage_hunk<CR>", "Gitsigns: stage hunk" },
+					S = { gs.stage_buffer, "Gitsigns: stage buffer" },
+					r = { "<cmd>Gitsigns reset_hunk<CR>", "Gitsigns: reset_hunk hunk" },
+					R = { gs.reset_buffer, "Gitsigns: reset buffer" },
+					u = { gs.undo_stage_hunk, "Gitsigns: undo stage hunk" },
+				},
+				t = {
+					name = "+toggle",
+					b = { gs.toggle_current_line_blame, "Gitsigns: toggle current line blame" },
+					d = { gs.toggle_deleted, "Gitsigns: toggle deleted" }
+				}
+			},
+		}
+
+		whichkey.register(keymaps, options)
+		legendary.bind_whichkey(keymaps, options, false)
+	end,
 })

@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("BufWrite", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf", "help", "man", "lspinfo", "fugitive" },
+	pattern = { "qf", "help", "man", "lspinfo", "fugitive", "NeogitStatus" },
 	callback = function()
 		nmap({ "q", "<cmd>close<CR>" })
 	end,
@@ -36,13 +36,19 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "fugitive", "NeogitStatus", "netrw" },
+	command = "setlocal cc=",
+	group = general_group,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "gitcommit", "markdown" },
 	command = "setlocal spell",
 	group = spell_group,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "fugitive", "alpha", "tsplayground" },
+	pattern = { "fugitive", "alpha", "tsplayground", "NeogitStatus" },
 	command = "setlocal nofoldenable",
 	group = fold_group,
 })

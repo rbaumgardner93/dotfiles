@@ -68,14 +68,7 @@ local setup_normal_keymaps = function()
 			},
 			g = {
 				name = "+git",
-				b = { "<cmd>Git blame<CR>", "Git blame" },
-				d = { "<cmd>Git diff<CR>", "Git diff" },
-				h = { "<cmd>diffget //2<CR>", "Diff get left hand side" },
-				j = { "<cmd>Gitsigns next_hunk<CR>", "Next hunk" },
-				k = { "<cmd>Gitsigns prev_hunk<CR>", "Previous hunk" },
-				l = { "<cmd>diffget //3<CR>", "Diff get right hand side" },
-				p = { "<cmd>Gitsigns preview_hunk<CR>", "Preview hunk" },
-				s = { "<cmd>G<CR>", "Git status" },
+				s = { "<cmd>Neogit<CR>", "Git status" },
 				t = { "<cmd>lua _lazygit_toggle()<CR>", "Lazygit toggle" },
 			},
 			h = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon: navigate to first file" },
@@ -95,7 +88,7 @@ local setup_normal_keymaps = function()
 				m = { "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Harpoon: toggle quick menu" },
 			},
 			t = {
-				name = "+terminal",
+				name = "+toggle",
 				o = { ":terminal<CR>", "Open terminal" },
 			},
 			u = {

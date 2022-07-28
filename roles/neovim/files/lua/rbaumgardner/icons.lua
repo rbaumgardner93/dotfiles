@@ -19,6 +19,8 @@ return {
 	},
 	git = {
 		Add = " ",
+		ChevronRight = "",
+		ChevronDown = "",
 		Diff = " ",
 		Ignore = " ",
 		Mod = " ",

@@ -131,6 +131,13 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground")
 
 	-- git
+	use({
+      "TimUntersberger/neogit",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "sindrets/diffview.nvim"
+      }
+    })
 	use("lewis6991/gitsigns.nvim")
 
 	-- ThePrimeagen plugins
@@ -138,7 +145,7 @@ return packer.startup(function(use)
 
 	-- tpope plugins
 	use("tpope/vim-surround")
-	use("tpope/vim-fugitive")
+	use({ "tpope/vim-fugitive", disable = true })
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 
