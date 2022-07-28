@@ -141,6 +141,7 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
+	use("tpope/vim-repeat")
 
 	-- debugger plugins
 	use("mfussenegger/nvim-dap")
