@@ -10,7 +10,6 @@ vim.cmd([[
 local general_group = vim.api.nvim_create_augroup("_general", { clear = true })
 local spell_group = vim.api.nvim_create_augroup("_spell", { clear = true })
 local fold_group = vim.api.nvim_create_augroup("_folds", { clear = true })
-local harpoon_group = vim.api.nvim_create_augroup("_harpoon", { clear = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	command = "silent! lua vim.highlight.on_yank( { higroup = 'IncSearch', timeout = 500 })",
@@ -36,6 +35,12 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "fugitive", "alpha", "tsplayground", "netrw" },
+	command = "setlocal cc=",
+	group = general_group,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "gitcommit", "markdown" },
 	command = "setlocal spell",
 	group = spell_group,
@@ -45,12 +50,4 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "fugitive", "alpha", "tsplayground" },
 	command = "setlocal nofoldenable",
 	group = fold_group,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "harpoon",
-	callback = function()
-		nmap({ "<C-c>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>" })
-	end,
-	group = harpoon_group,
 })
