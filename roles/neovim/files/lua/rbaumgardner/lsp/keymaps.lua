@@ -58,12 +58,12 @@ local normal_keymaps = {
 				r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
 			},
 			K = { require("lspsaga.hover").render_hover_doc, "Hover definition" },
-			P = { peekFoldedLinesUnderCursor, "Peek lines uder cursor" },
 			["<leader>"] = {
 				c = {
 					a = { action.code_action, "Code action" },
 				},
 				D = { require("lspsaga.definition").preview_definition, "View type definition" },
+				K = { peekFoldedLinesUnderCursor, "Peek folded lines under cursor" },
 				r = {
 					n = { require("lspsaga.rename").lsp_rename, "Rename" },
 				},
