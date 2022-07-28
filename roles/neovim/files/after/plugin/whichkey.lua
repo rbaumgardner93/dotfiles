@@ -8,6 +8,8 @@ if not legendary_status_ok then
 	return
 end
 
+local gitsigns = require("gitsigns")
+
 local setup_normal_keymaps = function()
 	local opts = {
 		mode = "n", -- NORMAL mode
@@ -19,6 +21,12 @@ local setup_normal_keymaps = function()
 	}
 
 	local keymaps = {
+		["]"] = {
+			h = { "<cmd>Gitsigns next_hunk<CR>", "Gitsigns: next hunk" },
+		},
+		["["] = {
+			h = { "<cmd>Gitsigns prev_hunk<CR>", "Gitsigns: prev hunk" },
+		},
 		g = {
 			x = { ":!open <C-r><C-a><CR>", "Open url under cursor" },
 		},
@@ -68,15 +76,19 @@ local setup_normal_keymaps = function()
 			},
 			g = {
 				name = "+git",
-				b = { "<cmd>Git blame<CR>", "Git blame" },
-				d = { "<cmd>Git diff<CR>", "Git diff" },
-				h = { "<cmd>diffget //2<CR>", "Diff get left hand side" },
-				j = { "<cmd>Gitsigns next_hunk<CR>", "Next hunk" },
-				k = { "<cmd>Gitsigns prev_hunk<CR>", "Previous hunk" },
-				l = { "<cmd>diffget //3<CR>", "Diff get right hand side" },
-				p = { "<cmd>Gitsigns preview_hunk<CR>", "Preview hunk" },
-				s = { "<cmd>G<CR>", "Git status" },
+				a = { gitsigns.stage_buffer, "Gitsigns: stage buffer" },
+				b = { gitsigns.toggle_current_line_blame, "Gitsigns: toggle current line blame" },
+				B = { "<cmd>Git blame<CR>", "Fugitive: Git blame" },
+				d = { "<cmd>Git diff<CR>", "Fugitive: Git diff" },
+				h = { "<cmd>diffget //2<CR>", "Fugitive: Diff get left hand side" },
+				l = { "<cmd>diffget //3<CR>", "Fugitive: Diff get right hand side" },
+				p = { gitsigns.preview_hunk, "Gitsigns: Preview hunk" },
+				r = { "<cmd>Gitsigns reset_hunk<CR>", "Gitsigns: reset hunk" },
+				R = { gitsigns.reset_buffer, "Gitsigns: reset buffer" },
+				s = { "<cmd>G<CR>", "Fugitive: Git status" },
+				S = { "<cmd>Gitsigns stage_hunk<CR>", "Gitsigns: stage hunk" },
 				t = { "<cmd>lua _lazygit_toggle()<CR>", "Lazygit toggle" },
+				u = { gitsigns.undo_stage_hunk, "Gitsigns: undo stage hunk" },
 			},
 			h = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon: navigate to first file" },
 			j = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "Harpoon: navigate to second file" },
@@ -127,6 +139,11 @@ local setup_visual_keymaps = function()
 		[">"] = { ">gv", "Indent" },
 		["<"] = { "<gv", "Dedent" },
 		["<leader>"] = {
+			g = {
+				name = "+git",
+				r = { "<cmd>Gitsigns reset_hunk<CR>", "Gitsigns: reset hunk" },
+				s = { "<cmd>Gitsigns stage_hunk<CR>", "Gitsigns: stage hunk" },
+			},
 			p = { "_dP", "Paste below" },
 			y = { '"+y', "Yank to system clipboard" },
 		},
