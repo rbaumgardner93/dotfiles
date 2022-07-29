@@ -67,10 +67,10 @@ return packer.startup(function(use)
 	})
 	use("b0o/schemastore.nvim") -- simple access to json-language-server schema
 	use({
-      "Olical/conjure",
-      ft = { "scheme" },
-      opt = true
-    }) -- scheme evaluator
+		"Olical/conjure",
+		ft = { "scheme" },
+		opt = true,
+	}) -- scheme evaluator
 
 	-- colorschemes
 	use("morhetz/gruvbox")
@@ -94,8 +94,9 @@ return packer.startup(function(use)
 
 	--  LSP plugins
 	use("neovim/nvim-lspconfig")
+	use("williamboman/mason.nvim")
 	use({
-		"williamboman/nvim-lsp-installer",
+		"williamboman/mason-lspconfig.nvim",
 		requires = {
 			"neovim/nvim-lspconfig",
 		},
@@ -147,7 +148,6 @@ return packer.startup(function(use)
 
 	-- debugger plugins
 	use("mfussenegger/nvim-dap")
-	use("Pocco81/DAPInstall.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

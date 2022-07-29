@@ -65,7 +65,7 @@ function M.setup()
 	require("rbaumgardner.lsp.null-ls").setup(opts)
 
 	-- lsp-installer
-	require("rbaumgardner.lsp.installer").setup(opts)
+	require("rbaumgardner.lsp.mason").setup(opts)
 
 	require("ufo").setup()
 end
