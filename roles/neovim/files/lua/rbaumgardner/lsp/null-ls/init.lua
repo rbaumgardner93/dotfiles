@@ -19,7 +19,7 @@ end
 
 local sources = {
 	-- formatting
-	formatting.fixjson, -- npm install -g fixjson
+	formatting.fixjson, -- :Mason install fixjson
 	formatting.stylua, -- :Mason install stylua
 
 	with_diagnostics_code(diagnostics.shellcheck), -- :Mason install shellcheck
