@@ -3,7 +3,7 @@ local M = {}
 local null_ls_utils = require("rbaumgardner.lsp.null-ls.utils")
 local null_ls_sources = require("null-ls.sources")
 
-local method = require("null-ls.methods").FORMATTING
+local method = require("null-ls").methods.FORMATTING
 
 M.autoformat = true
 
@@ -56,9 +56,9 @@ M.setup = function(client, bufnr)
 		enable = not (client.name == "null-ls")
 	end
 
-	client.server_capabilities.document_formatting = enable
-	client.server_capabilities.document_range_formatting = enable
-	if client.server_capabilities.document_formatting then
+	client.server_capabilities.documentFormattingProvider = enable
+	client.server_capabilities.documentRangeFormattingProvider = enable
+	if client.server_capabilities.documentFormattingProvider then
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,

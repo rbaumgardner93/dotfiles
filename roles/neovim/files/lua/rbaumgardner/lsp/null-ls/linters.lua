@@ -3,7 +3,7 @@ local M = {}
 local null_ls_utils = require("rbaumgardner.lsp.null-ls.utils")
 local null_ls_sources = require("null-ls.sources")
 
-local method = require("null-ls.methods").DIAGNOSTICS
+local method = require("null-ls").methods.DIAGNOSTICS
 
 M.list_registered = function(filetype)
 	local registered_providers = null_ls_utils.list_registered_providers_name(filetype)
