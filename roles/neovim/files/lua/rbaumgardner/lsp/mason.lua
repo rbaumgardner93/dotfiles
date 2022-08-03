@@ -9,6 +9,7 @@ M.setup = function(options)
 		"cssls",
 		"eslint",
 		"dockerls",
+		"gopls",
 		"html",
 		"jsonls",
 		"sumneko_lua",
