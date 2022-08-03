@@ -1,6 +1,0 @@
----
-- name: Install
-  community.general.homebrew:
-    name:
-      - diff-so-fancy
-    state: latest

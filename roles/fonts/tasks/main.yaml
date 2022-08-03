@@ -1,8 +1,0 @@
-- name: Install fonts from Homebrew Cask
-  community.general.homebrew_cask:
-    state: present
-    greedy: yes
-    name:
-      - font-jetbrains-mono
-      - font-hack-nerd-font
-      - font-fira-code-nerd-font

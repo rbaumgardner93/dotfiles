@@ -1,0 +1,51 @@
+---
+- name: Install packages from Homebrew
+  community.general.homebrew:
+    state: present
+    name:
+      - bat
+      - diff-so-fancy
+      - exa
+      - fd
+      - fnm
+      - fzf
+      - gh
+      - git-delta
+      - htop
+      - jq
+      - pandoc
+      - ripgrep
+      - stow
+      - tmux
+      - tree
+      - tree-sitter
+
+- name: Install neovim nightly from Homebrew
+  community.general.homebrew:
+    state: head
+    name:
+      - luajit
+      - neovim
+
+- name: Install packages from Homebrew Cask
+  ignore_errors: yes
+  community.general.homebrew_cask:
+    state: present
+    accept_external_apps: yes
+    greedy: yes
+    name:
+      - alfred
+      - brave-browser
+      - figma
+      - font-jetbrains-mono
+      - font-hack-nerd-font
+      - font-fira-code-nerd-font
+      - kap
+      - kitty
+      - runjs
+
+- name: Install lazygit from Homebrew Tap
+  community.general.homebrew_tap:
+    state: present
+    name: jesseduffield/lazygit
+    url: 'https://github.com/jesseduffield/lazygit'

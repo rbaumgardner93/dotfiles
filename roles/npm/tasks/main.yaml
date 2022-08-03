@@ -1,36 +1,11 @@
 ---
-- name: Install "trash-cli" globally
+- name: Install npm packages globally
   community.general.npm:
-    name: trash-cli
+    state: present
     global: yes
-    state: latest
-
-- name: Install "typescript" globally
-  community.general.npm:
-    name: typecript
-    global: yes
-    state: latest
-
-- name: Install "yarn" globally
-  community.general.npm:
-    name: yarn
-    global: yes
-    state: latest
-
-- name: Install "@compodoc/live-server" globally
-  community.general.npm:
-    name: "@compodoc/live-server"
-    global: yes
-    state: latest
-
-- name: Install "vscode-langservers-extracted" globally
-  community.general.npm:
-    name: vscode-langservers-extracted
-    global: yes
-    state: latest
-
-- name: Install "commitizen" globally
-  community.general.npm:
-    name: commitizen
-    global: yes
-    state: latest
+    name:
+      - commitizen
+      - "@compodoc/live-server"
+      - trash-cli
+      - typescript
+      - yarn

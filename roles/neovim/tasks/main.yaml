@@ -1,20 +1,4 @@
 ---
-- name: Install
-  community.general.homebrew:
-    name:
-      - luajit
-      - neovim
-    state: head
-
-- name: Dependencies
-  community.general.homebrew:
-    name:
-      - fd
-      - fzf
-      - ripgrep
-      - tree-sitter
-    state: latest
-
 - name: Get stats of the neovim directory
   ansible.builtin.stat:
     path:  "{{ ansible_user_dir }}/.config/nvim"
