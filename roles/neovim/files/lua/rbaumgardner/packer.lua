@@ -1,24 +1,33 @@
-local fn = vim.fn
+local download_packer = function()
+	if vim.fn.input("Download packer.nvim? (y for yes)" ~= "y") then
+		return
+	end
 
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	print("Installing packer close and reopen Neovim...")
-	vim.cmd([[packadd packer.nvim]])
+	local fn = vim.fn
+
+	-- Automatically install packer
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		PACKER_BOOTSTRAP = fn.system({
+			"git",
+			"clone",
+			"--depth",
+			"1",
+			"https://github.com/wbthomason/packer.nvim",
+			install_path,
+		})
+
+		print(install_path)
+		print("Installing packer close and reopen Neovim...")
+		vim.cmd([[packadd packer.nvim]])
+		vim.cmd([[qa]])
+	end
 end
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+	download_packer()
 end
 
 -- Have packer use a popup window
