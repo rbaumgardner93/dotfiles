@@ -88,7 +88,6 @@ local setup_normal_keymaps = function()
 				R = { gitsigns.reset_buffer, "Gitsigns: reset buffer" },
 				s = { "<cmd>G<CR>", "Fugitive: Git status" },
 				S = { "<cmd>Gitsigns stage_hunk<CR>", "Gitsigns: stage hunk" },
-				t = { "<cmd>lua _lazygit_toggle()<CR>", "Lazygit toggle" },
 				u = { gitsigns.undo_stage_hunk, "Gitsigns: undo stage hunk" },
 			},
 			h = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon: navigate to first file" },
@@ -109,7 +108,8 @@ local setup_normal_keymaps = function()
 			},
 			t = {
 				name = "+terminal",
-				o = { ":terminal<CR>", "Open terminal" },
+				t = { ":term<CR>", "Open terminal" },
+				g = { "<cmd>edit term://lazygit<CR>", "Lazygit toggle" },
 			},
 			u = {
 				name = "+undotree",

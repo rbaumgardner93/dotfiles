@@ -10,6 +10,7 @@ vim.cmd([[
 local general_group = vim.api.nvim_create_augroup("_general", { clear = true })
 local spell_group = vim.api.nvim_create_augroup("_spell", { clear = true })
 local fold_group = vim.api.nvim_create_augroup("_folds", { clear = true })
+local terminal_group = vim.api.nvim_create_augroup("_terminal", { clear = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	command = "silent! lua vim.highlight.on_yank( { higroup = 'IncSearch', timeout = 500 })",
@@ -50,4 +51,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "fugitive", "alpha", "tsplayground", "netrw" },
 	command = "setlocal nofoldenable",
 	group = fold_group,
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	command = "startinsert",
+	group = terminal_group,
 })

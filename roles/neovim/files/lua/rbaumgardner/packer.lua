@@ -64,7 +64,6 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("davidgranstrom/nvim-markdown-preview")
 	use("j-hui/fidget.nvim")
-	use("akinsho/toggleterm.nvim")
 	use({
 		"kevinhwang91/nvim-ufo",
 		requires = "kevinhwang91/promise-async",
