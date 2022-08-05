@@ -15,6 +15,7 @@
       - jq
       - pandoc
       - ripgrep
+      - starship
       - stow
       - tmux
       - tree
@@ -48,4 +49,4 @@
   community.general.homebrew_tap:
     state: present
     name: jesseduffield/lazygit
-    url: 'https://github.com/jesseduffield/lazygit'
+    url: "https://github.com/jesseduffield/lazygit"

@@ -16,12 +16,12 @@
 
 - name: Get stats of the .zshrc file
   ansible.builtin.stat:
-    path:  "{{ ansible_user_dir }}/.zshrc"
+    path: "{{ ansible_user_dir }}/.zshrc"
   register: zshrc_sym
 
 - name: Get stats of the zshrc function file
   ansible.builtin.stat:
-    path:  "{{ ansible_user_dir }}/.oh-my-zsh/custom/function.zsh"
+    path: "{{ ansible_user_dir }}/.oh-my-zsh/custom/function.zsh"
   register: function_sym
 
 - name: Print a debug message
@@ -50,15 +50,6 @@
     force: true
   when: function_sym.stat.islnk is not defined
 
-- name: Clone pure prompt
-  ansible.builtin.git:
-    clone: yes
-    depth: 1
-    repo: https://github.com/sindresorhus/pure
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/pure"
-    single_branch: yes
-    update: yes
-
 - name: Clone fast-syntax-highlighting
   ansible.builtin.git:
     clone: yes
@@ -81,7 +72,7 @@
   ansible.builtin.git:
     clone: yes
     depth: 1
-    repo:  https://github.com/zsh-users/zsh-completions
+    repo: https://github.com/zsh-users/zsh-completions
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-completions"
     single_branch: yes
     update: yes

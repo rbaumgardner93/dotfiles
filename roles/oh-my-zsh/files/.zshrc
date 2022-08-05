@@ -3,8 +3,6 @@
 
 export PATH="$HOME/dotfiles/bin:$PATH"
 
-fpath+=$HOME/.oh-my-zsh/custom/themes/pure
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -86,10 +84,6 @@ plugins=(
 # User configuration
 source $ZSH/oh-my-zsh.sh
 
-# Use Pure Theme
-autoload -U promptinit; promptinit
-prompt pure
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -125,10 +119,12 @@ alias zshrc="vim ~/.zshrc"
 alias szshrc="exec zsh"
 alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
 
-eval "$(fnm env --use-on-cd)"
-
 if [ -f $HOME/.zsh_private ]; then
     source ~/.zsh_private
 else
     print "404: ~/.zsh_private not found."
 fi
+
+eval "$(fnm env --use-on-cd)"
+
+eval "$(starship init zsh)"
