@@ -7,7 +7,7 @@ end
 
 M.setup = function(client)
 	ts_utils.setup({
-		eslint_bin = "eslint_d",
+		eslint_bin = "eslint",
 		eslint_enable_diagnostics = true,
 		eslint_enable_disable_comments = true,
 	})

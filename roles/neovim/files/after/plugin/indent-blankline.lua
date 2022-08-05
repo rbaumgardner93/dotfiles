@@ -3,11 +3,6 @@ if not status_ok then
 	return
 end
 
-vim.cmd([[
-    highlight IndentBlanklineContextChar guifg=#9d7cd8 gui=nocombine
-    highlight IndentBlanklineIndent guifg=#414868 gui=nocombine
-]])
-
 indent_blankline.setup({
 	enabled = true,
 	char = "▏",
@@ -61,3 +56,8 @@ indent_blankline.setup({
 	disable_warning_message = false,
 	debug = false,
 })
+
+vim.cmd([[
+    highlight IndentBlanklineContextChar guifg=#9d7cd8 gui=nocombine
+    highlight IndentBlanklineIndent guifg=#414868 gui=nocombine
+]])

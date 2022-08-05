@@ -62,7 +62,11 @@ return packer.startup(function(use)
 	use("godlygeek/tabular")
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
-	use("davidgranstrom/nvim-markdown-preview")
+	use({
+		"davidgranstrom/nvim-markdown-preview",
+		opt = true,
+		ft = { "markdown" },
+	})
 	use("j-hui/fidget.nvim")
 	use({
 		"kevinhwang91/nvim-ufo",
@@ -81,7 +85,6 @@ return packer.startup(function(use)
 	}) -- scheme evaluator
 
 	-- colorschemes
-	use("folke/lsp-colors.nvim")
 	use("folke/tokyonight.nvim")
 	use("norcalli/nvim-colorizer.lua")
 
@@ -111,7 +114,6 @@ return packer.startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 		requires = { "nvim-lua/plenary.nvim" },
 	})
-	use("creativenull/diagnosticls-configs-nvim")
 	use("folke/lua-dev.nvim")
 	use({
 		"SmiteshP/nvim-navic",
@@ -125,8 +127,6 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-github.nvim" },
-			{ "nvim-telescope/telescope-packer.nvim" },
 		},
 	})
 	use("nvim-telescope/telescope-fzy-native.nvim")
@@ -151,9 +151,6 @@ return packer.startup(function(use)
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 	use("tpope/vim-repeat")
-
-	-- debugger plugins
-	use("mfussenegger/nvim-dap")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

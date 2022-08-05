@@ -16,6 +16,4 @@ end
 
 vim.cmd([[
 	highlight ColorColumn guibg=#292e42
-	highlight LineNr guifg=#394b70
-	highlight FidgetTitle ctermfg=110 guifg=#7aa2f7
 ]])

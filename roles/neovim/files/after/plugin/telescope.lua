@@ -4,17 +4,8 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
 local icons = require("rbaumgardner.icons")
-
-local set_prompt_to_entry_value = function(prompt_bufnr)
-	local entry = action_state.get_selected_entry()
-	if not entry or not type(entry) == "table" then
-		return
-	end
-
-	action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
-end
+local previewers = require("telescope.previewers")
 
 telescope.setup({
 	defaults = {
@@ -42,15 +33,9 @@ telescope.setup({
 		scroll_strategy = "cycle",
 		color_devicons = true,
 
-		mappings = {
-			i = {
-				["<C-y>"] = set_prompt_to_entry_value,
-			},
-		},
-
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+		file_previewer = previewers.vim_buffer_cat.new,
+		grep_previewer = previewers.vim_buffer_vimgrep.new,
+		qflist_previewer = previewers.vim_buffer_qflist.new,
 	},
 	buffers = {
 		show_all_buffers = true,
@@ -72,8 +57,3 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
-telescope.load_extension("packer")
-
-if vim.fn.executable("gh") == 1 then
-	telescope.load_extension("gh")
-end
