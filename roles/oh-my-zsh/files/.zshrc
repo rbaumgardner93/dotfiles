@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 fpath+=$HOME/.oh-my-zsh/custom/themes/pure
@@ -75,12 +76,8 @@ ZSH_DISABLE_COMPFIX=true
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    brew
     colored-man-pages
 	F-Sy-H
-    git
-    node
-    npm
     zsh-z
 	zsh-completions
     zsh-autosuggestions
@@ -125,11 +122,10 @@ alias mv="mv -iv"
 alias tmuxrc="vim ~/.tmux.conf"
 alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"
-alias szshrc="source ~/.zshrc"
+alias szshrc="exec zsh"
 alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
-alias lg="lazygit"
 
-eval "$(fnm env)"
+eval "$(fnm env --use-on-cd)"
 
 if [ -f $HOME/.zsh_private ]; then
     source ~/.zsh_private
