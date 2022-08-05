@@ -81,9 +81,7 @@ return packer.startup(function(use)
 	}) -- scheme evaluator
 
 	-- colorschemes
-	use("morhetz/gruvbox")
 	use("folke/lsp-colors.nvim")
-	use("sainnhe/sonokai")
 	use("folke/tokyonight.nvim")
 	use("norcalli/nvim-colorizer.lua")
 
