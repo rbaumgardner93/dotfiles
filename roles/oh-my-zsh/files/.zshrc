@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/go/bin:$HOME/dotfiles/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -119,12 +119,12 @@ alias zshrc="vim ~/.zshrc"
 alias szshrc="exec zsh"
 alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
 
+eval "$(fnm env --use-on-cd)"
+
 if [ -f $HOME/.zsh_private ]; then
     source ~/.zsh_private
 else
     print "404: ~/.zsh_private not found."
 fi
-
-eval "$(fnm env --use-on-cd)"
 
 eval "$(starship init zsh)"
