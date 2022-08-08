@@ -59,7 +59,11 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use("goolord/alpha-nvim")
-	use("godlygeek/tabular")
+	use({
+		"godlygeek/tabular",
+		opt = true,
+		cmd = { "Tabularize" },
+	})
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use({
@@ -147,7 +151,11 @@ return packer.startup(function(use)
 
 	-- tpope plugins
 	use("tpope/vim-surround")
-	use("tpope/vim-fugitive")
+	use({
+		"tpope/vim-fugitive",
+		opt = true,
+		cmd = { "G" },
+	})
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 	use("tpope/vim-repeat")
