@@ -5,7 +5,6 @@ end
 
 local actions = require("telescope.actions")
 local icons = require("rbaumgardner.icons")
-local previewers = require("telescope.previewers")
 
 telescope.setup({
 	defaults = {
@@ -54,3 +53,4 @@ telescope.setup({
 
 telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
+

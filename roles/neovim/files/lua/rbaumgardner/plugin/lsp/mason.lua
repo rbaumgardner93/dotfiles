@@ -33,7 +33,7 @@ M.setup = function(options)
 	})
 
 	for _, server in ipairs(servers) do
-		require("rbaumgardner.lsp.servers." .. server).setup(options)
+		require("rbaumgardner.plugin.lsp.servers." .. server).setup(options)
 	end
 end
 

@@ -1,5 +1,5 @@
 require("rbaumgardner.options")
 require("rbaumgardner.packer")
 require("rbaumgardner.autocmd")
+require("impatient")
 require("rbaumgardner.utils.globals")
-require("rbaumgardner.lsp").setup() -- enable LSP

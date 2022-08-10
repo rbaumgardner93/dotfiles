@@ -25,17 +25,17 @@ local function lsp_client(msg)
 	end
 
 	-- add formatter
-	local formatters = require("rbaumgardner.lsp.null-ls.formatters")
+	local formatters = require("rbaumgardner.plugin.lsp.null-ls.formatters")
 	local supported_formatters = formatters.list_registered(buf_ft)
 	vim.list_extend(buf_client_names, supported_formatters)
 
 	-- add linter
-	local linters = require("rbaumgardner.lsp.null-ls.linters")
+	local linters = require("rbaumgardner.plugin.lsp.null-ls.linters")
 	local supported_linters = linters.list_registered(buf_ft)
 	vim.list_extend(buf_client_names, supported_linters)
 
 	-- add hover
-	local hovers = require("rbaumgardner.lsp.null-ls.hovers")
+	local hovers = require("rbaumgardner.plugin.lsp.null-ls.hovers")
 	local supported_hovers = hovers.list_registered(buf_ft)
 	vim.list_extend(buf_client_names, supported_hovers)
 

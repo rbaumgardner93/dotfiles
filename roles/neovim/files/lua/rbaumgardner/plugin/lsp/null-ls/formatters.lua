@@ -1,6 +1,6 @@
 local M = {}
 
-local null_ls_utils = require("rbaumgardner.lsp.null-ls.utils")
+local null_ls_utils = require("rbaumgardner.plugin.lsp.null-ls.utils")
 local null_ls_sources = require("null-ls.sources")
 
 local method = require("null-ls").methods.FORMATTING

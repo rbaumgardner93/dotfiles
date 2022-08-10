@@ -8,8 +8,6 @@ if not legendary_status_ok then
 	return
 end
 
-local gitsigns = require("gitsigns")
-
 local setup_normal_keymaps = function()
 	local opts = {
 		mode = "n", -- NORMAL mode
@@ -50,7 +48,10 @@ local setup_normal_keymaps = function()
 			["<CR>"] = { ":luafile %<CR>", "Fast sourcing" },
 			a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon: add file" },
 			c = {
-				b = { "<cmd>lua require('rbaumgardner.telescope').curbuf()<cr>", "Find in current buffer" },
+				b = {
+					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').curbuf()<cr>",
+					"Find in current buffer",
+				},
 			},
 			f = {
 				name = "+navigating",
@@ -60,13 +61,13 @@ local setup_normal_keymaps = function()
 				},
 				c = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find open buffers" },
 				f = { "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", "Find Files" },
-				g = { "<cmd>lua require('rbaumgardner.telescope').live_grep()<cr>", "Grep Word" },
+				g = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').live_grep()<cr>", "Grep Word" },
 				h = { "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", "Find Help" },
-				n = { "<cmd>lua require('rbaumgardner.telescope').edit_neovim()<cr>", "Find neovim" },
+				n = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').edit_neovim()<cr>", "Find neovim" },
 				p = { "<cmd>Telescope packer<cr>", "Find Plugins" },
 				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
 				s = {
-					"<cmd>lua require('rbaumgardner.telescope').grep_string()<cr>",
+					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').grep_string()<cr>",
 					"Find string under cursor",
 				},
 				w = {
@@ -76,19 +77,22 @@ local setup_normal_keymaps = function()
 			},
 			g = {
 				name = "+git",
-				a = { gitsigns.stage_buffer, "Gitsigns: stage buffer" },
-				b = { gitsigns.toggle_current_line_blame, "Gitsigns: toggle current line blame" },
+				a = { "<cmd>lua require('gitsigns').stage_buffer()<cr>", "Gitsigns: stage buffer" },
+				b = {
+					"<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>",
+					"Gitsigns: toggle current line blame",
+				},
 				B = { "<cmd>Git blame<CR>", "Fugitive: Git blame" },
 				d = { "<cmd>Git diff<CR>", "Fugitive: Git diff" },
 				h = { "<cmd>diffget //2<CR>", "Fugitive: Diff get left hand side" },
 				l = { "<cmd>diffget //3<CR>", "Fugitive: Diff get right hand side" },
-				p = { gitsigns.preview_hunk, "Gitsigns: Preview hunk" },
+				p = { "<cmd>lua require('gitsigns).prev_hunk()<CR>", "Gitsigns: Preview hunk" },
 				P = { "<cmd>Git push<CR>", "Fugitive: Git push" },
 				r = { "<cmd>Gitsigns reset_hunk<CR>", "Gitsigns: reset hunk" },
-				R = { gitsigns.reset_buffer, "Gitsigns: reset buffer" },
+				R = { "<cmd>lua require('gitsigns').reset_buffer()<CR>", "Gitsigns: reset buffer" },
 				s = { "<cmd>G<CR>", "Fugitive: Git status" },
 				S = { "<cmd>Gitsigns stage_hunk<CR>", "Gitsigns: stage hunk" },
-				u = { gitsigns.undo_stage_hunk, "Gitsigns: undo stage hunk" },
+				u = { "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", "Gitsigns: undo stage hunk" },
 			},
 			h = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon: navigate to first file" },
 			j = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "Harpoon: navigate to second file" },

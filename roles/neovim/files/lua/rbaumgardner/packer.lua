@@ -37,128 +37,283 @@ packer.init({
 			return require("packer.util").float({ border = "rounded" })
 		end,
 	},
+	profile = {
+		enable = true,
+		threshold = 0,
+	},
 })
 
 -- Install your plugins here
 return packer.startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+	-- Performance
+	use("lewis6991/impatient.nvim")
+
+	-- Faster filetype.vim
+	use("nathom/filetype.nvim")
+
+	use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- Useful lua functions used ny lots of plugins
+
 	use({
 		"mbbill/undotree",
-		opt = true,
 		cmd = { "UndotreeToggle" },
 	})
-	use("windwp/nvim-autopairs") -- autopairs integrates with both cmp and treesitter
-	use("numToStr/Comment.nvim") -- easily comment stuff
-	use("echasnovski/mini.nvim")
+
+	-- autopairs integrates with both cmp and treesitter
+	use({
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		wants = "nvim-treesitter",
+		module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+		config = function()
+			require("rbaumgardner.plugin.nvim-autopairs")
+		end,
+	})
+
+	-- easily comment stuff
+	use({
+		"numToStr/Comment.nvim",
+		keys = { "gc", "gcc", "gbc" },
+		config = function()
+			require("rbaumgardner.plugin.comment")
+		end,
+	})
+
+	use({
+		"echasnovski/mini.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("mini.trailspace").setup({ only_in_normal_buffers = true })
+		end,
+	})
+
 	use({
 		"nvim-lualine/lualine.nvim",
+		opt = true,
+		event = "BufReadPre",
+		after = "nvim-treesitter",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = function()
+			require("rbaumgardner.plugin.lualine")
+		end,
 	})
-	use("goolord/alpha-nvim")
+
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("rbaumgardner.plugin.alpha")
+		end,
+	})
+
 	use({
 		"godlygeek/tabular",
-		opt = true,
 		cmd = { "Tabularize" },
 	})
-	use("lewis6991/impatient.nvim")
-	use("lukas-reineke/indent-blankline.nvim")
+
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("rbaumgardner.plugin.indent-blankline")
+		end,
+	})
+
 	use({
 		"davidgranstrom/nvim-markdown-preview",
-		opt = true,
 		ft = { "markdown" },
 	})
-	use("j-hui/fidget.nvim")
+
 	use({
-		"kevinhwang91/nvim-ufo",
-		requires = "kevinhwang91/promise-async",
+		"folke/which-key.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rbaumgardner.plugin.whichkey")
+		end,
 	})
-	use("folke/which-key.nvim")
+
 	use({
 		"mrjones2014/legendary.nvim",
+		opt = true,
+		keys = { "<C-p>" },
+		module = { "legendary" },
+		cmd = { "Legendary" },
+		config = function()
+			require("legendary").setup({ auto_register_which_key = false })
+		end,
 		requires = { "stevearc/dressing.nvim" },
 	})
-	use("b0o/schemastore.nvim") -- simple access to json-language-server schema
+
+	-- simple access to json-language-server schema
+	use({
+		"b0o/schemastore.nvim",
+		module = "schemastore",
+	})
+
+	-- scheme evaluator
 	use({
 		"Olical/conjure",
 		ft = { "scheme" },
-		opt = true,
-	}) -- scheme evaluator
+	})
 
 	-- colorschemes
 	use("folke/tokyonight.nvim")
-	use("norcalli/nvim-colorizer.lua")
+
+	use({
+		"norcalli/nvim-colorizer.lua",
+		cmd = "ColorizerToggle",
+		config = function()
+			require("colorizer").setup()
+		end,
+	})
 
 	--completion plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- Buffer completions
-	use("hrsh7th/cmp-path") -- Path completions
-	use("hrsh7th/cmp-nvim-lsp") -- LSP completions
-	use("hrsh7th/cmp-cmdline") -- Cmdlin completions
-	use("hrsh7th/cmp-nvim-lua")
-	use("saadparwaiz1/cmp_luasnip") -- Snippet completions
-
-	-- snippet plugins
-	use("L3MON4D3/LuaSnip")
-	use("rafamadriz/friendly-snippets")
-
-	--  LSP plugins
-	use("neovim/nvim-lspconfig")
-	use("williamboman/mason.nvim")
 	use({
-		"williamboman/mason-lspconfig.nvim",
+		"hrsh7th/nvim-cmp",
+		opt = true,
+		event = "InsertEnter",
+		config = function()
+			require("rbaumgardner.plugin.nvim-cmp")
+		end,
 		requires = {
-			"neovim/nvim-lspconfig",
+			"hrsh7th/cmp-buffer", -- Buffer completions
+			"hrsh7th/cmp-path", -- Path completions
+			"hrsh7th/cmp-nvim-lsp", -- LSP completions
+			"hrsh7th/cmp-cmdline", -- Cmdline completions
+			"hrsh7th/cmp-nvim-lua",
+			"saadparwaiz1/cmp_luasnip", -- Snippet completions
+			-- snippet plugins
+			{
+				"L3MON4D3/LuaSnip",
+				wants = { "friendly-snippets" },
+			},
+			"rafamadriz/friendly-snippets",
 		},
 	})
+
+	--  LSP plugins
 	use({
-		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-		requires = { "nvim-lua/plenary.nvim" },
+		"neovim/nvim-lspconfig",
+		opt = true,
+		event = { "BufRead", "BufWinEnter", "BufNewFile" },
+		wants = {
+			"mason.nvim",
+			"mason-lspconfig.nvim",
+			"null-ls.nvim",
+			"nvim-navic",
+			"nvim-ufo",
+			"fidget.nvim",
+			"lua-dev.nvim",
+			"typescript.nvim",
+		},
+		config = function()
+			require("rbaumgardner.plugin.lsp").setup()
+		end,
+		requires = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+			"SmiteshP/nvim-navic",
+			{ "kevinhwang91/nvim-ufo", requires = { "kevinhwang91/promise-async" } },
+			{
+				"j-hui/fidget.nvim",
+				config = function()
+					require("rbaumgardner.plugin.fidget")
+				end,
+			},
+			"folke/lua-dev.nvim",
+			"jose-elias-alvarez/typescript.nvim",
+		},
 	})
-	use("folke/lua-dev.nvim")
+
 	use({
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig",
+		"glepnir/lspsaga.nvim",
+		module = { "lspsaga.codeaction", "lspsaga.diagnostic" },
+		config = function()
+			require("lspsaga").init_lsp_saga()
+		end,
 	})
-	use("jose-elias-alvarez/typescript.nvim")
-	use("glepnir/lspsaga.nvim")
 
 	-- telescope requirements
 	use({
 		"nvim-telescope/telescope.nvim",
+		opt = true,
+		cmd = { "Telescope" },
+		module = { "telescope", "telescope.builtin" },
+		keys = { "<leader>f" },
+		wants = {
+			"plenary.nvim",
+			"popup.nvim",
+			"telescope-fzy-native.nvim",
+			"telescope-file-browser.nvim",
+		},
+		config = function()
+			require("rbaumgardner.plugin.telescope")
+		end,
 		requires = {
-			{ "nvim-lua/plenary.nvim" },
+			"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-fzy-native.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
 		},
 	})
-	use("nvim-telescope/telescope-fzy-native.nvim")
-	use("nvim-telescope/telescope-file-browser.nvim")
 
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufReadPre",
 		run = ":TSUpdate", -- We recommend updating the parsers on update
+		config = function()
+			require("rbaumgardner.plugin.treesitter")
+		end,
+		requires = {
+			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
+			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
+		},
 	})
-	use("nvim-treesitter/playground")
 
 	-- git
-	use("lewis6991/gitsigns.nvim")
+	use({
+		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
+		wants = "plenary.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("rbaumgardner.plugin.gitsigns")
+		end,
+	})
 
 	-- ThePrimeagen plugins
-	use("ThePrimeagen/harpoon")
+	use({
+		"ThePrimeagen/harpoon",
+		keys = { [[ <C-e> ]] },
+		module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.term" },
+		wants = { "telescope.nvim" },
+	})
 
 	-- tpope plugins
-	use("tpope/vim-surround")
+	use("tpope/vim-vinegar")
+
+	use({
+		"tpope/vim-surround",
+		event = "InsertEnter",
+	})
+
 	use({
 		"tpope/vim-fugitive",
-		opt = true,
 		cmd = { "G" },
 	})
-	use("tpope/vim-unimpaired")
-	use("tpope/vim-vinegar")
-	use("tpope/vim-repeat")
+
+	use({
+		"tpope/vim-unimpaired",
+		event = "BufReadPre",
+	})
+
+	use({
+		"tpope/vim-repeat",
+		event = "InsertEnter",
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
