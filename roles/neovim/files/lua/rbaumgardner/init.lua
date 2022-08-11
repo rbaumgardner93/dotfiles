@@ -1,5 +1,4 @@
 require("rbaumgardner.options")
-require("rbaumgardner.packer")
 require("rbaumgardner.autocmd")
-require("impatient")
 require("rbaumgardner.utils.globals")
+require("rbaumgardner.packer").setup()
