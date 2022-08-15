@@ -5,32 +5,27 @@ end
 
 local actions = require("telescope.actions")
 local icons = require("rbaumgardner.icons")
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({
 	defaults = {
 		prompt_prefix = icons.ui.Telescope,
 		selection_caret = icons.ui.ArrowRight,
-		path_display = function(_, path)
-			local tail = require("telescope.utils").path_tail(path)
-			return string.format("%s (%s)", tail, path)
-		end,
 		file_ignore_patterns = { "yarn.lock" },
 		winblend = 0,
 		layout_strategy = "horizontal",
 		layout_config = {
-			width = 0.95,
-			height = 0.85,
 			prompt_position = "top",
-		},
-		vertical = {
-			width = 0.9,
-			height = 0.95,
-			preview_height = 0.5,
 		},
 		selection_strategy = "reset",
 		sorting_strategy = "descending",
 		scroll_strategy = "cycle",
 		color_devicons = true,
+		mappings = {
+			n = {
+				["q"] = actions.close,
+			},
+		},
 	},
 	buffers = {
 		show_all_buffers = true,
@@ -47,10 +42,21 @@ telescope.setup({
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		},
+		file_browser = {
+			theme = "dropdown",
+			mappings = {
+				["n"] = {
+					["%"] = fb_actions.create,
+					["-"] = fb_actions.goto_parent_dir,
+					["/"] = function()
+						vim.cmd("startinsert")
+					end,
+				},
+			},
+		},
 	},
 	pickers = {},
 })
 
 telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
-

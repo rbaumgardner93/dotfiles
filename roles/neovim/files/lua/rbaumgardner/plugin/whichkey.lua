@@ -56,22 +56,21 @@ local setup_normal_keymaps = function()
 			f = {
 				name = "+navigating",
 				b = {
-					"<cmd>lua require('telescope').extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h'), hidden = true } )<cr>",
+					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').file_browser()<cr>",
 					"File Browser",
 				},
 				c = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find open buffers" },
-				f = { "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", "Find Files" },
+				f = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').find_files()<cr>", "Find Files" },
 				g = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').live_grep()<cr>", "Grep Word" },
 				h = { "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", "Find Help" },
 				n = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').edit_neovim()<cr>", "Find neovim" },
-				p = { "<cmd>Telescope packer<cr>", "Find Plugins" },
 				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
 				s = {
 					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').grep_string()<cr>",
 					"Find string under cursor",
 				},
 				w = {
-					"<cmd>lua require('telescope.builtin').grep_string( { path_display = { 'shorten' }, search = vim.fn.input('Grep for > ') } )<cr>",
+					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').grep_string()<cr>",
 					"Find word",
 				},
 			},

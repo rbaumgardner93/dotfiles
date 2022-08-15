@@ -1,7 +1,13 @@
 local themes = require("telescope.themes")
 local sorter = require("telescope.sorters")
+local telescope = require("telescope")
 
 local M = {}
+
+local format_path = function(_, path)
+	local tail = require("telescope.utils").path_tail(path)
+	return string.format("%s (%s)", tail, path)
+end
 
 -- from TJ https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/telescope/init.lua
 -- [[
@@ -10,9 +16,9 @@ function M.edit_neovim()
 
 	opts_with_preview = {
 		prompt_title = "~ dotfiles ~",
-		shorten_path = false,
 		cwd = "~/.config/nvim",
-
+		path_display = format_path,
+		shorten_path = false,
 		layout_strategy = "flex",
 		layout_config = {
 			width = 0.9,
@@ -35,7 +41,9 @@ end
 
 function M.grep_string()
 	local opts = {
+		search = vim.fn.input("Grep for > "),
 		short_path = false,
+		path_display = format_path,
 		word_match = "-w",
 		only_sort_text = true,
 		layout_strategy = "vertical",
@@ -48,12 +56,13 @@ end
 function M.live_grep()
 	require("telescope.builtin").live_grep({
 		fzf_seperator = "|>",
+		path_display = format_path,
 	})
 end
 
 function M.curbuf()
 	local opts = themes.get_dropdown({
-		winblend = 10,
+		winblend = 0,
 		border = true,
 		previewer = false,
 		shorten_path = false,
@@ -63,5 +72,29 @@ function M.curbuf()
 end
 
 -- ]]
+
+function M.find_files()
+	local opts = {
+		hidden = true,
+		path_display = format_path,
+	}
+
+	require("telescope.builtin").find_files(opts)
+end
+
+function M.file_browser()
+	local opts = {
+		path = vim.fn.expand("%:p:h"),
+		cwd = vim.fn.expand("%:p:h"),
+		respect_gitignore = false,
+		hidden = true,
+		grouped = true,
+		previewer = false,
+		initial_mode = "normal",
+		layout_config = { height = 40 },
+	}
+
+	telescope.extensions.file_browser.file_browser(opts)
+end
 
 return M
