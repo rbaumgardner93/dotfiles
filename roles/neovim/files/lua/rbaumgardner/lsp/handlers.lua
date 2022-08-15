@@ -2,7 +2,7 @@ local M = {}
 
 -- TODO: backfill this to template
 M.setup = function()
-	local icons = require("rbaumgardner.icons")
+	local icons = require("icons")
 	-- diagnostic signs
 	local signs = {
 		{ name = "DiagnosticSignError", text = icons.diagnostics.Error },

@@ -1,4 +1,4 @@
-local nmap = require("rbaumgardner.utils.keymap").nmap
+local nmap = require("utils.keymap").nmap
 
 local general_group = vim.api.nvim_create_augroup("_general", { clear = true })
 local spell_group = vim.api.nvim_create_augroup("_spell", { clear = true })

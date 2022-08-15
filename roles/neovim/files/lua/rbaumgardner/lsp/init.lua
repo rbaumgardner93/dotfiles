@@ -23,16 +23,16 @@ M.on_attach = function(client, bufnr)
 	end
 
 	-- configure lsp keymaps
-	require("rbaumgardner.plugin.lsp.keymaps").setup(bufnr)
+	require("rbaumgardner.lsp.keymaps").setup(bufnr)
 
 	-- configure lsp highlighting
-	require("rbaumgardner.plugin.lsp.highlight").setup(client)
+	require("rbaumgardner.lsp.highlight").setup(client)
 
 	-- configure formatting
-	require("rbaumgardner.plugin.lsp.null-ls.formatters").setup(client, bufnr)
+	require("rbaumgardner.lsp.null-ls.formatters").setup(client, bufnr)
 
 	-- nvim-navic
-	require("rbaumgardner.plugin.lsp.navic").setup(client, bufnr)
+	require("rbaumgardner.lsp.navic").setup(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -58,14 +58,14 @@ local opts = {
 	on_attach = M.on_attach,
 }
 
-require("rbaumgardner.plugin.lsp.handlers").setup()
+require("rbaumgardner.lsp.handlers").setup()
 
 function M.setup()
 	-- null-ls
-	require("rbaumgardner.plugin.lsp.null-ls").setup(opts)
+	require("rbaumgardner.lsp.null-ls").setup(opts)
 
 	-- lsp-installer
-	require("rbaumgardner.plugin.lsp.mason").setup(opts)
+	require("rbaumgardner.lsp.mason").setup(opts)
 
 	require("ufo").setup()
 end

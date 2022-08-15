@@ -3,7 +3,7 @@ local M = {}
 M.setup = function(options)
 	local mason = require("mason")
 	local mason_lsp = require("mason-lspconfig")
-	local icons = require("rbaumgardner.icons")
+	local icons = require("icons")
 	local servers = {
 		"bashls",
 		"cssls",
@@ -33,7 +33,7 @@ M.setup = function(options)
 	})
 
 	for _, server in ipairs(servers) do
-		require("rbaumgardner.plugin.lsp.servers." .. server).setup(options)
+		require("rbaumgardner.lsp.servers." .. server).setup(options)
 	end
 end
 

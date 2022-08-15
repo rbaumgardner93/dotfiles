@@ -60,7 +60,7 @@ local plugins = function(use)
 		wants = "nvim-treesitter",
 		module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
 		config = function()
-			require("rbaumgardner.plugin.nvim-autopairs")
+			require("rbaumgardner.nvim-autopairs")
 		end,
 	})
 
@@ -75,7 +75,7 @@ local plugins = function(use)
 		"numToStr/Comment.nvim",
 		keys = { "gc", "gcc", "gbc" },
 		config = function()
-			require("rbaumgardner.plugin.comment")
+			require("rbaumgardner.comment")
 		end,
 	})
 
@@ -94,14 +94,14 @@ local plugins = function(use)
 		after = "nvim-treesitter",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
-			require("rbaumgardner.plugin.lualine")
+			require("rbaumgardner.lualine")
 		end,
 	})
 
 	use({
 		"goolord/alpha-nvim",
 		config = function()
-			require("rbaumgardner.plugin.alpha")
+			require("rbaumgardner.alpha")
 		end,
 	})
 
@@ -114,7 +114,7 @@ local plugins = function(use)
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPre",
 		config = function()
-			require("rbaumgardner.plugin.indent-blankline")
+			require("rbaumgardner.indent-blankline")
 		end,
 	})
 
@@ -127,7 +127,7 @@ local plugins = function(use)
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		config = function()
-			require("rbaumgardner.plugin.whichkey")
+			require("rbaumgardner.whichkey")
 		end,
 	})
 
@@ -175,7 +175,7 @@ local plugins = function(use)
 			"lspkind.nvim",
 		},
 		config = function()
-			require("rbaumgardner.plugin.nvim-cmp")
+			require("rbaumgardner.nvim-cmp")
 		end,
 		requires = {
 			"hrsh7th/cmp-buffer", -- Buffer completions
@@ -210,7 +210,7 @@ local plugins = function(use)
 			"typescript.nvim",
 		},
 		config = function()
-			require("rbaumgardner.plugin.lsp").setup()
+			require("rbaumgardner.lsp").setup()
 		end,
 		requires = {
 			"williamboman/mason.nvim",
@@ -221,7 +221,7 @@ local plugins = function(use)
 			{
 				"j-hui/fidget.nvim",
 				config = function()
-					require("rbaumgardner.plugin.fidget")
+					require("rbaumgardner.fidget")
 				end,
 			},
 			"folke/lua-dev.nvim",
@@ -251,7 +251,7 @@ local plugins = function(use)
 			"telescope-file-browser.nvim",
 		},
 		config = function()
-			require("rbaumgardner.plugin.telescope")
+			require("rbaumgardner.telescope")
 		end,
 		requires = {
 			"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
@@ -267,7 +267,7 @@ local plugins = function(use)
 		event = "BufReadPre",
 		run = ":TSUpdate", -- We recommend updating the parsers on update
 		config = function()
-			require("rbaumgardner.plugin.treesitter")
+			require("rbaumgardner.treesitter")
 		end,
 		requires = {
 			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
@@ -282,7 +282,7 @@ local plugins = function(use)
 		wants = "plenary.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("rbaumgardner.plugin.gitsigns")
+			require("rbaumgardner.gitsigns")
 		end,
 	})
 

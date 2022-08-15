@@ -25,7 +25,7 @@ treesitter.setup({
 		enable = true,
 	},
 	autotag = {
-		enable = true
+		enable = true,
 	},
 	highlight = {
 		enable = true, -- false will disable the whole extension

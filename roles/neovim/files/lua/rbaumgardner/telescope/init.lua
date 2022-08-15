@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
-local icons = require("rbaumgardner.icons")
+local icons = require("icons")
 local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({

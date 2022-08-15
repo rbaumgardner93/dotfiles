@@ -39,7 +39,6 @@ local setup_normal_keymaps = function()
 		["N"] = { "Nzzzv", "Keep centered when navigating backward" },
 		["Y"] = { "y$", "Yank to end of line" },
 		-- ]]
-		["<C-c>"] = { "<ESC>" }, -- ThePrimeagen told me to
 		["<C-e>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon: toggle quick menu" },
 		["<C-d>"] = { "<C-d>zz", "Keep it centered when moving down a file" },
 		["<C-p>"] = { "<cmd>lua require('legendary').find()<CR>", "Toggle legendary" },
@@ -47,30 +46,28 @@ local setup_normal_keymaps = function()
 		["<leader>"] = {
 			["<CR>"] = { ":luafile %<CR>", "Fast sourcing" },
 			a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon: add file" },
-			c = {
-				b = {
-					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').curbuf()<cr>",
-					"Find in current buffer",
-				},
-			},
 			f = {
 				name = "+navigating",
 				b = {
-					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').file_browser()<cr>",
+					"<cmd>lua require('rbaumgardner.telescope.functions').file_browser()<cr>",
 					"File Browser",
 				},
 				c = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find open buffers" },
-				f = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').find_files()<cr>", "Find Files" },
-				g = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').live_grep()<cr>", "Grep Word" },
+				f = { "<cmd>lua require('rbaumgardner.telescope.functions').find_files()<cr>", "Find Files" },
+				g = { "<cmd>lua require('rbaumgardner.telescope.functions').live_grep()<cr>", "Grep Word" },
 				h = { "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", "Find Help" },
-				n = { "<cmd>lua require('rbaumgardner.plugin.telescope.functions').edit_neovim()<cr>", "Find neovim" },
+				n = { "<cmd>lua require('rbaumgardner.telescope.functions').edit_neovim()<cr>", "Find neovim" },
 				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
 				s = {
-					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').grep_string()<cr>",
+					"<cmd>lua require('rbaumgardner.telescope.functions').grep_string()<cr>",
 					"Find string under cursor",
 				},
+				t = {
+					"<cmd>lua require('rbaumgardner.telescope.functions').curbuf()<cr>",
+					"Find in current buffer",
+				},
 				w = {
-					"<cmd>lua require('rbaumgardner.plugin.telescope.functions').grep_string()<cr>",
+					"<cmd>lua require('rbaumgardner.telescope.functions').grep_string()<cr>",
 					"Find word",
 				},
 			},
@@ -95,8 +92,8 @@ local setup_normal_keymaps = function()
 			},
 			h = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon: navigate to first file" },
 			j = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "Harpoon: navigate to second file" },
-			k = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "Harpoon: navigate to third file" },
 			J = { ":m .+1<CR>==", "Move line down" },
+			k = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "Harpoon: navigate to third file" },
 			K = { ":m .-2<CR>==", "Move line up" },
 			l = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", "Harpoon: navigate to fourth file" },
 			m = {
