@@ -184,7 +184,6 @@ local plugins = function(use)
 			"hrsh7th/cmp-cmdline", -- Cmdline completions
 			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip", -- Snippet completions
-			"davidsierradz/cmp-conventionalcommits", -- git conventional commits
 			-- snippet plugins
 			{
 				"L3MON4D3/LuaSnip",
