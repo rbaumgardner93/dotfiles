@@ -43,12 +43,6 @@ local normal_keymaps = {
 				end,
 				"LSPSAGA: scroll backward in hover doc",
 			},
-			f = {
-				a = {
-					require("lspsaga.finder").lsp_finder,
-					"LSPSAGA: find definition and references",
-				},
-			},
 			g = {
 				name = "+goto",
 				d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
@@ -63,6 +57,12 @@ local normal_keymaps = {
 					a = { action.code_action, "Code action" },
 				},
 				D = { require("lspsaga.definition").preview_definition, "View type definition" },
+				f = {
+					a = {
+						"<cmd>Lspsaga lsp_finder<CR>",
+						"LSPSAGA: find definition and references",
+					},
+				},
 				K = { peekFoldedLinesUnderCursor, "Peek folded lines under cursor" },
 				r = {
 					n = { require("lspsaga.rename").lsp_rename, "Rename" },
