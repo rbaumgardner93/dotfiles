@@ -67,6 +67,12 @@ M.setup = function()
 			end,
 		})
 
+		use({
+			"windwp/nvim-ts-autotag",
+			event = "InsertEnter",
+			wants = "nvim-treesitter",
+		})
+
 		-- easily comment stuff
 		use({
 			"numToStr/Comment.nvim",
