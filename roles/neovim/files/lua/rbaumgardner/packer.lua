@@ -168,6 +168,9 @@ M.setup = function()
 			"hrsh7th/nvim-cmp",
 			opt = true,
 			event = "InsertEnter",
+			wants = {
+				"lspkind.nvim",
+			},
 			config = function()
 				require("rbaumgardner.plugin.nvim-cmp")
 			end,
@@ -184,6 +187,7 @@ M.setup = function()
 					wants = { "friendly-snippets" },
 				},
 				"rafamadriz/friendly-snippets",
+				{ "onsails/lspkind.nvim", module = { "lspkind" } },
 			},
 		})
 
