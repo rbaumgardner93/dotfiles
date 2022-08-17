@@ -20,14 +20,18 @@ local M = {
 	setup = function(opts)
 		local luadev = require("lua-dev").setup({
 			lspconfig = {
-				on_attach = opts.on_attach,
 				settings = settings,
+				on_attach = function(client, bufnr)
+					require("nvim-navic").attach(client, bufnr)
+
+					opts.on_attach(client, bufnr)
+				end,
 				capabilities = opts.capabilities,
-			}
+			},
 		})
 
 		require("lspconfig").sumneko_lua.setup(luadev)
-	end
+	end,
 }
 
 return M

@@ -6,7 +6,11 @@ local M = {
 					schemas = require("schemastore").json.schemas(),
 				},
 			},
-			on_attach = opts.on_attach,
+			on_attach = function(client, bufnr)
+				require("nvim-navic").attach(client, bufnr)
+
+				opts.on_attach(client, bufnr)
+			end,
 			capabilities = opts.capabilities,
 		})
 	end,

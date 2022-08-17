@@ -216,8 +216,12 @@ local plugins = function(use)
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-			"SmiteshP/nvim-navic",
-			{ "kevinhwang91/nvim-ufo", requires = { "kevinhwang91/promise-async" } },
+			{
+				"SmiteshP/nvim-navic",
+				config = function()
+					require("rbaumgardner.navic")
+				end,
+			},
 			{
 				"j-hui/fidget.nvim",
 				config = function()
