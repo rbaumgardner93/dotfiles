@@ -4,7 +4,7 @@ default_roles:
   - kitty
   - neovim
   - npm
-  - oh-my-tmux
   - oh-my-zsh
   - ssh
+  - tmux
   - starship
