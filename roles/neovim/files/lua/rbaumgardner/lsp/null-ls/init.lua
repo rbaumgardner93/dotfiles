@@ -24,7 +24,6 @@ local sources = {
 
 	with_diagnostics_code(diagnostics.shellcheck), -- :Mason install shellcheck
 	diagnostics.write_good, -- :Mason install write-good
-	diagnostics.markdownlint, -- :Mason install markdownlint
 
 	-- code actions
 	code_actions.gitsigns,

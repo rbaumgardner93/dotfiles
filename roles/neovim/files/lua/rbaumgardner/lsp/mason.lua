@@ -12,6 +12,7 @@ M.setup = function(options)
 		"gopls",
 		"html",
 		"jsonls",
+		"marksman",
 		"sumneko_lua",
 		"tsserver",
 		"yamlls",
