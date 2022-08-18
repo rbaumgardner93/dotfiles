@@ -43,6 +43,8 @@ local plugins = function(use)
 	-- Performance
 	use("lewis6991/impatient.nvim")
 
+	use("gpanders/editorconfig.nvim")
+
 	-- Faster filetype.vim
 	use("nathom/filetype.nvim")
 
