@@ -1,0 +1,21 @@
+---
+- name: Create bin folder in .config directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/bin"
+    state: directory
+
+- name: Curl cht.sh script
+  ansible.builtin.get_url:
+    url: https://cht.sh/:cht.sh
+    dest: "{{ ansible_user_dir }}/.config/bin/cht.sh"
+    mode: "755"
+
+- name: Create .zsh.d folder in home directory
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.zsh.d"
+    state: directory
+
+- name: Curl for zsh tab completion script for cht.sh
+  ansible.builtin.get_url:
+    url: https://cht.sh/:zsh
+    dest: "{{ ansible_user_dir }}/.zsh.d/_cht"

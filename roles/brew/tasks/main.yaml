@@ -15,6 +15,7 @@
       - jq
       - pandoc
       - ripgrep
+      - rlwrap
       - starship
       - stow
       - tmux

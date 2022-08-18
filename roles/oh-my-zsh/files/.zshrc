@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH="$HOME/go/bin:$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.config/bin:$HOME/go/bin:$HOME/dotfiles/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -81,6 +81,8 @@ plugins=(
     zsh-autosuggestions
 )
 
+fpath=(~/.zsh.d/ $fpath)
+
 # User configuration
 source $ZSH/oh-my-zsh.sh
 
@@ -111,6 +113,7 @@ alias ls="exa"
 alias cat="bat"
 alias vim="nvim"
 alias t="tmux"
+alias ts="tmux-sessionizer"
 alias e="exit"
 alias mv="mv -iv"
 alias tmuxrc="vim ~/.tmux.conf"
