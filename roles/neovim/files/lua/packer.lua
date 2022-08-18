@@ -119,7 +119,10 @@ local plugins = function(use)
 	})
 
 	use({
-		"davidgranstrom/nvim-markdown-preview",
+		"ellisonleao/glow.nvim",
+		config = function()
+			require("rbaumgardner.glow")
+		end,
 		ft = { "markdown" },
 	})
 

@@ -11,9 +11,9 @@
       - fzf
       - gh
       - git-delta
+      - glow
       - htop
       - jq
-      - pandoc
       - ripgrep
       - rlwrap
       - starship
