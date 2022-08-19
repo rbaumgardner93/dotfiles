@@ -228,6 +228,11 @@ local plugins = function(use)
 				end,
 			},
 			{
+				"kevinhwang91/nvim-ufo",
+				requires = { "kevinhwang91/promise-async" },
+				cmd = { "UfoDetach" },
+			},
+			{
 				"j-hui/fidget.nvim",
 				config = function()
 					require("rbaumgardner.fidget")
