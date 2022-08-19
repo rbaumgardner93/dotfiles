@@ -59,7 +59,7 @@ local setup_normal_keymaps = function()
 				n = { "<cmd>lua require('rbaumgardner.telescope.functions').edit_neovim()<cr>", "Find neovim" },
 				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
 				s = {
-					"<cmd>lua require('rbaumgardner.telescope.functions').grep_string()<cr>",
+					"<cmd>lua require('telescope.builtin').grep_string()<cr>",
 					"Find string under cursor",
 				},
 				t = {
