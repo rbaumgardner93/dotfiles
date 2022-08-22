@@ -83,7 +83,7 @@ local plugins = function(use)
 
 	use({
 		"echasnovski/mini.nvim",
-		event = "BufReadPre",
+		event = "BufWinEnter",
 		config = function()
 			require("mini.trailspace").setup({ only_in_normal_buffers = true })
 		end,
@@ -92,7 +92,7 @@ local plugins = function(use)
 	use({
 		"nvim-lualine/lualine.nvim",
 		opt = true,
-		event = "BufReadPre",
+		event = "BufWinEnter",
 		after = "nvim-treesitter",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
@@ -109,12 +109,12 @@ local plugins = function(use)
 
 	use({
 		"godlygeek/tabular",
-		event = "BufReadPre",
+		event = "BufWinEnter",
 	})
 
 	use({
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
+		event = "BufWinEnter",
 		config = function()
 			require("rbaumgardner.indent-blankline")
 		end,
@@ -247,6 +247,7 @@ local plugins = function(use)
 				"kevinhwang91/nvim-ufo",
 				requires = { "kevinhwang91/promise-async" },
 				cmd = { "UfoDetach" },
+				module = { "ufo" },
 			},
 			{
 				"j-hui/fidget.nvim",
@@ -303,21 +304,21 @@ local plugins = function(use)
 	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		event = "BufReadPre",
+		event = "BufWinEnter",
 		run = ":TSUpdate", -- We recommend updating the parsers on update
 		config = function()
 			require("rbaumgardner.treesitter")
 		end,
 		requires = {
 			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
-			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
+			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufWinEnter" },
 		},
 	})
 
 	-- git
 	use({
 		"lewis6991/gitsigns.nvim",
-		event = "BufReadPre",
+		event = "BufWinEnter",
 		wants = "plenary.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
@@ -348,7 +349,7 @@ local plugins = function(use)
 
 	use({
 		"tpope/vim-unimpaired",
-		event = "BufReadPre",
+		keys = { "[", "]" },
 	})
 
 	use({
