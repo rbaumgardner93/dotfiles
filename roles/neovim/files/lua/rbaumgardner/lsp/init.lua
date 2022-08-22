@@ -35,6 +35,9 @@ M.on_attach = function(client, bufnr)
 
 	-- configure formatting
 	require("rbaumgardner.lsp.null-ls.formatters").setup(client, bufnr)
+
+	-- configure aerial
+	require("aerial").on_attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

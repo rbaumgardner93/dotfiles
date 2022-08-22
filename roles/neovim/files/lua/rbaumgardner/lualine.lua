@@ -69,5 +69,5 @@ lualine.setup({
 		lualine_z = {},
 	},
 	tabline = {},
-	extensions = {},
+	extensions = { "aerial", "fugitive", "quickfix" },
 })

@@ -267,6 +267,15 @@ local plugins = function(use)
 		end,
 	})
 
+	use({
+		"stevearc/aerial.nvim",
+		module = { "aerial" },
+		cmd = { "AerialToggle" },
+		config = function()
+			require("aerial").setup()
+		end,
+	})
+
 	-- telescope requirements
 	use({
 		"nvim-telescope/telescope.nvim",
