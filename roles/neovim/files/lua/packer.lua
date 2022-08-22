@@ -167,7 +167,23 @@ local plugins = function(use)
 		"norcalli/nvim-colorizer.lua",
 		cmd = "ColorizerToggle",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				"*",
+				-- Disable for files that support colorProvider
+				"!css",
+				"!html",
+				"!tsx",
+			})
+		end,
+	})
+
+	use({
+		"mrshmllow/document-color.nvim",
+		module = { "document-color" },
+		config = function()
+			require("document-color").setup({
+				mode = "background",
+			})
 		end,
 	})
 

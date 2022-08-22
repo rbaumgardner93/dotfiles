@@ -22,6 +22,11 @@ M.on_attach = function(client, bufnr)
 		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	end
 
+	-- document color
+	if client.server_capabilities.colorProvider then
+		require("document-color").buf_attach(bufnr)
+	end
+
 	-- configure lsp keymaps
 	require("rbaumgardner.lsp.keymaps").setup(bufnr)
 
@@ -44,6 +49,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
+}
+capabilities.textDocument.colorProvider = {
+	dynamicRegistration = true,
 }
 
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
