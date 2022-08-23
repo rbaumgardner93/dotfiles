@@ -21,6 +21,9 @@ local sources = {
 	-- formatting
 	formatting.fixjson, -- :Mason install fixjson
 	formatting.stylua, -- :Mason install stylua
+	formatting.prettierd.with({
+		filetypes = { "markdown" },
+	}), -- :Mason install prettierd
 
 	with_diagnostics_code(diagnostics.shellcheck), -- :Mason install shellcheck
 	diagnostics.write_good, -- :Mason install write-good
