@@ -312,6 +312,7 @@ local plugins = function(use)
 		requires = {
 			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
 			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufWinEnter" },
+			"nvim-treesitter/nvim-treesitter-context",
 		},
 	})
 
