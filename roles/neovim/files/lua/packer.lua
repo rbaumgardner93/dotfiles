@@ -225,7 +225,6 @@ local plugins = function(use)
 			"mason-lspconfig.nvim",
 			"null-ls.nvim",
 			"nvim-navic",
-			"nvim-ufo",
 			"fidget.nvim",
 			"lua-dev.nvim",
 			"typescript.nvim",
@@ -244,12 +243,6 @@ local plugins = function(use)
 				end,
 			},
 			{
-				"kevinhwang91/nvim-ufo",
-				requires = { "kevinhwang91/promise-async" },
-				cmd = { "UfoDetach" },
-				module = { "ufo" },
-			},
-			{
 				"j-hui/fidget.nvim",
 				config = function()
 					require("rbaumgardner.fidget")
@@ -258,6 +251,13 @@ local plugins = function(use)
 			"folke/lua-dev.nvim",
 			"jose-elias-alvarez/typescript.nvim",
 		},
+	})
+
+	use({
+		"kevinhwang91/nvim-ufo",
+		requires = { "kevinhwang91/promise-async" },
+		cmd = { "UfoDetach" },
+		module = { "ufo" },
 	})
 
 	use({
