@@ -68,7 +68,7 @@ local normal_keymaps = {
 					n = { require("lspsaga.rename").lsp_rename, "Rename" },
 				},
 				v = {
-					s = { require("lspsaga.signaturehelp").signature_help, "View signature help" },
+					s = { vim.lsp.buf.signature_help, "View signature help" },
 					o = { "<cmd>LSoutlineToggle<CR>", "View file outline" },
 				},
 			},
