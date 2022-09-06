@@ -121,6 +121,7 @@ alias vimrc="vim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"
 alias szshrc="exec zsh"
 alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
+alias inkdrop="cd $HOME/Library/Application\ Support/inkdrop"
 
 eval "$(fnm env --use-on-cd)"
 
