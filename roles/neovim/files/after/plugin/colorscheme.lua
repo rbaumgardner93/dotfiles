@@ -1,11 +1,16 @@
 local colorscheme = "tokyonight"
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.g.tokyonight_transparent = true
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_dark_float = false
+require(colorscheme).setup({
+	style = "night",
+	transparent = true,
+	styles = {
+		functions = "italic",
+		-- Background styles. Can be "dark", "transparent", or "normal"
+		sidebars = "transparent",
+		floats = "transparent",
+	},
+	sidebars = { "qf", "vista_kind", "terminal", "packer" },
+})
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 
