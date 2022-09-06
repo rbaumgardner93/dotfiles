@@ -112,3 +112,10 @@
     state: link
     force: true
   when: prompt_sym.stat.islnk is not defined
+
+- name: Create symlink spaceship.zsh-theme
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/dotfiles/roles/oh-my-zsh/files/spaceship.zsh"
+    path: "{{ ansible_user_dir }}/.config/spaceshp.zsh"
+    state: link
+    force: true
