@@ -16,7 +16,6 @@
       - jq
       - ripgrep
       - rlwrap
-      - starship
       - stow
       - tmux
       - tree

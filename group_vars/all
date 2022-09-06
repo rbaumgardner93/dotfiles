@@ -8,4 +8,3 @@ default_roles:
   - oh-my-zsh
   - ssh
   - tmux
-  - starship

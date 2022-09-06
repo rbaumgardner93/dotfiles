@@ -85,3 +85,30 @@
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-z"
     single_branch: yes
     update: yes
+
+- name: Clone spaceship-prompt
+  ansible.builtin.git:
+    clone: yes
+    depth: 1
+    repo: https://github.com/spaceship-prompt/spaceship-prompt
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/spaceship-prompt"
+    single_branch: yes
+    update: yes
+
+- name: Get stats of the spaceship.zsh-theme file
+  ansible.builtin.stat:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+  register: prompt_sym
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "spaceship.zsh-theme path exists and is a symlink"
+  when: prompt_sym.stat.islnk is defined and prompt_sym.stat.islnk
+
+- name: Create symlink spaceship.zsh-theme
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme"
+    path: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+    state: link
+    force: true
+  when: prompt_sym.stat.islnk is not defined
