@@ -1,4 +1,25 @@
 ---
+- name: Install neovim build dependencies
+  community.general.homebrew:
+    state: present
+    name:
+      - ninja
+      - libtool
+      - automake
+      - cmake
+      - pkg-config
+      - gettext
+
+- name: Clone neovim
+  ansible.builtin.git:
+    repo: "https://github.com/neovim/neovim"
+    dest: "{{ ansible_user_dir }}/.config/neovim"
+
+- name: Build neovim
+  ansible.builtin.shell:
+    cmd: make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX={{ ansible_user_dir }}/.config/neovim && make install
+    chdir: "{{ ansible_user_dir }}/.config/neovim"
+
 - name: Get stats of the neovim directory
   ansible.builtin.stat:
     path:  "{{ ansible_user_dir }}/.config/nvim"
