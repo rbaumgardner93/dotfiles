@@ -300,6 +300,8 @@ local plugins = function(use)
 		end,
 	})
 
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
 	-- ThePrimeagen plugins
 	use({
 		"ThePrimeagen/harpoon",
