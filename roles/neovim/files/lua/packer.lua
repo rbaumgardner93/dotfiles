@@ -84,13 +84,6 @@ local plugins = function(use)
 	})
 
 	use({
-		"goolord/alpha-nvim",
-		config = function()
-			require("rbaumgardner.alpha")
-		end,
-	})
-
-	use({
 		"godlygeek/tabular",
 		event = "BufWinEnter",
 	})
