@@ -256,7 +256,7 @@ local plugins = function(use)
 		wants = {
 			"plenary.nvim",
 			"popup.nvim",
-			"telescope-fzy-native.nvim",
+			"telescope-fzf-native.nvim",
 			"telescope-file-browser.nvim",
 		},
 		config = function()
@@ -265,7 +265,11 @@ local plugins = function(use)
 		requires = {
 			"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-fzy-native.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				run = "make",
+				cond = vim.fn.executable("make") == 1,
+			},
 			"nvim-telescope/telescope-file-browser.nvim",
 		},
 	})

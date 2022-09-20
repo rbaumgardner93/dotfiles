@@ -38,10 +38,6 @@ telescope.setup({
 		},
 	},
 	extensions = {
-		fzy_native = {
-			override_generic_sorter = false,
-			override_file_sorter = true,
-		},
 		file_browser = {
 			theme = "dropdown",
 			mappings = {
@@ -58,5 +54,6 @@ telescope.setup({
 	pickers = {},
 })
 
-telescope.load_extension("fzy_native")
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
 telescope.load_extension("file_browser")
