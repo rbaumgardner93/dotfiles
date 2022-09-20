@@ -254,13 +254,6 @@ local plugins = function(use)
 	})
 
 	use({
-		"kevinhwang91/nvim-ufo",
-		requires = { "kevinhwang91/promise-async" },
-		cmd = { "UfoDetach" },
-		module = { "ufo" },
-	})
-
-	use({
 		"glepnir/lspsaga.nvim",
 		module = { "lspsaga.codeaction", "lspsaga.diagnostic" },
 		config = function()

@@ -58,9 +58,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	command = "startinsert",
 	group = terminal_group,
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "gitcommit", "netrw" },
-	command = "UfoDetach",
-	group = package_group,
-})

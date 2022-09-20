@@ -28,10 +28,6 @@ local setup_normal_keymaps = function()
 		g = {
 			x = { ":!open <C-r><C-a><CR>", "Open url under cursor" },
 		},
-		z = {
-			M = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "UFO: close all folds" },
-			R = { "<cmd>lua require('ufo').openAllFolds()<CR>", "UFO: open all folds" },
-		},
 		-- [[
 		-- from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
 		["J"] = { "mzJ`z", "Move line above and keep centered" },
