@@ -1,10 +1,24 @@
 ---
-- name: Install npm packages globally
+- name: Install commitizen npm package globally
   community.general.npm:
+    name: commitizen
     state: present
     global: yes
-    name:
-      - commitizen
-      - trash-cli
-      - typescript
-      - yarn
+
+- name: Install trash-cli npm package globally
+  community.general.npm:
+    name: trash-cli
+    state: present
+    global: yes
+
+- name: Install typescript npm package globally
+  community.general.npm:
+    name: typescript
+    state: present
+    global: yes
+
+- name: Install yarn npm package globally
+  community.general.npm:
+    name: yarn
+    state: present
+    global: yes
