@@ -310,6 +310,7 @@ local plugins = function(use)
 
 	-- tpope plugins
 	use("tpope/vim-vinegar")
+	use("tpope/vim-sleuth")
 
 	use({
 		"tpope/vim-surround",

@@ -21,8 +21,6 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"                                          -- Keep column width consistent when using plugins with gutter icons
 vim.opt.colorcolumn = "80"                                          -- Make it obvious where 80 characters is
 
-vim.opt.expandtab = false                                           -- Use tab character instead of spaces
-vim.opt.shiftwidth = 0                                              -- Always use tab character
 vim.opt.tabstop = 4                                                 -- Use 4 spaces as tab character
 vim.opt.autoindent = true                                           -- Good autoindent
 vim.opt.smartindent = true                                          -- Makes indenting smart
