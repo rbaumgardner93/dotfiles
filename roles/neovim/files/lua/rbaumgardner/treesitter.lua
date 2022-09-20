@@ -22,10 +22,10 @@ treesitter.setup({
 	},
 	ignore_installed = { "" },
 	autopairs = {
-		enable = true,
+		enable = false,
 	},
 	autotag = {
-		enable = true,
+		enable = false,
 	},
 	highlight = {
 		enable = true, -- false will disable the whole extension

@@ -55,23 +55,6 @@ local plugins = function(use)
 		cmd = { "UndotreeToggle" },
 	})
 
-	-- autopairs integrates with both cmp and treesitter
-	use({
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		wants = "nvim-treesitter",
-		module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
-		config = function()
-			require("rbaumgardner.nvim-autopairs")
-		end,
-	})
-
-	use({
-		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
-		wants = "nvim-treesitter",
-	})
-
 	-- easily comment stuff
 	use({
 		"numToStr/Comment.nvim",
