@@ -202,7 +202,7 @@ local plugins = function(use)
 			"null-ls.nvim",
 			"nvim-navic",
 			"fidget.nvim",
-			"lua-dev.nvim",
+			"neodev.nvim",
 			"typescript.nvim",
 		},
 		config = function()
@@ -224,7 +224,7 @@ local plugins = function(use)
 					require("rbaumgardner.fidget")
 				end,
 			},
-			"folke/lua-dev.nvim",
+			"folke/neodev.nvim",
 			"jose-elias-alvarez/typescript.nvim",
 		},
 	})
