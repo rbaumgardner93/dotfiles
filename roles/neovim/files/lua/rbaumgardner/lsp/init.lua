@@ -57,7 +57,7 @@ capabilities.textDocument.colorProvider = {
 	dynamicRegistration = true,
 }
 
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
 
 local opts = {
 	-- enable snippet support
