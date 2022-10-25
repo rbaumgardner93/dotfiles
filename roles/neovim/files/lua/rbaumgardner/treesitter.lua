@@ -5,7 +5,10 @@ end
 
 treesitter.setup({
 	ensure_installed = {
+		"bash",
 		"css",
+		"dockerfile",
+		"gitignore",
 		"go",
 		"html",
 		"javascript",
@@ -13,8 +16,8 @@ treesitter.setup({
 		"json",
 		"lua",
 		"markdown",
-		"scss",
 		"rust",
+		"scss",
 		"tsx",
 		"typescript",
 		"vim",
@@ -29,6 +32,7 @@ treesitter.setup({
 	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
+		additional_vim_regex_highlighting = true,
 		disable = { "" },
 	},
 	indent = {
