@@ -65,3 +65,4 @@ vim.opt.lazyredraw = true                                           -- Don't red
 
 vim.opt.foldlevelstart = 99                                         -- start unfolded
 vim.opt.foldmethod = "indent"                                       -- lines with equal indent form a fold.
+vim.opt.backupcopy = "yes"
