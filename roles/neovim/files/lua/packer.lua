@@ -258,6 +258,7 @@ local plugins = function(use)
 			"popup.nvim",
 			"telescope-fzf-native.nvim",
 			"telescope-file-browser.nvim",
+			"dir-telescope.nvim",
 		},
 		config = function()
 			require("rbaumgardner.telescope")
@@ -271,6 +272,15 @@ local plugins = function(use)
 				cond = vim.fn.executable("make") == 1,
 			},
 			"nvim-telescope/telescope-file-browser.nvim",
+			{
+				"princejoogie/dir-telescope.nvim",
+				config = function()
+					require("dir-telescope").setup({
+						hidden = true,
+						respect_gitignore = true,
+					})
+				end,
+			},
 		},
 	})
 
