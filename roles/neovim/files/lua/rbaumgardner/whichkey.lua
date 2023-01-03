@@ -3,11 +3,6 @@ if not wk_status_ok then
 	return
 end
 
-local legendary_status_ok, legendary = pcall(require, "legendary")
-if not legendary_status_ok then
-	return
-end
-
 local setup_normal_keymaps = function()
 	local opts = {
 		mode = "n", -- NORMAL mode
@@ -116,7 +111,6 @@ local setup_normal_keymaps = function()
 	}
 
 	which_key.register(keymaps, opts)
-	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 local setup_visual_keymaps = function()
@@ -147,7 +141,6 @@ local setup_visual_keymaps = function()
 	}
 
 	which_key.register(keymaps, opts)
-	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 local setup_terminal_keymaps = function()
@@ -168,7 +161,6 @@ local setup_terminal_keymaps = function()
 	}
 
 	which_key.register(keymaps, opts)
-	legendary.bind_whichkey(keymaps, opts, false)
 end
 
 which_key.setup()

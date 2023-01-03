@@ -1,5 +1,4 @@
 local which_key = require("which-key")
-local legendary = require("legendary")
 local action = require("lspsaga.codeaction")
 local diagnostic = require("lspsaga.diagnostic")
 
@@ -75,7 +74,6 @@ local normal_keymaps = {
 		}
 
 		which_key.register(keymaps, opts)
-		legendary.bind_whichkey(keymaps, opts, false)
 	end,
 }
 
@@ -103,7 +101,6 @@ local visual_keymaps = {
 		}
 
 		which_key.register(keymaps, opts)
-		legendary.bind_whichkey(keymaps, opts, false)
 	end,
 }
 

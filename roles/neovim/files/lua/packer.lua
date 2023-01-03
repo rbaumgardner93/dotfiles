@@ -114,12 +114,8 @@ local plugins = function(use)
 
 	use({
 		"mrjones2014/legendary.nvim",
-		opt = true,
-		keys = { "<C-p>" },
-		module = { "legendary" },
-		cmd = { "Legendary" },
 		config = function()
-			require("legendary").setup({ auto_register_which_key = false })
+			require("legendary").setup({ which_key = { auto_register = true } })
 		end,
 		requires = { "stevearc/dressing.nvim" },
 	})
