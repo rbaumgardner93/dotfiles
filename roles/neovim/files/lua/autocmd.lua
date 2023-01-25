@@ -4,14 +4,6 @@ local general_group = vim.api.nvim_create_augroup("_general", { clear = true })
 local spell_group = vim.api.nvim_create_augroup("_spell", { clear = true })
 local fold_group = vim.api.nvim_create_augroup("_folds", { clear = true })
 local terminal_group = vim.api.nvim_create_augroup("_terminal", { clear = true })
-local package_group = vim.api.nvim_create_augroup("_packages", { clear = true })
-local packer_group = vim.api.nvim_create_augroup("_packer", { clear = true })
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = "packer.lua",
-	command = "source <afile> | PackerSync",
-	group = packer_group,
-})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	command = "silent! lua vim.highlight.on_yank( { higroup = 'IncSearch', timeout = 500 })",
