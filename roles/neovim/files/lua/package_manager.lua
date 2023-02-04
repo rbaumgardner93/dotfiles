@@ -160,14 +160,12 @@ local plugins = {
 	--  LSP plugins
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufRead", "BufWinEnter", "BufNewFile" },
+		event = "BufReadPre",
 		config = function()
 			require("rbaumgardner.lsp").setup()
 		end,
 		dependencies = {
-			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 			{
 				"SmiteshP/nvim-navic",
 				config = function()
@@ -185,10 +183,9 @@ local plugins = {
 		},
 	},
 	{
-		"glepnir/lspsaga.nvim",
-		config = function()
-			require("lspsaga").setup({})
-		end,
+		"williamboman/mason.nvim",
+		cmd = "Mason",
+		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 	},
 
 	{
@@ -197,6 +194,13 @@ local plugins = {
 		config = function()
 			require("aerial").setup()
 		end,
+	},
+
+	-- formatters
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = "BufReadPre",
+		dependencies = { "mason.nvim" },
 	},
 
 	-- telescope requirements
