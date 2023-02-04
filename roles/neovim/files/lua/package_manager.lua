@@ -13,7 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	"gpanders/editorconfig.nvim",
 	"nathom/filetype.nvim", -- Faster filetype.vim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	{ "mbbill/undotree", cmd = "UndotreeToggle" },
