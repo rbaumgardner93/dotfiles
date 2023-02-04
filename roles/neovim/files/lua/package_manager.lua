@@ -40,7 +40,6 @@ local plugins = {
 			require("rbaumgardner.lualine")
 		end,
 	},
-	{ "godlygeek/tabular", event = "BufWinEnter" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufWinEnter",
