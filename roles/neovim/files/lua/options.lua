@@ -11,6 +11,7 @@ vim.g.maplocalleader = " "
 vim.opt.path:append { "**" }                                        -- search down into subfolders (provides tab-completion) for file related tasks
 vim.opt.wildignore:append { "*/node_modules/*" }                    -- ignore node_modules
 vim.opt.wildignorecase = true                                       -- tab file completion is case insensitive
+vim.opt.wildmode = "longest:full,full"                              -- command line completion mode
 
 vim.opt.number = true                                               -- show line numbers
 vim.opt.relativenumber = true                                       -- Set numbers based off of cursor position
@@ -43,6 +44,7 @@ vim.opt.timeoutlen = 500                                            -- Default t
 vim.opt.mouse = "n"                                                 -- Enable mouse for normal mode
 vim.opt.wrap = false                                                -- Don't wrap long lines
 vim.opt.laststatus = 3                                              -- Global status line
+vim.opt.showmode = false                                             -- no need to show since we use lualine
 
 vim.opt.list = true                                                 -- Allows the additon of whitespace characters
 vim.opt.listchars = {

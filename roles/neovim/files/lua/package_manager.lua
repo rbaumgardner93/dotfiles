@@ -72,10 +72,7 @@ local plugins = {
 	"b0o/schemastore.nvim", -- simple access to json-language-server schema
 
 	-- scheme evaluator
-	{
-		"Olical/conjure",
-		ft = "scheme",
-	},
+	{ "Olical/conjure", ft = "scheme" },
 
 	-- colorschemes
 	"folke/tokyonight.nvim",
@@ -187,7 +184,6 @@ local plugins = {
 		cmd = "Mason",
 		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 	},
-
 	{
 		"stevearc/aerial.nvim",
 		cmd = { "AerialToggle" },
@@ -258,7 +254,6 @@ local plugins = {
 			require("rbaumgardner.gitsigns")
 		end,
 	},
-
 	-- ThePrimeagen plugins
 	{ "ThePrimeagen/harpoon", keys = { [[ <C-e> ]] } },
 
