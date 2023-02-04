@@ -16,17 +16,20 @@ local plugins = {
 	"nathom/filetype.nvim", -- Faster filetype.vim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	{ "mbbill/undotree", cmd = "UndotreeToggle" },
-	{
-		"numToStr/Comment.nvim", -- easily comment stuff
-		config = function()
-			require("rbaumgardner.comment")
-		end,
-	},
+	-- comments
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 	{
 		"echasnovski/mini.nvim",
-		event = "BufWinEnter",
+		event = "VeryLazy",
 		config = function()
 			require("mini.trailspace").setup({ only_in_normal_buffers = true })
+			require("mini.comment").setup({
+				hooks = {
+					pre = function()
+						require("ts_context_commentstring.internal").update_commentstring()
+					end,
+				},
+			})
 		end,
 	},
 	{
