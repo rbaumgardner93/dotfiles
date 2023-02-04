@@ -253,14 +253,11 @@ local plugins = {
 	-- git
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufWinEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "BufReadPre",
 		config = function()
 			require("rbaumgardner.gitsigns")
 		end,
 	},
-
-	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
 
 	-- ThePrimeagen plugins
 	{ "ThePrimeagen/harpoon", keys = { [[ <C-e> ]] } },
