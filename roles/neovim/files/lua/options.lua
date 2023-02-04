@@ -37,7 +37,6 @@ vim.opt.termguicolors = true                                        -- set term 
 vim.opt.background = "dark"                                         -- tell vim what that background color should be
 vim.opt.completeopt = { "menuone", "noselect" }                     -- Recommended by nvim-compe
 vim.opt.splitright = true                                           -- open vertical splits to the right of the current window
-vim.opt.winbar = "%= %{%v:lua.require'nvim-navic'.get_location()%}"
 
 vim.opt.updatetime = 300                                            -- Faster completion
 vim.opt.timeoutlen = 500                                            -- Default timeoutlen is 1000ms

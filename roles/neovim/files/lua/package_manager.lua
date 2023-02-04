@@ -34,7 +34,7 @@ local plugins = {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "BufWinEnter",
+		event = "VeryLazy",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("rbaumgardner.lualine")
