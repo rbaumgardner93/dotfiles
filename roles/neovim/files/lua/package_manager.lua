@@ -103,6 +103,7 @@ local plugins = {
 	--completion plugins
 	{
 		"hrsh7th/nvim-cmp",
+		version = "*",
 		event = "InsertEnter",
 		config = function()
 			require("rbaumgardner.nvim-cmp")
@@ -114,10 +115,45 @@ local plugins = {
 			"hrsh7th/cmp-cmdline", -- Cmdline completions
 			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip", -- Snippet completions
-			-- snippet plugins
-			{ "L3MON4D3/LuaSnip", dependencies = { "friendly-snippets" } },
-			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
+		},
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			config = function()
+				require("luasnip/loaders/from_vscode").lazy_load()
+			end,
+		},
+		opts = {
+			history = true,
+			delete_check_events = "TextChanged",
+		},
+		keys = {
+			{
+				"<tab>",
+				function()
+					return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+				end,
+				expr = true,
+				silent = true,
+				mode = "i",
+			},
+			{
+				"<tab>",
+				function()
+					require("luasnip").jump(1)
+				end,
+				mode = "s",
+			},
+			{
+				"<s-tab>",
+				function()
+					require("luasnip").jump(-1)
+				end,
+				mode = "s",
+			},
 		},
 	},
 
