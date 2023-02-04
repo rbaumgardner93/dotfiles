@@ -42,7 +42,7 @@ local plugins = {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufWinEnter",
+		event = "BufReadPost",
 		config = function()
 			require("rbaumgardner.indent-blankline")
 		end,
