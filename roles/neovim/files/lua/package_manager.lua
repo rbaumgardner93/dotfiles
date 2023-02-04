@@ -56,13 +56,14 @@ local plugins = {
 	},
 	{
 		"folke/which-key.nvim",
-		event = "VimEnter",
+		event = "VeryLazy",
 		config = function()
 			require("rbaumgardner.whichkey")
 		end,
 	},
 	{
 		"mrjones2014/legendary.nvim",
+		event = "VeryLazy",
 		dependencies = { "stevearc/dressing.nvim" },
 		config = function()
 			require("legendary").setup({ which_key = { auto_register = true } })
