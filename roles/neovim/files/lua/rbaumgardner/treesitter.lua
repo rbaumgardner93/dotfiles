@@ -4,6 +4,22 @@ if not status_ok then
 end
 
 treesitter.setup({
+	autopairs = {
+		enable = false,
+	},
+	autotag = {
+		enable = false,
+	},
+	highlight = {
+		enable = true, -- false will disable the whole extension
+	},
+	indent = {
+		enable = true,
+	},
+	context_commenting = {
+		enable = true,
+		enable_autocmd = false,
+	},
 	ensure_installed = {
 		"bash",
 		"css",
@@ -16,36 +32,28 @@ treesitter.setup({
 		"json",
 		"lua",
 		"markdown",
-		"rust",
+		"markdown_inline",
+		"python",
+		"regex",
 		"scss",
 		"tsx",
 		"typescript",
 		"vim",
 		"yaml",
 	},
-	ignore_installed = { "" },
-	autopairs = {
-		enable = false,
-	},
-	autotag = {
-		enable = false,
-	},
-	highlight = {
-		enable = true, -- false will disable the whole extension
-		additional_vim_regex_highlighting = true,
-		disable = { "" },
-	},
-	indent = {
+	incremental_selection = {
 		enable = true,
+		keymaps = {
+			init_selection = "<C-space>",
+			node_incremental = "<C-space>",
+			scope_incremental = "<nop>",
+			node_decremental = "<bs>",
+		},
 	},
 	query_linter = {
 		enable = true,
 		use_virtual_text = true,
 		lint_events = { "BufWrite", "CursorHold" },
-	},
-	context_commenting = {
-		enable = true,
-		enable_autocmd = true,
 	},
 	playground = {
 		enable = true,

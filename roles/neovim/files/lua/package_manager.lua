@@ -235,14 +235,17 @@ local plugins = {
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "BufWinEnter",
+		event = "BufReadPost",
 		build = ":TSUpdate", -- We recommend updating the parsers on update
+		keys = {
+			{ "<c-space>", desc = "Increment selection" },
+			{ "<bs>", desc = "Shrink selection", mode = "x" },
+		},
 		config = function()
 			require("rbaumgardner.treesitter")
 		end,
 		dependencies = {
 			{ "nvim-treesitter/playground", cmd = { "TSPlaygroundToggle" } },
-			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufWinEnter" },
 			"nvim-treesitter/nvim-treesitter-context",
 		},
 	},
