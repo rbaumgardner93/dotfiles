@@ -16,41 +16,33 @@ M.toggle = function()
 	end
 end
 
-M.format = function()
-	if M.autoformat then
-		vim.lsp.buf.format({
-			filter = function(client)
-				return client.name ~= "tsserver" and client.name ~= "sumneko_lua" and client.name ~= "cssls"
-			end,
-		})
-	end
-end
+M.format = function(bufnr)
+	local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+	local have_nls = #null_ls_sources.get_available(ft, method) > 0
 
-M.has_formatter = function(filetype)
-	local available = null_ls_sources.get_available(filetype, method)
+	vim.lsp.buf.format({
+		filter = function(client)
+			if have_nls then
+				return client.name == "null-ls"
+			end
 
-	return #available > 0
+			return client.name ~= "null-ls"
+				and client.name ~= "tsserver"
+				and client.name ~= "sumneko_lua"
+				and client.name ~= "cssls"
+		end,
+		bufnr = bufnr,
+	})
 end
 
 M.setup = function(client, bufnr)
-	local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-
-	local enable = false
-	if M.has_formatter(filetype) then
-		enable = client.name == "null-ls"
-	else
-		enable = not (client.name == "null-ls")
-	end
-
-	client.server_capabilities.documentFormattingProvider = enable
-	client.server_capabilities.documentRangeFormattingProvider = enable
-	if client.server_capabilities.documentFormattingProvider then
+	if client.supports_method("textDocument/formatting") then
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				M.format()
+				M.format(bufnr)
 			end,
 		})
 	end
