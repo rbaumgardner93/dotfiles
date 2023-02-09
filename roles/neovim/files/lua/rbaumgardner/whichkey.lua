@@ -40,26 +40,32 @@ local setup_normal_keymaps = function()
 				name = "+navigating",
 				b = {
 					"<cmd>lua require('rbaumgardner.telescope.functions').file_browser()<cr>",
-					"File Browser",
+					"Telescope: File Browser",
 				},
-				c = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Find open buffers" },
-				f = { "<cmd>lua require('rbaumgardner.telescope.functions').find_files()<cr>", "Find Files" },
-				g = { "<cmd>lua require('rbaumgardner.telescope.functions').live_grep()<cr>", "Grep Word" },
-				h = { "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", "Find Help" },
-				n = { "<cmd>lua require('rbaumgardner.telescope.functions').edit_neovim()<cr>", "Find neovim" },
-				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
+				c = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Telescope: Find open buffers" },
+				f = { "<cmd>lua require('rbaumgardner.telescope.functions').find_files()<cr>", "Telescope: Find Files" },
+				g = { "<cmd>lua require('rbaumgardner.telescope.functions').live_grep()<cr>", "Telescope: Grep Word" },
 				k = { "<cmd>lua require('telescope.builtin').keymaps()<CR>", "Telescope: find keymaps" },
+				h = {
+					"<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>",
+					"Telescope: Find Help",
+				},
+				n = {
+					"<cmd>lua require('rbaumgardner.telescope.functions').edit_neovim()<cr>",
+					"Telescope: Find neovim",
+				},
+				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Telescope: Resume previous search" },
 				s = {
 					"<cmd>lua require('telescope.builtin').grep_string()<cr>",
-					"Find string under cursor",
+					"Telescope: Find string under cursor",
 				},
 				t = {
 					"<cmd>lua require('rbaumgardner.telescope.functions').curbuf()<cr>",
-					"Find in current buffer",
+					"Telescope: Find in current buffer",
 				},
 				w = {
 					"<cmd>lua require('rbaumgardner.telescope.functions').grep_string()<cr>",
-					"Find word",
+					"Telescope: Find word",
 				},
 			},
 			g = {
@@ -163,7 +169,9 @@ local setup_terminal_keymaps = function()
 	which_key.register(keymaps, opts)
 end
 
-which_key.setup()
+which_key.setup({
+	plugins = { spelling = true },
+})
 
 setup_normal_keymaps()
 setup_visual_keymaps()
