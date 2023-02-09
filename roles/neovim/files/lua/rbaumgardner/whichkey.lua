@@ -32,7 +32,6 @@ local setup_normal_keymaps = function()
 		-- ]]
 		["<C-e>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon: toggle quick menu" },
 		["<C-d>"] = { "<C-d>zz", "Keep it centered when moving down a file" },
-		["<C-p>"] = { "<cmd>lua require('legendary').find()<CR>", "Toggle legendary" },
 		["<C-u>"] = { "<C-u>zz", "Keep it centered when moving up a file" },
 		["<leader>"] = {
 			["<CR>"] = { ":luafile %<CR>", "Fast sourcing" },
@@ -49,6 +48,7 @@ local setup_normal_keymaps = function()
 				h = { "<cmd>lua require('telescope.builtin').help_tags( { show_version = true } )<cr>", "Find Help" },
 				n = { "<cmd>lua require('rbaumgardner.telescope.functions').edit_neovim()<cr>", "Find neovim" },
 				r = { "<cmd>lua require('telescope.builtin').resume{}<cr>", "Resume previous search" },
+				k = { "<cmd>lua require('telescope.builtin').keymaps()<CR>", "Telescope: find keymaps" },
 				s = {
 					"<cmd>lua require('telescope.builtin').grep_string()<cr>",
 					"Find string under cursor",

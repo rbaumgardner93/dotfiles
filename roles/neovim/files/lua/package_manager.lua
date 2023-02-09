@@ -62,11 +62,20 @@ local plugins = {
 		end,
 	},
 	{
-		"mrjones2014/legendary.nvim",
+		"stevearc/dressing.nvim",
 		event = "VeryLazy",
-		dependencies = { "stevearc/dressing.nvim" },
-		config = function()
-			require("legendary").setup({ which_key = { auto_register = true } })
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
 		end,
 	},
 	"b0o/schemastore.nvim", -- simple access to json-language-server schema
