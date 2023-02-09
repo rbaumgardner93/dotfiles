@@ -26,7 +26,7 @@ local plugins = {
 			require("mini.comment").setup({
 				hooks = {
 					pre = function()
-						require("ts_context_commentstring.internal").update_commentstring()
+						require("ts_context_commentstring.internal").update_commentstring({})
 					end,
 				},
 			})
@@ -270,7 +270,7 @@ local plugins = {
 	"tpope/vim-vinegar",
 	"tpope/vim-sleuth",
 	{ "tpope/vim-surround", event = "InsertEnter" },
-	{ "tpope/vim-fugitive", cmd = { "G" } },
+	{ "tpope/vim-fugitive", event = "VeryLazy" },
 	{ "tpope/vim-unimpaired", keys = { "[", "]" } },
 	{ "tpope/vim-repeat", event = "InsertEnter" },
 }
