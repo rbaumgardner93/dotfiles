@@ -19,7 +19,7 @@ local settings = {
 local M = {
 	setup = function(opts)
 		require("neodev").setup({})
-		require("lspconfig").sumneko_lua.setup({
+		require("lspconfig").lua_ls.setup({
 			settings,
 			on_attach = function(client, bufnr)
 				require("nvim-navic").attach(client, bufnr)

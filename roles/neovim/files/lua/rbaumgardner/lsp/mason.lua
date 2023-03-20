@@ -13,7 +13,7 @@ M.setup = function(options)
 		"html",
 		"jsonls",
 		"marksman",
-		"sumneko_lua",
+		"lua_ls",
 		"tsserver",
 		"yamlls",
 	}

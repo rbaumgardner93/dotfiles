@@ -28,7 +28,7 @@ M.format = function(bufnr)
 
 			return client.name ~= "null-ls"
 				and client.name ~= "tsserver"
-				and client.name ~= "sumneko_lua"
+				and client.name ~= "lua_ls"
 				and client.name ~= "cssls"
 		end,
 		bufnr = bufnr,
