@@ -5,6 +5,6 @@ default_roles:
   - kitty
   - neovim
   - npm
-  - oh-my-zsh
+  - zsh
   - ssh
   - tmux

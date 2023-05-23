@@ -1,0 +1,48 @@
+---
+- name: Run a command that uses non-posix shell-isms (in this example /bin/sh doesn't handle redirection and wildcards together but bash does)
+  ansible.builtin.shell: zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+  args:
+    executable: /bin/zsh
+
+- name: Get stats of the .zshrc file
+  ansible.builtin.stat:
+    path: "{{ ansible_user_dir }}/.zshrc"
+  register: zshrc_sym
+
+- name: Get stats of the zshrc function file
+  ansible.builtin.stat:
+    path: "{{ ansible_user_dir }}/.zsh/functions.zsh"
+  register: function_sym
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: ".zshrc path exists and is a symlink"
+  when: zshrc_sym.stat.islnk is defined and zshrc_sym.stat.islnk
+
+- name: Print a debug message
+  ansible.builtin.debug:
+    msg: "function.zsh path exists and is a symlink"
+  when: function_sym.stat.islnk is defined and function_sym.stat.islnk
+
+- name: Create symlink to .zshrc
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir}}/dotfiles/roles/zsh/files/.zshrc"
+    path: "{{ ansible_user_dir }}/.zshrc"
+    state: link
+    force: true
+  when: zshrc_sym.stat.islnk is not defined
+
+- name: Create symlink to .zshrc functions
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir}}/dotfiles/roles/zsh/files/function.zsh"
+    path: "{{ ansible_user_dir }}/.zsh/functions.zsh"
+    state: link
+    force: true
+  when: function_sym.stat.islnk is not defined
+
+- name: Create symlink spaceship.zsh-theme
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/dotfiles/roles/zsh/files/spaceship.zsh"
+    path: "{{ ansible_user_dir }}/.config/spaceshp.zsh"
+    state: link
+    force: true
