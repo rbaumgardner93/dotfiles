@@ -245,6 +245,7 @@ return {
 			},
 			{
 				"j-hui/fidget.nvim",
+				tag = "legacy",
 				config = function()
 					local fidget = require("fidget")
 					fidget.setup({
