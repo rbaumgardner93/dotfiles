@@ -10,9 +10,10 @@ return {
 		config = function()
 			require("mini.trailspace").setup({ only_in_normal_buffers = true })
 			require("mini.comment").setup({
-				hooks = {
-					pre = function()
-						require("ts_context_commentstring.internal").update_commentstring()
+				options = {
+					custom_commentstring = function()
+						return require("ts_context_commentstring.internal").calculate_commentstring()
+							or vim.bo.commentstring
 					end,
 				},
 			})
