@@ -1,6 +1,22 @@
 return {
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		config = function()
+			require("catppuccin").setup({
+				transparent_background = true,
+			})
+
+			vim.cmd([[
+				colorscheme catppuccin
+				highlight ColorColumn guibg=#292e42
+			]])
+		end,
+		priority = 1000,
+	},
+	{
 		"folke/tokyonight.nvim",
+		enabled = false,
 		config = function()
 			require("tokyonight").setup({
 				style = "night",
