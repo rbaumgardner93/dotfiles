@@ -64,48 +64,83 @@ return {
 			lsp.on_attach(function(client, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
 
-				local which_key = require("which-key")
-				local opts = {
-					mode = "n",
-					prefix = "",
-					buffer = bufnr,
-					noremap = true,
-					nowait = false,
-				}
-				local keymaps = {
-					["["] = {
-						d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to prev diagnostic" },
-					},
-					["]"] = {
-						d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic" },
-					},
-					g = {
-						name = "+goto",
-						d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
-						D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
-						i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
-						l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "View line diagnostic" },
-						r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
-					},
-					K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover definition" },
-					["<leader>"] = {
-						c = {
-							a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-						},
-						r = {
-							n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-						},
-						v = {
-							s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "View signature help" },
-						},
-					},
-				}
-
-				which_key.register(keymaps, opts)
-
-				if client.server_capabilities.colorProvider then
-					require("document-color").buf_attach(bufnr)
-				end
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"[d",
+					"<cmd>lua vim.diagnostic.goto_prev()<CR>",
+					{ noremap = true, desc = "Go to prev diagnostic" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"]d",
+					"<cmd>lua vim.diagnostic.goto_next()<CR>",
+					{ noremap = true, desc = "Go to next diagnostic" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"gd",
+					"<cmd>lua vim.lsp.buf.definition()<CR>",
+					{ noremap = true, desc = "LSP: Go to definition" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"gD",
+					"<cmd>lua vim.lsp.buf.declaration()<CR>",
+					{ noremap = true, desc = "LSP: Go to declaration" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"gi",
+					"<cmd>lua vim.lsp.buf.implementation()<CR>",
+					{ noremap = true, desc = "LSP: Go to implementation" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"gl",
+					"<cmd>lua vim.diagnostic.open_float()<CR>",
+					{ noremap = true, desc = "LSP: View line diagnostic" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"gr",
+					"<cmd>lua vim.lsp.buf.references()<CR>",
+					{ noremap = true, desc = "LSP: Go to references" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"K",
+					"<cmd>lua vim.lsp.buf.hover()<CR>",
+					{ noremap = true, desc = "LSP: Hover definition" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"<leader>ca",
+					"<cmd>lua vim.lsp.buf.code_action()<CR>",
+					{ noremap = true, desc = "LSP: Code action" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"<leader>rn",
+					"<cmd>lua vim.lsp.buf.rename()<CR>",
+					{ noremap = true, desc = "LSP: Rename" }
+				)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					"n",
+					"<leader>vs",
+					"<cmd>lua vim.lsp.buf.signature_help()<CR>",
+					{ noremap = true, desc = "LSP: View signature help" }
+				)
 
 				if client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, bufnr)
