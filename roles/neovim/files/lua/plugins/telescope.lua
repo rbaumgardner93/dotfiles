@@ -58,7 +58,6 @@ return {
 		-- Enable telescope fzf native, if installed
 		telescope.load_extension("fzf")
 		telescope.load_extension("file_browser")
-		telescope.load_extension("dir")
 	end,
 	dependencies = {
 		"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
@@ -69,14 +68,5 @@ return {
 			cond = vim.fn.executable("make") == 1,
 		},
 		"nvim-telescope/telescope-file-browser.nvim",
-		{
-			"princejoogie/dir-telescope.nvim",
-			config = function()
-				require("dir-telescope").setup({
-					hidden = true,
-					respect_gitignore = true,
-				})
-			end,
-		},
 	},
 }

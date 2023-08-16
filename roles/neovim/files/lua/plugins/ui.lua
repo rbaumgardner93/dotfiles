@@ -57,23 +57,6 @@ return {
 		end,
 	},
 	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-		init = function()
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-
-			---@diagnostic disable-next-line: duplicate-set-field
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-		end,
-	},
-	{
 		"norcalli/nvim-colorizer.lua",
 		cmd = "ColorizerToggle",
 		config = function()
@@ -83,14 +66,6 @@ return {
 				"!css",
 				"!html",
 				"!tsx",
-			})
-		end,
-	},
-	{
-		"mrshmllow/document-color.nvim",
-		config = function()
-			require("document-color").setup({
-				mode = "background",
 			})
 		end,
 	},
