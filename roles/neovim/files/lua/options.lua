@@ -44,7 +44,7 @@ vim.opt.timeoutlen = 500                                            -- Default t
 vim.opt.mouse = "n"                                                 -- Enable mouse for normal mode
 vim.opt.wrap = false                                                -- Don't wrap long lines
 vim.opt.laststatus = 3                                              -- Global status line
-vim.opt.showmode = false                                             -- no need to show since we use lualine
+vim.opt.showmode = true                                             -- no need to show since we use lualine
 
 vim.opt.list = true                                                 -- Allows the additon of whitespace characters
 vim.opt.listchars = {

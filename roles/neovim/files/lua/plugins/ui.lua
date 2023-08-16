@@ -37,67 +37,6 @@ return {
 		end,
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			local icons = require("icons")
-			local lualine = require("lualine")
-
-			lualine.setup({
-				options = {
-					theme = "auto",
-					disabled_filetypes = { "alpha", "dashboard", "lazy" },
-					globalstatus = true,
-				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch" },
-					lualine_c = {
-						{
-							"diagnostics",
-							symbols = {
-								error = icons.diagnostics.Error,
-								warn = icons.diagnostics.Warning,
-								info = icons.diagnostics.Information,
-								hint = icons.diagnostics.Information,
-							},
-						},
-						"filename",
-						{
-							function()
-								return require("nvim-navic").get_location()
-							end,
-							cond = function()
-								return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-							end,
-						},
-					},
-					lualine_x = { "encoding", "filetype", "fileformat" },
-					lualine_y = {
-						{ "progress", separator = "", padding = { left = 1, right = 0 } },
-						{ "location", padding = { left = 0, right = 1 } },
-					},
-					lualine_z = {
-						function()
-							return " " .. os.date("%R")
-						end,
-					},
-				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = { "filename" },
-					lualine_x = { "location" },
-					lualine_y = {},
-					lualine_z = {},
-				},
-				tabline = {},
-				extensions = { "aerial", "fugitive", "quickfix" },
-			})
-		end,
-	},
-	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
 		config = function()

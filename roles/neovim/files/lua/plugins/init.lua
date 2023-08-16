@@ -31,7 +31,15 @@ return {
 	"tpope/vim-vinegar",
 	"tpope/vim-sleuth",
 	{ "tpope/vim-surround", event = "InsertEnter" },
-	{ "tpope/vim-fugitive", event = "VeryLazy" },
+	{
+		"tpope/vim-fugitive",
+		config = function()
+			vim.cmd([[
+				set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+			]])
+		end,
+		event = "VeryLazy",
+	},
 	{ "tpope/vim-unimpaired", keys = { "[", "]" } },
 	{ "tpope/vim-repeat", event = "InsertEnter" },
 }
