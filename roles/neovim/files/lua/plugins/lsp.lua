@@ -1,44 +1,168 @@
 local icons = require("icons")
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
 
 return {
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
-		lazy = true,
+		"neovim/nvim-lspconfig",
+		event = "BufReadPre",
 		dependencies = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" }, -- Required
-			{ "williamboman/mason.nvim" }, -- Optional
-			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" }, -- Required
-			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "L3MON4D3/LuaSnip" }, -- Required
-		},
-		config = function()
-			-- This is where you modify the settings for lsp-zero
-			-- Note: autocompletion settings will not take effect
-
-			require("lsp-zero.settings").preset({})
-		end,
-	},
-	{
-		"williamboman/mason.nvim",
-		cmd = "Mason",
-		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-		config = function()
-			local mason = require("mason")
-
-			mason.setup({
-				ui = {
-					icons = {
-						package_installed = icons.lsp.server_installed,
-						package_pending = icons.lsp.server_pending,
-						package_uninstalled = icons.lsp.server_uninstalled,
+			{ "williamboman/mason.nvim", config = true },
+			{ "williamboman/mason-lspconfig.nvim", config = true },
+			{
+				"j-hui/fidget.nvim",
+				tag = "legacy",
+				opts = {
+					text = {
+						spinner = "dots_snake", -- animation shown when tasks are ongoing
+						done = icons.lsp.server_installed, -- character shown when all tasks are complete
+						commenced = "Started", -- message shown when task starts
+						completed = "Completed", -- message shown when task completes
 					},
 				},
-			})
+			},
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "L3MON4D3/LuaSnip" },
+			"folke/neodev.nvim",
+		},
+		config = function()
+			vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to prev diagnostic" })
+			vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
+
+			local on_attach = function(client, bufnr)
+				vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+				vim.keymap.set(
+					"n",
+					"gd",
+					"<cmd>lua vim.lsp.buf.definition()<CR>",
+					{ buffer = bufnr, desc = "LSP: Go to definition" }
+				)
+				vim.keymap.set(
+					"n",
+					"gD",
+					"<cmd>lua vim.lsp.buf.declaration()<CR>",
+					{ buffer = bufnr, desc = "LSP: Go to declaration" }
+				)
+				vim.keymap.set(
+					"n",
+					"gi",
+					"<cmd>lua vim.lsp.buf.implementation()<CR>",
+					{ buffer = bufnr, desc = "LSP: Go to implementation" }
+				)
+				vim.keymap.set(
+					"n",
+					"gl",
+					"<cmd>lua vim.diagnostic.open_float()<CR>",
+					{ buffer = bufnr, desc = "LSP: View line diagnostic" }
+				)
+				vim.keymap.set(
+					"n",
+					"gr",
+					"<cmd>lua vim.lsp.buf.references()<CR>",
+					{ buffer = bufnr, desc = "LSP: Go to references" }
+				)
+				vim.keymap.set(
+					"n",
+					"K",
+					"<cmd>lua vim.lsp.buf.hover()<CR>",
+					{ buffer = bufnr, desc = "LSP: Hover definition" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>ca",
+					"<cmd>lua vim.lsp.buf.code_action()<CR>",
+					{ buffer = bufnr, desc = "LSP: Code action" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>rn",
+					"<cmd>lua vim.lsp.buf.rename()<CR>",
+					{ buffer = bufnr, desc = "LSP: Rename" }
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>vs",
+					"<cmd>lua vim.lsp.buf.signature_help()<CR>",
+					{ buffer = bufnr, desc = "LSP: View signature help" }
+				)
+
+				if client.supports_method("textDocument/formatting") then
+					local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						group = augroup,
+						buffer = bufnr,
+						callback = function()
+							lsp_formatting(bufnr)
+						end,
+					})
+				end
+
+				if client.server_capabilities.documentHighlightProvider then
+					local augroup = vim.api.nvim_create_augroup("LspDocumentHighlighting", {})
+					vim.api.nvim_create_autocmd("CursorHold", {
+						group = augroup,
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.document_highlight()
+						end,
+					})
+					vim.api.nvim_create_autocmd("CursorMoved", {
+						group = augroup,
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.clear_references()
+						end,
+					})
+				end
+			end
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+			local lspconfig = require("lspconfig")
+			local servers = {
+				bashls = {},
+				cssls = {},
+				jsonls = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+					},
+				},
+				marksman = {},
+				lua_ls = {
+					Lua = {
+						format = false,
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = { checkThirdParty = false },
+						telemetry = { enable = false },
+					},
+				},
+				tsserver = {},
+				yamlls = {},
+			}
+
+			-- initialize before server setup
+			require("neodev").setup()
+
+			for server_name, _ in pairs(servers) do
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = servers[server_name],
+				})
+			end
 		end,
 	},
 	{
@@ -53,256 +177,6 @@ return {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
-	},
-	--  LSP plugins
-	{
-		"neovim/nvim-lspconfig",
-		event = "BufReadPre",
-		config = function()
-			local lsp = require("lsp-zero")
-
-			lsp.on_attach(function(client, bufnr)
-				lsp.default_keymaps({ buffer = bufnr })
-
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"[d",
-					"<cmd>lua vim.diagnostic.goto_prev()<CR>",
-					{ noremap = true, desc = "Go to prev diagnostic" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"]d",
-					"<cmd>lua vim.diagnostic.goto_next()<CR>",
-					{ noremap = true, desc = "Go to next diagnostic" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"gd",
-					"<cmd>lua vim.lsp.buf.definition()<CR>",
-					{ noremap = true, desc = "LSP: Go to definition" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"gD",
-					"<cmd>lua vim.lsp.buf.declaration()<CR>",
-					{ noremap = true, desc = "LSP: Go to declaration" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"gi",
-					"<cmd>lua vim.lsp.buf.implementation()<CR>",
-					{ noremap = true, desc = "LSP: Go to implementation" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"gl",
-					"<cmd>lua vim.diagnostic.open_float()<CR>",
-					{ noremap = true, desc = "LSP: View line diagnostic" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"gr",
-					"<cmd>lua vim.lsp.buf.references()<CR>",
-					{ noremap = true, desc = "LSP: Go to references" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"K",
-					"<cmd>lua vim.lsp.buf.hover()<CR>",
-					{ noremap = true, desc = "LSP: Hover definition" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"<leader>ca",
-					"<cmd>lua vim.lsp.buf.code_action()<CR>",
-					{ noremap = true, desc = "LSP: Code action" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"<leader>rn",
-					"<cmd>lua vim.lsp.buf.rename()<CR>",
-					{ noremap = true, desc = "LSP: Rename" }
-				)
-				vim.api.nvim_buf_set_keymap(
-					bufnr,
-					"n",
-					"<leader>vs",
-					"<cmd>lua vim.lsp.buf.signature_help()<CR>",
-					{ noremap = true, desc = "LSP: View signature help" }
-				)
-
-				if client.server_capabilities.documentSymbolProvider then
-					require("nvim-navic").attach(client, bufnr)
-				end
-
-				if client.server_capabilities.documentHighlightProvider then
-					vim.api.nvim_exec(
-						[[
-					  augroup lsp_document_highlight
-						autocmd! * <buffer>
-						autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-						autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-					  augroup END
-					]],
-						false
-					)
-				end
-			end)
-
-			lsp.set_server_config({
-				capabilities = {
-					textDocument = {
-						foldingRange = {
-							dynamicRegistration = false,
-							lineFoldingOnly = true,
-						},
-						completion = {
-							completionItem = {
-								snippetSupport = true,
-								resolveSupport = {
-									properties = {
-										"documentation",
-										"detail",
-										"additionalTextEdits",
-									},
-								},
-							},
-						},
-						colorProvider = {
-							dynamicRegistration = true,
-						},
-					},
-				},
-			})
-
-			lsp.set_sign_icons({
-				error = icons.diagnostics.Error,
-				warn = icons.diagnostics.Warning,
-				hint = icons.diagnostics.Hint,
-				info = icons.diagnostics.Information,
-			})
-
-			-- lsp diagnostic config
-			vim.diagnostic.config({
-				virtual_text = { severity = vim.diagnostic.severity.ERROR },
-				update_in_insert = true,
-				underline = true,
-				severity_sort = true,
-				float = {
-					focusable = false,
-					style = "minimal",
-					border = "rounded",
-					source = "always",
-					header = "",
-					prefix = "",
-				},
-			})
-
-			lsp.format_on_save({
-				format_opts = {
-					async = false,
-					timeout_ms = 10000,
-				},
-				servers = {
-					["null-ls"] = {
-						"lua",
-						"javascript",
-						"javascriptreact",
-						"json",
-						"typescript",
-						"typescriptreact",
-						"yaml",
-					},
-				},
-			})
-
-			lsp.ensure_installed({
-				"bashls",
-				"cssls",
-				"dockerls",
-				"gopls",
-				"html",
-				"jsonls",
-				"marksman",
-				"lua_ls",
-				"tsserver",
-				"yamlls",
-			})
-
-			lsp.skip_server_setup({ "tsserver" })
-
-			lsp.setup_servers({ "bashls", "cssls", "dockerls", "gopls", "html", "marksman", "yamlls" })
-
-			lsp.configure("jsonls", {
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas(),
-					},
-				},
-			})
-
-			lsp.configure("lua_ls", lsp.nvim_lua_ls())
-
-			lsp.setup()
-
-			require("typescript").setup({
-				server = {
-					on_attach = function(client, bufnr)
-						-- You can find more commands in the documentation:
-						-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
-
-						vim.keymap.set("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", { buffer = bufnr })
-					end,
-				},
-			})
-		end,
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			{
-				"SmiteshP/nvim-navic",
-				config = function()
-					require("nvim-navic").setup({
-						highlight = true,
-						separator = icons.ui.ChevronRight,
-					})
-				end,
-			},
-			{
-				"j-hui/fidget.nvim",
-				tag = "legacy",
-				config = function()
-					local fidget = require("fidget")
-					fidget.setup({
-						text = {
-							spinner = "dots_snake", -- animation shown when tasks are ongoing
-							done = "✔", -- character shown when all tasks are complete
-							commenced = "Started", -- message shown when task starts
-							completed = "Completed", -- message shown when task completes
-						},
-					})
-				end,
-			},
-			"folke/neodev.nvim",
-			"jose-elias-alvarez/typescript.nvim",
-		},
-	},
-	{
-		"stevearc/aerial.nvim",
-		cmd = { "AerialToggle" },
-		config = function()
-			require("aerial").setup()
-		end,
 	},
 	-- formatters
 	{
