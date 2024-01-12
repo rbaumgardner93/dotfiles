@@ -1,13 +1,4 @@
 local icons = require("icons")
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
-		end,
-		bufnr = bufnr,
-	})
-end
 
 return {
 	{
@@ -36,6 +27,10 @@ return {
 		config = function()
 			vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to prev diagnostic" })
 			vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
+
+			local lsp_formatting = function(bufnr)
+				require("conform").format({ bufnr = bufnr })
+			end
 
 			local on_attach = function(client, bufnr)
 				vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -177,47 +172,5 @@ return {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
-	},
-	-- formatters
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "BufReadPre",
-		dependencies = { "mason.nvim" },
-		config = function()
-			local null_ls = require("null-ls")
-			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
-			local formatting = null_ls.builtins.formatting
-			local diagnostics = null_ls.builtins.diagnostics
-			local hover = null_ls.builtins.hover
-			local code_actions = null_ls.builtins.code_actions
-
-			local with_diagnostics_code = function(builtin)
-				return builtin.with({
-					diagnostics_format = "#{m} [#{c}]",
-				})
-			end
-
-			local sources = {
-				-- formatting
-				formatting.fixjson, -- :Mason install fixjson
-				formatting.stylua, -- :Mason install stylua
-				formatting.prettierd, -- :Mason install prettierd
-
-				with_diagnostics_code(diagnostics.shellcheck), -- :Mason install shellcheck
-				diagnostics.write_good, -- :Mason install write-good
-				diagnostics.eslint_d,
-
-				-- code actions
-				code_actions.gitsigns,
-
-				-- hover
-				hover.dictionary,
-			}
-
-			null_ls.setup({
-				sources = sources,
-				debug = true,
-			})
-		end,
 	},
 }
