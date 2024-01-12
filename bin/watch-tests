@@ -15,7 +15,7 @@ if [[ $selected_slice == *"slices"* ]]; then
 elif [[ $selected_slice == *"core"* ]]; then
 	file_name=$(find "$selected_slice/src" -mindepth 1 -maxdepth 2 -type f | grep '.spec' | fzf --prompt="What file from $slice_name would you like to run? ")
 else
-	file_name=$(find "$selected_slice/src" -mindepth 1 -maxdepth 3 -type f | grep '.spec' | fzf --prompt="What file from $slice_name would you like to run? ")
+	file_name=$(find "$selected_slice/src" -mindepth 1 -maxdepth 4 -type f | grep '.spec' | fzf --prompt="What file from $slice_name would you like to run? ")
 fi
 
 if [[ -z $file_name ]]; then
