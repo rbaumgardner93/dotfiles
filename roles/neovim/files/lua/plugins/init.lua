@@ -1,9 +1,11 @@
+vim.g.skip_ts_context_commentstring_module = true
+
 return {
 	"nathom/filetype.nvim", -- Faster filetype.vim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	{ "mbbill/undotree", cmd = "UndotreeToggle" },
 	-- comments
-	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 	{
 		"echasnovski/mini.nvim",
 		event = "VeryLazy",
