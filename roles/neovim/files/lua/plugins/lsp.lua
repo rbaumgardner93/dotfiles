@@ -150,6 +150,7 @@ return {
 						telemetry = { enable = false },
 					},
 				},
+				pyright = {},
 				tsserver = {},
 				yamlls = {},
 			}
