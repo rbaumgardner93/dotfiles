@@ -12,18 +12,11 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Keep centered when navigating backwa
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 -- ]]
 
-vim.keymap.set(
-	"n",
-	"<C-e>",
-	"<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
-	{ desc = "Harpoon: toggle quick menu" }
-)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Keep it centered when moving down a file" })
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Keep it centered when moving up a file" })
 
 vim.keymap.set("n", "<leader><CR>", ":luafile %<CR>", { desc = "Fast sourcing" })
-vim.keymap.set("n", "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<CR>", { desc = "Harpoon: add file" })
 vim.keymap.set(
 	"n",
 	"<leader>fb",
@@ -99,8 +92,6 @@ vim.keymap.set(
 	{ desc = "Telescope: [F]ind [w]ord" }
 )
 
-vim.keymap.set("n", "<leader>a", "<cmd>lua require('harpoon.mark').add_file()<CR>", { desc = "Harpoon: Add file" })
-
 vim.keymap.set(
 	"n",
 	"<leader>ga",
@@ -142,35 +133,9 @@ vim.keymap.set(
 	{ desc = "Gitsigns: undo stage hunk" }
 )
 
-vim.keymap.set(
-	"n",
-	"<leader>h",
-	"<cmd>lua require('harpoon.ui').nav_file(1)<CR>",
-	{ desc = "Harpoon: navigate to first file" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>j",
-	"<cmd>lua require('harpoon.ui').nav_file(2)<CR>",
-	{ desc = "Harpoon: navigate to second file" }
-)
 vim.keymap.set("n", "<leader>J", ":m .+1<CR>==", { desc = "Move line down" })
 
-vim.keymap.set(
-	"n",
-	"<leader>k",
-	"<cmd>lua require('harpoon.ui').nav_file(3)<CR>",
-	{ desc = "Harpoon: navigate to third file" }
-)
-
 vim.keymap.set("n", "<leader>K", ":m .-2<CR>==", { desc = "Move line up" })
-
-vim.keymap.set(
-	"n",
-	"<leader>l",
-	"<cmd>lua require('harpoon.ui').nav_file(4)<CR>",
-	{ desc = "Harpoon: navigate to fourth file" }
-)
 
 vim.keymap.set("n", "<leader>md", "<cmd>Glow<CR>", { desc = "Glow: Preview markdown" })
 vim.keymap.set("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", { desc = "UndoTree: Toggle" })
