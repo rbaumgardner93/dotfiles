@@ -1,7 +1,9 @@
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
-export PATH="$HOME/.config/bin:$HOME/.config/neovim/bin:$HOME/go/bin:$HOME/dotfiles/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+
+export PATH="$PYENV_ROOT/bin:$HOME/.config/bin:$HOME/.config/neovim/bin:$HOME/go/bin:$HOME/dotfiles/bin:$PATH"
 
 # Path to your zsh file
 export ZSH="$HOME/.zshrc"
@@ -31,6 +33,8 @@ alias packer="cd $HOME/.local/share/nvim/site/pack/packer"
 alias inkdrop="cd $HOME/Library/Application\ Support/inkdrop"
 
 eval "$(fnm env --use-on-cd)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 if [ -f $HOME/.zsh_private ]; then
     source ~/.zsh_private
@@ -44,3 +48,10 @@ source "$HOME/.zsh/functions.zsh"
 autoload -Uz compinit
 compinit
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# added by Webi for pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
